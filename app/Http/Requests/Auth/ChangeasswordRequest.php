@@ -8,7 +8,7 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Hash;
 use App\Traits\ResponseTrait;
 
-class ChangeasswordRequest extends ApiRequest
+class ChangeasswordRequest extends FormRequest
 {
     use ResponseTrait;
     /**

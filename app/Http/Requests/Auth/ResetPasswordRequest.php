@@ -10,7 +10,7 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\DB;
 use App\Traits\ResponseTrait;
 
-class ResetPasswordRequest extends ApiRequest
+class ResetPasswordRequest extends FormRequest
 {
     use ResponseTrait;
     /**

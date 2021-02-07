@@ -20,9 +20,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 */
 /***************** Auth *******************************/
-Route::group([
-    'prefix' => 'auth',
-], function () {
+Route::group(['prefix' => 'auth',], function () {
     Route::post('login', 'UsersController@login');
     Route::post('register', 'UsersController@register');
     Route::post('forget_password', 'UsersController@forget_password');
@@ -37,9 +35,7 @@ Route::group([
 });
 
 /**************** home *******************************/
-Route::group([
-    'prefix' => 'home',
-], function() {
+Route::group(['prefix' => 'home',], function() {
     Route::get('install', 'HomeController@install');
     Route::group(['middleware' => 'auth:api'], function () {
         Route::get('providers', 'HomeController@providers');
@@ -48,14 +44,17 @@ Route::group([
 });
 
 /************* category ***********************************/
-Route::group([
-    'prefix' => 'category',
-], function() {
+Route::group(['prefix' => 'category'], function() {
     Route::get('show_all', 'CategoryController@index');
     Route::post('store', 'CategoryController@store');
     Route::get('show', 'CategoryController@show');
     Route::post('destroy', 'CategoryController@destroy');
     Route::post('update', 'CategoryController@update');
+});
+
+/************ advertisment *********************/
+Route::group(['prefix'=>'advertisment'], function (){
+    Route::get('show_all', 'AdvertismentController@index');
 });
 
 

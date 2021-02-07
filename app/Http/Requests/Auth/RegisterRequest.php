@@ -9,7 +9,7 @@ use App\Http\Resources\Api\User\UserResource;
 use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
 
-class RegisterRequest extends ApiRequest
+class RegisterRequest extends FormRequest
 {
     use ResponseTrait;
     /**

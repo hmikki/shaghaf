@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use App\Traits\ResponseTrait;
 
-class LoginRequest extends ApiRequest
+class LoginRequest extends FormRequest
 {
     use ResponseTrait;
     /**

@@ -8,7 +8,7 @@ use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
 use App\Traits\ResponseTrait;
 
-class ForgetPasswordRequest extends ApiRequest
+class ForgetPasswordRequest extends FormRequest
 {
     use ResponseTrait;
     /**

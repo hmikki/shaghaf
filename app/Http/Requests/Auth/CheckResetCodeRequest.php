@@ -8,7 +8,7 @@ use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
 use App\Traits\ResponseTrait;
 
-class CheckResetCodeRequest extends ApiRequest
+class CheckResetCodeRequest extends FormRequest
 {
     use ResponseTrait;
     /**
