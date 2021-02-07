@@ -2,14 +2,15 @@
 
 namespace App\Http\Requests\Auth;
 
-use App\Http\Resources\User\UserResource;
+use App\Http\Requests\ApiRequest;
+use App\Http\Resources\Api\User\UserResource;
 use App\Models\PasswordReset;
 use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\DB;
 use App\Traits\ResponseTrait;
 
-class ResetPasswordRequest extends FormRequest
+class ResetPasswordRequest extends ApiRequest
 {
     use ResponseTrait;
     /**
@@ -47,10 +48,10 @@ class ResetPasswordRequest extends FormRequest
             $tokenResult = $user->createToken('Personal Access Token');
             $token = $tokenResult->token;
             $token->save();
-            return $this->successJsonResponse( [('تم التحديث بنجاح')],new UserResource($user,$tokenResult->accessToken),'User');
+            return $this->successJsonResponse( [__('messages.updated_successful')],new UserResource($user,$tokenResult->accessToken),'User');
         }
         else{
-            return $this->failJsonResponse( [('الرمز غير صالح')]);
+            return $this->failJsonResponse( [__('auth.code_not_correct')]);
         }
     }
 }

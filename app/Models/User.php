@@ -16,7 +16,7 @@ use Laravel\Passport\HasApiTokens;
 /**
  * @property integer id
  * @property string name
- * @property string|null mobile
+ * @property string mobile
  * @property mixed email
  * @property mixed city_id
  * @property string password
@@ -85,7 +85,7 @@ class User extends Authenticatable
     }
 
     /**
-     * @return string|null
+     * @return string
      */
     public function getMobile(): string
     {
@@ -93,7 +93,7 @@ class User extends Authenticatable
     }
 
     /**
-     * @param string|null $mobile
+     * @param string $mobile
      */
     public function setMobile(string $mobile): void
     {
@@ -244,6 +244,39 @@ class User extends Authenticatable
     public function setType(int $type): void
     {
         $this->type = $type;
+    }
+
+
+    /**
+     * @return mixed
+     */
+    public function getProviderType()
+    {
+        return $this->provider_type;
+    }
+
+    /**
+     * @param mixed $provider_type
+     */
+    public function setProviderType($provider_type): void
+    {
+        $this->provider_type = $provider_type;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAppLocale(): string
+    {
+        return $this->app_locale;
+    }
+
+    /**
+     * @param string $app_locale
+     */
+    public function setAppLocale(string $app_locale): void
+    {
+        $this->app_locale = $app_locale;
     }
 
     /**

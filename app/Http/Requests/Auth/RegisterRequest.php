@@ -2,12 +2,14 @@
 
 namespace App\Http\Requests\Auth;
 
+use App\Helpers\Functions;
+use App\Http\Requests\ApiRequest;
 use App\Traits\ResponseTrait;
-use App\Http\Resources\user\UserResource;
+use App\Http\Resources\Api\User\UserResource;
 use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
 
-class RegisterRequest extends FormRequest
+class RegisterRequest extends ApiRequest
 {
     use ResponseTrait;
     /**
@@ -31,7 +33,14 @@ class RegisterRequest extends FormRequest
             'name' => 'required',
             'email' => 'required|email|unique:users',
             'password' => 'required|confirmed',
+            'mobile' => 'required',
+            //'city_id' => 'required|exists:cities,id',
             'type' => 'required',
+            'device_token' => 'string|required_with:device_type',
+            'device_type' => 'string|required_with:device_token',
+            'app_locale' => 'sometimes|in:en,ar',
+
+
         ];
     }
     public function run(){
@@ -39,7 +48,9 @@ class RegisterRequest extends FormRequest
         $user->setName($this->name);
         $user->setPassword($this->password);
         $user->setEmail($this->email);
+        $user->setMobile($this->mobile);
         $user->setType($this->type);
+        $user->setAppLocale($this->filled('app_locale')?$this->app_locale:'ar');
         if ($this->filled('device_token') && $this->filled('device_type')) {
             $user->setDeviceToken($this->device_token);
             $user->setDeviceType($this->device_type);
@@ -49,7 +60,11 @@ class RegisterRequest extends FormRequest
         $token = $tokenResult->token;
         $token->save();
         $user->refresh();
+        /*try {
+            Functions::SendVerification($user);
+        }catch (\Exception $e){
 
-        return $this->successJsonResponse( [('تم التسجيل بنجاح')],new UserResource($user,$tokenResult->accessToken),'User');
+        }*/
+        return $this->successJsonResponse( [__('messages.saved_successfully')],new UserResource($user,$tokenResult->accessToken),'User');
     }
 }

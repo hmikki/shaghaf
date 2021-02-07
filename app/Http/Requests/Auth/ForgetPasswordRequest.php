@@ -3,11 +3,12 @@
 namespace App\Http\Requests\Auth;
 
 use App\Helpers\Functions;
+use App\Http\Requests\ApiRequest;
 use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
 use App\Traits\ResponseTrait;
 
-class ForgetPasswordRequest extends FormRequest
+class ForgetPasswordRequest extends ApiRequest
 {
     use ResponseTrait;
     /**
@@ -37,8 +38,8 @@ class ForgetPasswordRequest extends FormRequest
 
         if($user){
             Functions::SendForget($user);
-            return $this->successJsonResponse([('تم ارسال رمز التأكيد')] );
+            return $this->successJsonResponse([__('auth.code_sent')] );
         }
-        return $this->failJsonResponse([('البريد الالكتروني غير صالح')]);
+        return $this->failJsonResponse([__('messages.object_not_found')]);
     }
 }

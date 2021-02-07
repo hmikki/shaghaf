@@ -2,12 +2,13 @@
 
 namespace App\Http\Requests\Auth;
 
+use App\Http\Requests\ApiRequest;
 use App\Models\PasswordReset;
 use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
 use App\Traits\ResponseTrait;
 
-class CheckResetCodeRequest extends FormRequest
+class CheckResetCodeRequest extends ApiRequest
 {
     use ResponseTrait;
     /**
@@ -37,10 +38,10 @@ class CheckResetCodeRequest extends FormRequest
         $user = User::where('email',$this->email)->first();
         $passwordReset = PasswordReset::where('user_id',$user->getId())->first();
         if($passwordReset &&$passwordReset->code == $this->code){
-            return $this->successJsonResponse([('تم ارسال رمز التأكيد')]);
+            return $this->successJsonResponse([__('auth.code_correct')]);
         }
         else{
-            return $this->failJsonResponse([('رمز التأكيد غير صحيح')]);
+            return $this->failJsonResponse([__('auth.code_not_correct')]);
         }
     }
 }

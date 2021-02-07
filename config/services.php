@@ -30,4 +30,15 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'firebase' => [
+        'api_key' => 'AIzaSyBankpts2W7NIjhNerkn3HDc0FDO8NGTj4',
+        'auth_domain' => 'shaghaf-43a82.firebaseapp.com',
+        'database_url' => 'database_url',
+        'project_id' => 'shaghaf-43a82',
+        'storage_bucket' => 'shaghaf-43a82.appspot.com',
+        'messaging_sender_id' => '731253996105',
+        'app_id' => '1:731253996105:web:d81fdcc51161535f47dd98',
+        'measurement_id' => 'G-9SQ9PNLEQV',
+    ],
+
 ];

@@ -2,12 +2,13 @@
 
 namespace App\Http\Requests\Auth;
 
-use App\Http\Resources\User\UserResource;
+use App\Http\Requests\ApiRequest;
+use App\Http\Resources\Api\User\UserResource;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Hash;
 use App\Traits\ResponseTrait;
 
-class ChangeasswordRequest extends FormRequest
+class ChangeasswordRequest extends ApiRequest
 {
     use ResponseTrait;
     /**
@@ -42,8 +43,8 @@ class ChangeasswordRequest extends FormRequest
             $tokenResult = $logged->createToken('Personal Access Token');
             $token = $tokenResult->token;
             $token->save();
-            return $this->successJsonResponse([('تم تحديث كلمة المرور بنجاح')],new UserResource($logged,$tokenResult->accessToken),'User');
+            return $this->successJsonResponse([__('messages.updated_successful')],new UserResource($logged,$tokenResult->accessToken),'User');
         }
-        return $this->failJsonResponse([('كلمة المرور غير صالحة')]);
+        return $this->failJsonResponse([__('auth.password_not_correct')]);
     }
 }

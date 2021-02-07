@@ -8,7 +8,7 @@ use App\Http\Requests\Auth\LoginRequest;
 use App\Http\Requests\Auth\RegisterRequest;
 use App\Http\Requests\Auth\ResetPasswordRequest;
 use App\Http\Requests\Auth\ChangeasswordRequest;
-use App\Http\Resources\user\UserResource;
+use App\Http\Resources\User\UserResource;
 use App\Models\PasswordReset;
 use Illuminate\Http\JsonResponse;
 use App\Traits\ResponseTrait;
@@ -61,7 +61,7 @@ class UsersController extends Controller
         $request->user()->update(['device_token'=>null,'device_type'=>null]);
         $request->user()->token()->revoke();
         $request->user()->token()->delete();
-        return $this->successJsonResponse([('تم تسجيل الخروج')]);
+        return $this->successJsonResponse([__('auth.logout')]);
     }
 
     /**

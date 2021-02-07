@@ -2,10 +2,13 @@
 
 namespace App\Http\Requests\Category;
 
+use App\Http\Resources\Api\Category\CategoryResource;
+use App\Models\Category;
 use Illuminate\Foundation\Http\FormRequest;
 use App\Traits\ResponseTrait;
+use Illuminate\Http\JsonResponse;
 
-class ShowCategoryRequest extends FormRequest
+class ShowRequest extends FormRequest
 {
     use ResponseTrait;
     /**
@@ -15,7 +18,7 @@ class ShowCategoryRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -26,7 +29,14 @@ class ShowCategoryRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'category_id'=>'required|exists:category,id'
         ];
+    }
+
+    public function run():JsonResponse
+    {
+        $Object = (new Category())->find($this->category_id);
+        $Object = new CategoryResource($Object);
+        return $this->successJsonResponse([],$Object,'Category');
     }
 }

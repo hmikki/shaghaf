@@ -2,14 +2,15 @@
 
 namespace App\Http\Requests\Auth;
 
-use App\Http\Resources\user\UserResource;
+use App\Http\Requests\ApiRequest;
+use App\Http\Resources\User\UserResource;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use App\Traits\ResponseTrait;
 
-class LoginRequest extends FormRequest
+class LoginRequest extends ApiRequest
 {
     use ResponseTrait;
     /**
@@ -30,16 +31,18 @@ class LoginRequest extends FormRequest
     public function rules()
     {
         return [
-            'email' => 'required|email',
+            'mobile' => 'required',
             'password' => 'required',
+            'device_token' => 'string|required_with:device_type',
+            'device_type' => 'string|required_with:device_token',
         ];
     }
 
     public function run()
     {
-        $credentials = request(['email', 'password']);
+        $credentials = request(['mobile', 'password']);
         if (!Auth::attempt($credentials))
-            return $this->failJsonResponse([('لم يتم تسجيل الدخول')]);
+            return $this->failJsonResponse([__('auth.failed')]);
         $user = $this->user();
         DB::table('oauth_access_tokens')->where('user_id', $user->id)->delete();
         $tokenResult = $user->createToken('Personal Access Token');
@@ -50,6 +53,6 @@ class LoginRequest extends FormRequest
             $user->device_type = $this->device_type;
             $user->save();
         }
-        return $this->successJsonResponse( [('تم تسجيل الدخول بنجاح')], new UserResource($user,$tokenResult->accessToken),'User');
+        return $this->successJsonResponse( [__('auth.login')], new UserResource($user,$tokenResult->accessToken),'User');
     }
 }

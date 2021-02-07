@@ -16,9 +16,9 @@ class CreateCategoryTable extends Migration
         Schema::create('Category', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('title');
-            $table->string('image');
-            $table->unsignedInteger('sub_category_id');
-
+            $table->string('title_ar');
+            $table->string('image')->nullable();
+            $table->boolean('is_active')->default(true);
             $table->timestamps();
         });
     }

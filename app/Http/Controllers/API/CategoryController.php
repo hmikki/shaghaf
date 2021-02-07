@@ -3,6 +3,12 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Category\DestroyRequest;
+use App\Http\Requests\Category\IndexRequest;
+use App\Http\Requests\Category\ShowRequest;
+use App\Http\Requests\Category\StoreRequest;
+use App\Http\Requests\Category\UpdateRequest;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use App\Traits\ResponseTrait;
 
@@ -10,27 +16,46 @@ class CategoryController extends Controller
 {
     use ResponseTrait;
 
-    public function index(){
 
+    /**
+     * @param IndexRequest $request
+     * @return JsonResponse
+     */
+    public function index(IndexRequest $request): JsonResponse{
+        return $request->run();
     }
 
-    public function addCategory(){
 
+    /**
+     * @param ShowRequest $request
+     * @return JsonResponse
+     */
+    public function show(ShowRequest $request): JsonResponse{
+        return $request->run();
     }
 
-    public function editCategory(){
-
+    /**
+     * @param StoreRequest $request
+     * @return JsonResponse
+     */
+    public function store(StoreRequest $request): JsonResponse{
+        return $request->run();
     }
 
-    public function updateCategory(){
-
+    /**
+     * @param UpdateRequest $request
+     * @return JsonResponse
+     */
+    public function update(UpdateRequest $request): JsonResponse{
+        return $request->run();
     }
 
-    public function showCategory(){
 
-    }
-
-    public function deleteCategory(){
-
+    /**
+     * @param DestroyRequest $request
+     * @return JsonResponse
+     */
+    public function destroy(DestroyRequest $request): JsonResponse{
+        return $request->run();
     }
 }
