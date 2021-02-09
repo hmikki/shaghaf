@@ -2,13 +2,14 @@
 namespace App\Http\Controllers\API;
 
 
+use App\Http\Requests\User\UserRequest;
 use App\Http\Requests\Auth\CheckResetCodeRequest;
 use App\Http\Requests\Auth\ForgetPasswordRequest;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Http\Requests\Auth\RegisterRequest;
 use App\Http\Requests\Auth\ResetPasswordRequest;
 use App\Http\Requests\Auth\ChangeasswordRequest;
-use App\Http\Resources\User\UserResource;
+use App\Http\Resources\Api\User\UserResource;
 use App\Models\PasswordReset;
 use Illuminate\Http\JsonResponse;
 use App\Traits\ResponseTrait;
@@ -49,6 +50,17 @@ class UsersController extends Controller
     public function details(Request $request):JsonResponse
     {
         return $this->successJsonResponse([],new UserResource($request->user(),$request->bearerToken()),'User');
+    }
+
+    /**
+     * Update user profile
+     *
+     * @param UserRequest $request
+     * @return JsonResponse
+     */
+    public function update(UserRequest $request): JsonResponse
+    {
+        return $request->run();
     }
 
     /**

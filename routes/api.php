@@ -29,6 +29,7 @@ Route::group(['prefix' => 'auth',], function () {
 
     Route::group(['middleware' => 'auth:api'], function () {
         Route::get('details', 'UsersController@details');
+        Route::post('update', 'UsersController@update');
         Route::post('logout', 'UsersController@logout');
         Route::post('change_password', 'UsersController@change_password');
     });
@@ -52,9 +53,28 @@ Route::group(['prefix' => 'category'], function() {
     Route::post('update', 'CategoryController@update');
 });
 
+/************** sub category *********************/
+Route::group(['prefix' => 'subcategory'], function() {
+    Route::get('show_all', 'SubcategoryController@index');
+    Route::post('store', 'SubcategoryController@store');
+    Route::get('show', 'SubcategoryController@show');
+    Route::post('destroy', 'SubcategoryController@destroy');
+    Route::post('update', 'SubcategoryController@update');
+});
+
 /************ advertisment *********************/
 Route::group(['prefix'=>'advertisment'], function (){
     Route::get('show_all', 'AdvertismentController@index');
+});
+
+/*********** provider ****************/
+Route::group(['prefix'=>'provider'], function (){
+    Route::get('show_all', 'ProviderController@index');
+    Route::get('show', 'ProviderController@show');
+    Route::Post('store', 'ProviderController@store');
+    Route::post('update', 'ProviderController@update');
+    Route::post('destroy', 'ProviderController@destroy');
+    Route::post('media/destroy', 'ProviderController@destroy_media');
 });
 
 

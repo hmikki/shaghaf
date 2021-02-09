@@ -22,7 +22,7 @@ use Laravel\Passport\HasApiTokens;
  * @property string password
  * @property mixed|null avatar
  * @property integer type
- * @property mixed|null provider_id
+ * @property integer provider_id
  * @property mixed|null bio
  * @property string|null device_token
  * @property string|null device_type
@@ -41,7 +41,7 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $fillable = ['name','mobile','city_id','email','password','avatar','iban_number' ,'gender','id_image','portfolio_image','type','provider_id','bio','device_token','device_type','lat','lng','email_verified_at','mobile_verified_at'];
+    protected $fillable = ['name','mobile','city_id','email','avatar','iban_number' ,'gender','id_image','portfolio_image','type','provider_id','bio','device_token','device_type','lat','lng','email_verified_at','mobile_verified_at'];
 
     protected $hidden = ['password'];
 
@@ -153,7 +153,7 @@ class User extends Authenticatable
      */
     public function getGender()
     {
-        return $this->iban_number;
+        return $this->gender;
     }
 
     /**
@@ -231,6 +231,38 @@ class User extends Authenticatable
     }
 
     /**
+     * @return mixed|null
+     */
+    public function getPortfolioImage()
+    {
+        return ($this->portfolio_image)?asset($this->portfolio_image):null;
+    }
+
+    /**
+     * @param mixed|null $portfolio_image
+     */
+    public function setPortfolioImage($portfolio_image): void
+    {
+        $this->avatar = Functions::StoreImageModel($portfolio_image,'users/portfolio_image');
+    }
+
+    /**
+     * @return mixed|null
+     */
+    public function getIdImage()
+    {
+        return ($this->id_image)?asset($this->id_image):null;
+    }
+
+    /**
+     * @param mixed|null $id_image
+     */
+    public function setIdImage($id_image): void
+    {
+        $this->id_image = Functions::StoreImageModel($id_image,'users/$id_image');
+    }
+
+    /**
      * @return int
      */
     public function getType(): int
@@ -250,17 +282,17 @@ class User extends Authenticatable
     /**
      * @return mixed
      */
-    public function getProviderType()
+    public function getProviderId()
     {
-        return $this->provider_type;
+        return $this->provider_id;
     }
 
     /**
-     * @param mixed $provider_type
+     * @param mixed $provider_id
      */
-    public function setProviderType($provider_type): void
+    public function setProviderType($provider_id): void
     {
-        $this->provider_type = $provider_type;
+        $this->provider_id = $provider_id;
     }
 
     /**

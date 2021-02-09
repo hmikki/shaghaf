@@ -4,8 +4,8 @@ namespace App\Http\Requests\Auth;
 
 use App\Helpers\Functions;
 use App\Http\Requests\ApiRequest;
+use App\Http\Resources\Api\Home\UserResource;
 use App\Traits\ResponseTrait;
-use App\Http\Resources\Api\User\UserResource;
 use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -60,11 +60,11 @@ class RegisterRequest extends FormRequest
         $token = $tokenResult->token;
         $token->save();
         $user->refresh();
-        /*try {
+        try {
             Functions::SendVerification($user);
         }catch (\Exception $e){
 
-        }*/
+        }
         return $this->successJsonResponse( [__('messages.saved_successfully')],new UserResource($user,$tokenResult->accessToken),'User');
     }
 }

@@ -53,7 +53,7 @@ class Constant
         'Holding'=>3,
     ];
     const MEDIA_TYPES = [
-        'Food'=>1
+        'Provider'=>1
     ];
     const SETTING_TYPE = [
         'Page'=>1,

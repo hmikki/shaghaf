@@ -7,27 +7,23 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * @property integer id
- * @property string name
- * @property string name_ar
- * @property string image
- * @property integer  sub_category_id
+ * @property mixed category_id
+ * @property mixed title
  * @property boolean is_active
+ * @method SubCategory find(mixed $food_id)
  */
 
-class Category extends Model
+class SubCategory extends Model
 {
     use HasFactory;
 
-    protected $table = 'category';
-    protected $fillable = ['title','title_ar','image','is_active'];
+    protected $table = 'sub_category';
+    protected $fillable = ['category_id','title','title_ar','image','is_active'];
 
-    public function subCategory(){
-        return $this->hasMany(SubCategory::class);
+    public function Category(){
+        return $this->belongsTo(Category::class);
     }
 
-    /**
-     * @return int
-     */
     public function getId(): int
     {
         return $this->id;
@@ -39,6 +35,19 @@ class Category extends Model
     public function setId(int $id): void
     {
         $this->id = $id;
+    }
+
+    public function getCategoryId()
+    {
+        return $this->category_id;
+    }
+
+    /**
+     * @param mixed $category_id
+     */
+    public function setCategoryId($category_id): void
+    {
+        $this->category_id = $category_id;
     }
 
     /**
