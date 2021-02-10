@@ -19,7 +19,7 @@ class NotificationController extends Controller
      * @return JsonResponse
      */
     public function index(SearchRequest $form){
-        return $form->persist();
+        return $form->run();
     }
 
     /**
@@ -27,7 +27,7 @@ class NotificationController extends Controller
      * @return JsonResponse
      */
     public function read(ReadRequest $form){
-        return $form->persist();
+        return $form->run();
     }
 
     /**
@@ -35,7 +35,7 @@ class NotificationController extends Controller
      * @return JsonResponse
      */
     public function read_all(ReadAllRequest $form){
-        return $form->persist();
+        return $form->run();
     }
 
     /**
@@ -43,6 +43,6 @@ class NotificationController extends Controller
      * @return JsonResponse
      */
     public function send(SendRequest $request){
-        return $request->persist();
+        return $request->run();
     }
 }

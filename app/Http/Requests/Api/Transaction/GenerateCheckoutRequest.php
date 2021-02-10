@@ -36,7 +36,7 @@ class GenerateCheckoutRequest extends ApiRequest
         ];
     }
 
-    public function persist()
+    public function run()
     {
         $Object = new Transaction();
         $Object->setType(Constant::TRANSACTION_TYPES['Deposit']);

@@ -32,7 +32,7 @@ class SearchRequest extends ApiRequest
         ];
     }
 
-    public function persist()
+    public function run()
     {
         $Notifications = Notification::where('user_id',auth()->user()->id)->orderBy('created_at','desc')->paginate($this->per_page?:10);
         return $this->successJsonResponse([],NotificationResource::collection($Notifications->items()),'Notifications',$Notifications);

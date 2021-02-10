@@ -48,7 +48,7 @@ class RegistrationRequest extends ApiRequest
             'app_locale' => 'sometimes|in:en,ar',
         ];
     }
-    public function persist(): JsonResponse
+    public function run(): JsonResponse
     {
         $user = new User();
         $user->setName($this->name);

@@ -28,7 +28,7 @@ class ShowRequest extends ApiRequest
         ];
     }
 
-    public function persist(): JsonResponse
+    public function run(): JsonResponse
     {
         return $this->successJsonResponse([],new ProductResource((new  Product())->find($this->product_id)),'Product');
     }

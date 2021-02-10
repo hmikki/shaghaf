@@ -31,7 +31,7 @@ class ReadAllRequest extends ApiRequest
         ];
     }
 
-    public function persist()
+    public function run()
     {
         $Notification = Notification::where('user_id',auth()->user()->id)->where('read_at',null)->update(array('read_at'=>now()));
         return $this->successJsonResponse([__('messages.updated_successful')]);

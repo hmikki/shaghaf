@@ -40,7 +40,7 @@ class RefreshRequest extends ApiRequest
     {
         return [];
     }
-    public function persist()
+    public function run()
     {
         $logged = $this->user();
         $logged->setDeviceToken($this->device_token);

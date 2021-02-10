@@ -34,7 +34,7 @@ class CheckResetCodeRequest extends ApiRequest
     {
         return [];
     }
-    public function persist()
+    public function run()
     {
         $user = User::where('mobile',$this->mobile)->first();
         $passwordReset = PasswordReset::where('user_id',$user->getId())->first();

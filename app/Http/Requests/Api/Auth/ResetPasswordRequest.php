@@ -41,7 +41,7 @@ class ResetPasswordRequest extends ApiRequest
             'password' => 'required|string|min:6|confirmed',
         ];
     }
-    public function persist()
+    public function run()
     {
         $user = User::where('mobile',$this->mobile)->first();
         $passwordReset = PasswordReset::where('user_id',$user->getId())->first();

@@ -26,7 +26,7 @@ class StoreRequest extends ApiRequest
         ];
     }
 
-    public function persist()
+    public function run()
     {
         $logged = auth()->user();
         $Ticket =new  Ticket();

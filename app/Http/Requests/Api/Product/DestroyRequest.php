@@ -26,7 +26,7 @@ class DestroyRequest extends ApiRequest
         ];
     }
 
-    public function persist(): JsonResponse
+    public function run(): JsonResponse
     {
         $Object = (new Product())->find($this->product_id);
         try {

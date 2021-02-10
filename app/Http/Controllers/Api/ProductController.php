@@ -21,7 +21,7 @@ class ProductController extends Controller
      */
     public function index(IndexRequest $request): JsonResponse
     {
-        return $request->persist();
+        return $request->run();
     }
     /**
      * @param ShowRequest $request
@@ -29,7 +29,7 @@ class ProductController extends Controller
      */
     public function show(ShowRequest $request): JsonResponse
     {
-        return $request->persist();
+        return $request->run();
     }
     /**
      * @param StoreRequest $request
@@ -37,7 +37,7 @@ class ProductController extends Controller
      */
     public function store(StoreRequest $request): JsonResponse
     {
-        return $request->persist();
+        return $request->run();
     }
     /**
      * @param UpdateRequest $request
@@ -45,7 +45,7 @@ class ProductController extends Controller
      */
     public function update(UpdateRequest $request): JsonResponse
     {
-        return $request->persist();
+        return $request->run();
     }
     /**
      * @param DestroyRequest $request
@@ -53,6 +53,6 @@ class ProductController extends Controller
      */
     public function destroy(DestroyRequest $request): JsonResponse
     {
-        return $request->persist();
+        return $request->run();
     }
 }

@@ -53,7 +53,7 @@ class UserRequest extends ApiRequest
     {
         return [];
     }
-    public function persist()
+    public function run()
     {
         $logged = auth()->user();
 

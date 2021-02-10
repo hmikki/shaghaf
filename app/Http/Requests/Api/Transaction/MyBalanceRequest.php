@@ -31,7 +31,7 @@ class MyBalanceRequest extends ApiRequest
         ];
     }
 
-    public function persist()
+    public function run()
     {
         return $this->successJsonResponse([],Functions::UserBalance(auth()->user()->getId()),'Balance');
     }

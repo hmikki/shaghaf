@@ -24,7 +24,7 @@ class ShowRequest extends ApiRequest
         ];
     }
 
-    public function persist()
+    public function run()
     {
         return $this->successJsonResponse([],new TicketResource((new  Ticket())->find($this->ticket_id)),'Ticket');
     }

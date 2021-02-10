@@ -36,7 +36,7 @@ class CheckPaymentRequest extends ApiRequest
         ];
     }
 
-    public function persist()
+    public function run()
     {
         $Object = (new Transaction)->find($this->transaction_id);
         $Response = Functions::CheckPayment($this->type,$Object->getPaymentToken());

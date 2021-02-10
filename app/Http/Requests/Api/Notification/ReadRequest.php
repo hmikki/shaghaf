@@ -33,7 +33,7 @@ class ReadRequest extends ApiRequest
         ];
     }
 
-    public function persist()
+    public function run()
     {
         $Notification = Notification::where('user_id',auth()->user()->id)->where('id',$this->notification_id)->first();
         if($Notification){

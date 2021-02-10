@@ -45,7 +45,7 @@ class LoginRequest extends ApiRequest
     {
         return [];
     }
-    public function persist()
+    public function run()
     {
         $credentials = request(['mobile', 'password']);
         if (!Auth::attempt($credentials))

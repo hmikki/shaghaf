@@ -23,7 +23,7 @@ class IndexRequest extends ApiRequest
         ];
     }
 
-    public function persist()
+    public function run()
     {
         $logged = auth()->user();
         $Objects =new  Ticket();

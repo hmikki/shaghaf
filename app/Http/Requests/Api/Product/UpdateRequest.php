@@ -43,7 +43,7 @@ class UpdateRequest extends ApiRequest
         ];
     }
 
-    public function persist()
+    public function run()
     {
         $logged = auth()->user();
         $Product = (new  Product())->find($this->product_id);

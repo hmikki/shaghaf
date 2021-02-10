@@ -31,7 +31,7 @@ class RequestRefundRequest extends ApiRequest
         ];
     }
 
-    public function persist()
+    public function run()
     {
         $logged = auth()->user();
         $Object = new RefundRequest();

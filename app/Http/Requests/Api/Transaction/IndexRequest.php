@@ -32,7 +32,7 @@ class IndexRequest extends ApiRequest
         ];
     }
 
-    public function persist()
+    public function run()
     {
         $Objects = Transaction::where('user_id',auth()->user()->getId())->orderBy('created_at','desc')->paginate($this->per_page?:10);
         return $this->successJsonResponse([],TransactionResource::collection($Objects->items()),'Transactions',$Objects);

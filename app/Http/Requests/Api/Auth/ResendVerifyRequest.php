@@ -36,7 +36,7 @@ class ResendVerifyRequest extends ApiRequest
     {
         return [];
     }
-    public function persist()
+    public function run()
     {
         $logged = auth('api')->user();
         return Functions::SendVerification($logged,$this->type);

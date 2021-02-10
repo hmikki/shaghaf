@@ -35,7 +35,7 @@ class ForgetPasswordRequest extends ApiRequest
             'mobile' => 'required|numeric|exists:users,mobile',
         ];
     }
-    public function persist()
+    public function run()
     {
         $user = User::where('mobile',$this->mobile)->first();
 

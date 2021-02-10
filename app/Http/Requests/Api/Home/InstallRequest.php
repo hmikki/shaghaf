@@ -41,7 +41,7 @@ class InstallRequest extends ApiRequest
         ];
     }
 
-    public function persist()
+    public function run()
     {
         $data = [];
         $data['Settings'] = Setting::pluck((app()->getLocale() =='en')?'value':'value_ar','key')->toArray();

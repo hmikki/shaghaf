@@ -29,7 +29,7 @@ class AuthController extends Controller
      */
     public function register(RegistrationRequest $form): JsonResponse
     {
-        return $form->persist();
+        return $form->run();
     }
 
     /**
@@ -40,7 +40,7 @@ class AuthController extends Controller
      */
     public function login(LoginRequest $form): JsonResponse
     {
-        return $form->persist();
+        return $form->run();
     }
 
     /**
@@ -76,7 +76,7 @@ class AuthController extends Controller
      */
     public function update(UserRequest $request): JsonResponse
     {
-        return $request->persist();
+        return $request->run();
     }
     /**
      * verify account
@@ -86,7 +86,7 @@ class AuthController extends Controller
      */
     public function resend_verify(ResendVerifyRequest $request): JsonResponse
     {
-        return $request->persist();
+        return $request->run();
     }
 
     /**
@@ -97,7 +97,7 @@ class AuthController extends Controller
      */
     public function verify(VerifyForm $request): JsonResponse
     {
-        return $request->persist();
+        return $request->run();
     }
 
     /**
@@ -108,7 +108,7 @@ class AuthController extends Controller
      */
     public function refresh(RefreshRequest $request): JsonResponse
     {
-         return $request->persist();
+         return $request->run();
     }
 
     /**
@@ -117,7 +117,7 @@ class AuthController extends Controller
      */
     public function change_password(PasswordRequest $request): JsonResponse
     {
-        return $request->persist();
+        return $request->run();
     }
 
     /**
@@ -126,7 +126,7 @@ class AuthController extends Controller
      */
     public function forget_password(ForgetPasswordRequest $request): JsonResponse
     {
-        return $request->persist();
+        return $request->run();
     }
 
     /**
@@ -135,7 +135,7 @@ class AuthController extends Controller
      */
     public function reset_password(ResetPasswordRequest $request): JsonResponse
     {
-        return $request->persist();
+        return $request->run();
     }
 
     /**
@@ -144,6 +144,6 @@ class AuthController extends Controller
      */
     public function check_reset_code(CheckResetCodeRequest $request): JsonResponse
     {
-        return $request->persist();
+        return $request->run();
     }
 }

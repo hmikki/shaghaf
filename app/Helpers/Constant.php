@@ -57,4 +57,19 @@ class Constant
     const MEDIA_TYPES = [
         'Product'=>1,
     ];
+    const ORDER_STATUS = [
+        'New' => 1,
+        'Awaiting payment' => 5,
+        'Payed' => 6,
+    ];
+    const ORDER_FREELANCER_STATUS = [
+        'Accept' => 2,
+        'Rejected' => 3,
+        'In_progress' => 7,
+        'Delivered' => 8,
+    ];
+    const ORDER_CLIENT_STATUS = [
+        'Cancelled' => 4,
+        'Recieved' => 9,
+    ];
 }

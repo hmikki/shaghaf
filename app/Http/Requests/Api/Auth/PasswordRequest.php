@@ -41,7 +41,7 @@ class PasswordRequest extends ApiRequest
     {
         return [];
     }
-    public function persist()
+    public function run()
     {
         $logged = $this->user();
         if(Hash::check($this->old_password,$logged->password)){

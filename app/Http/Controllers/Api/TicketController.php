@@ -19,27 +19,27 @@ class TicketController extends Controller
      * @return JsonResponse
      */
     public function index(IndexRequest $request){
-        return $request->persist();
+        return $request->run();
     }
     /**
      * @param ShowRequest $request
      * @return JsonResponse
      */
     public function show(ShowRequest $request){
-        return $request->persist();
+        return $request->run();
     }
     /**
      * @param StoreRequest $request
      * @return JsonResponse
      */
     public function store(StoreRequest $request){
-        return $request->persist();
+        return $request->run();
     }
     /**
      * @param ResponseRequest $request
      * @return JsonResponse
      */
     public function response(ResponseRequest $request){
-        return $request->persist();
+        return $request->run();
     }
 }

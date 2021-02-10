@@ -33,7 +33,7 @@ class IndexRequest extends ApiRequest
         ];
     }
 
-    public function persist(): JsonResponse
+    public function run(): JsonResponse
     {
         $logged = auth()->user();
         $Objects = new  Product();

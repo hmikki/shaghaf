@@ -34,7 +34,7 @@ class VerifyForm extends ApiRequest
     {
         return [];
     }
-    public function persist()
+    public function run()
     {
         $logged = auth('api')->user();
         $verify = VerifyAccounts::where('user_id',$logged->id)->where('type',$this->type)->first();

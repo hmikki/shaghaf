@@ -19,7 +19,7 @@ class HomeController extends Controller
      */
     public function install(InstallRequest $request): JsonResponse
     {
-        return $request->persist();
+        return $request->run();
     }
      /**
      * @param SendNotificationRequest $request
@@ -27,6 +27,6 @@ class HomeController extends Controller
      */
     public function send_notification(SendNotificationRequest $request): JsonResponse
     {
-        return $request->persist();
+        return $request->run();
     }
 }

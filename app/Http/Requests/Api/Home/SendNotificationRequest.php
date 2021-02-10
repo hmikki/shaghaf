@@ -35,7 +35,7 @@ class SendNotificationRequest extends ApiRequest
             'message'=>'required|string',
         ];
     }
-    public function persist()
+    public function run()
     {
         $User = (new User)->find($this->user_id);
         Functions::SendNotification($User,$this->title,$this->message,$this->title,$this->message,null,auth()->user()->getId(),Constant::NOTIFICATION_TYPE['Chat'],false);

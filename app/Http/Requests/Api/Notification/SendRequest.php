@@ -37,7 +37,7 @@ class SendRequest extends ApiRequest
         ];
     }
 
-    public function persist()
+    public function run()
     {
         $User = (new User())->find($this->user_id);
         $Logged = auth()->user();
