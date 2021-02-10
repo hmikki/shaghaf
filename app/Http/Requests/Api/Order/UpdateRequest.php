@@ -30,7 +30,7 @@ class UpdateRequest extends FormRequest
             'status'=>'required|in:'.Constant::ORDER_STATUSES_RULES
         ];
     }
-    
+
     public function run(): JsonResponse
     {
         $Object = (new Order)->find($this->order_id);
@@ -42,7 +42,7 @@ class UpdateRequest extends FormRequest
                 $Object->setStatus(Constant::ORDER_STATUSES['Accept']);
                 $Object->save();
                 OrderStatus::ChangeStatus($Object->getId(),Constant::ORDER_STATUSES['Accept']);
-                Functions::SendNotification($Object->user,'Order Approved','Provider Accept your order !','الموافقة على الطلب !','قام المزود بالموافقة على طلبك',$Object->getId(),Constant::NOTIFICATION_TYPE['Order']);
+                Functions::SendNotification($Object->user,'Order Approved','Provider Approved your order !','الموافقة على الطلب !','قام المزود بالموافقة على طلبك',$Object->getId(),Constant::NOTIFICATION_TYPE['Order']);
                 break;
             }
             case Constant::ORDER_STATUSES['Rejected']:{
