@@ -34,7 +34,7 @@ return [
     'date_reserved'=>'Date Reserved !',
     'offer_expired'=>'Offer Expired !',
     'wrong_sequence'=>'Wrong Sequence !',
-    'you_cannot_add_foods_from_several_provider_at_the_same_time'=>'You cannot add foods from several provider at the same time !',
+    'you_cannot_add_products_from_several_provider_at_the_same_time'=>'You cannot add products from several provider at the same time !',
     'dont_have_permission'=>'Dont have permission !',
     'dont_have_credit'=>'Dont have enough credit subscribe with one of the subscription packages to bid on this  !',
     'credit_less_than_last_bid'=>'Credit Less Than Last Bid',

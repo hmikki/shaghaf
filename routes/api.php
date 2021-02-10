@@ -84,3 +84,17 @@ Route::group([
     });
 });
 
+Route::group([
+    'prefix' => 'order'
+], function (){
+    Route::group([
+        'middleware' => 'auth:api'
+    ], function() {
+        Route::get('/','OrderController@index');
+        Route::get('show','OrderController@index');
+        Route::post('store','OrderController@store');
+        Route::post('update', 'OrderController@update');
+        
+    });
+});
+

@@ -57,19 +57,19 @@ class Constant
     const MEDIA_TYPES = [
         'Product'=>1,
     ];
-    const ORDER_STATUS = [
+    const ORDER_STATUSES = [
         'New' => 1,
-        'Awaiting payment' => 5,
-        'Payed' => 6,
-    ];
-    const ORDER_FREELANCER_STATUS = [
         'Accept' => 2,
         'Rejected' => 3,
+        'Cancelled' => 4,
+        'Awaiting payment' => 5,
+        'Payed' => 6,
         'In_progress' => 7,
         'Delivered' => 8,
-    ];
-    const ORDER_CLIENT_STATUS = [
-        'Cancelled' => 4,
         'Recieved' => 9,
+        'NOTDelivered' => 10,
+        'NOTRecieved' => 11,
     ];
+
+    const ORDER_STATUSES_RULE = '1,2,3,4,5,6,7,8,9,10,11';
 }
