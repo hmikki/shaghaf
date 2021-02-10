@@ -4,7 +4,6 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\App;
 
 class localization
 {
@@ -20,7 +19,7 @@ class localization
         // Check header request and determine localizaton
         $local = ($request->hasHeader('X-localization')) ? $request->header('X-localization') : 'en';
         // set laravel localization
-        App::setLocale($local);
+        app()->setLocale($local);
         // continue request
         return $next($request);
     }

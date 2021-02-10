@@ -17,10 +17,8 @@ class AdvertisementResource extends JsonResource
     {
         $Objects = array();
         $Objects['id'] = $this->id;
-        $Objects['provider_id'] = $this->provider_id;
-        $Objects['image'] = $this->image;
-        $Objects['url'] = $this->url;
-        $Objects['type'] = $this->type;
+        $Objects['title'] = (app()->getLocale() == 'ar')?$this->title_ar:$this->title;
+        $Objects['image'] = asset($this->image);
         return $Objects;
     }
 }

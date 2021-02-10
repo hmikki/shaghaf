@@ -3,58 +3,60 @@
 namespace App\Models;
 
 use App\Helpers\Functions;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Support\Facades\Hash;
 use Laravel\Passport\HasApiTokens;
 
 /**
- * @method static create(array $input)
- */
-/**
  * @property integer id
- * @property string name
- * @property string mobile
+ * @property mixed name
  * @property mixed email
+ * @property mixed mobile
+ * @property mixed password
+ * @property mixed type
+ * @property mixed country_id
  * @property mixed city_id
- * @property string password
- * @property mixed|null avatar
- * @property integer type
- * @property integer provider_id
- * @property mixed|null bio
- * @property string|null device_token
- * @property string|null device_type
- * @property string|null lat
- * @property string|null lng
- * @property mixed|null email_verified_at
- * @property mixed|null mobile_verified_at
+ * @property mixed avatar
+ * @property mixed bio
+ * @property mixed gender
+ * @property mixed iban_number
+ * @property mixed identity_image
+ * @property mixed device_token
+ * @property mixed device_type
+ * @property mixed lat
+ * @property mixed lng
+ * @property mixed email_verified_at
+ * @property mixed mobile_verified_at
+ * @property mixed app_locale
+ * @property mixed is_available
+ * @property mixed is_active
  * @method User find(int $id)
  */
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use Notifiable,HasApiTokens;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = ['name','mobile','city_id','email','avatar','iban_number' ,'gender','id_image','portfolio_image','type','provider_id','bio','device_token','device_type','lat','lng','email_verified_at','mobile_verified_at'];
+    protected $fillable = ['name','email','mobile','password','type','country_id','city_id','avatar','bio','gender','iban_number','identity_image','device_token','device_type','lat','lng','email_verified_at','mobile_verified_at','app_locale','is_available','is_active',];
 
     protected $hidden = ['password'];
 
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-        'mobile_verified_at' => 'datetime'
-    ];
+    public function city(): BelongsTo
+    {
+        return $this->belongsTo(City::class);
+    }
 
+//    protected static function boot()
+//    {
+//        parent::boot();
+//        static::deleting(function($Object) {
+////            $doctor = Doctor::where('user_id',$object->id)->first();
+////            $doctor->delete();
+//        });
+//    }
+    /**
+     * @return int
+     */
     public function getId(): int
     {
         return $this->id;
@@ -69,35 +71,19 @@ class User extends Authenticatable
     }
 
     /**
-     * @return string
+     * @return mixed
      */
-    public function getName(): string
+    public function getName()
     {
         return $this->name;
     }
 
     /**
-     * @param string $name
+     * @param mixed $name
      */
-    public function setName(string $name): void
+    public function setName($name): void
     {
         $this->name = $name;
-    }
-
-    /**
-     * @return string
-     */
-    public function getMobile(): string
-    {
-        return $this->mobile;
-    }
-
-    /**
-     * @param string $mobile
-     */
-    public function setMobile(string $mobile): void
-    {
-        $this->mobile = $mobile;
     }
 
     /**
@@ -117,7 +103,71 @@ class User extends Authenticatable
     }
 
     /**
-     * @return mixed|null
+     * @return mixed
+     */
+    public function getMobile()
+    {
+        return $this->mobile;
+    }
+
+    /**
+     * @param mixed $mobile
+     */
+    public function setMobile($mobile): void
+    {
+        $this->mobile = $mobile;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPassword()
+    {
+        return $this->password;
+    }
+
+    /**
+     * @param mixed $password
+     */
+    public function setPassword($password): void
+    {
+        $this->password = $password;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * @param mixed $type
+     */
+    public function setType($type): void
+    {
+        $this->type = $type;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCountryId()
+    {
+        return $this->country_id;
+    }
+
+    /**
+     * @param mixed $country_id
+     */
+    public function setCountryId($country_id): void
+    {
+        $this->country_id = $country_id;
+    }
+
+    /**
+     * @return mixed
      */
     public function getCityId()
     {
@@ -125,7 +175,7 @@ class User extends Authenticatable
     }
 
     /**
-     * @param mixed|null $city_id
+     * @param mixed $city_id
      */
     public function setCityId($city_id): void
     {
@@ -133,89 +183,7 @@ class User extends Authenticatable
     }
 
     /**
-     * @return string|null
-     */
-    public function getIbanNumber()
-    {
-        return $this->iban_number;
-    }
-
-    /**
-     * @param string|null $iban_number
-     */
-    public function setIbanNumber($iban_number): void
-    {
-        $this->iban_number = $iban_number;
-    }
-
-    /**
-     * @return integer|null
-     */
-    public function getGender()
-    {
-        return $this->gender;
-    }
-
-    /**
-     * @param integer|null $gender
-     */
-    public function setGender($gender): void
-    {
-        $this->gender = $gender;
-    }
-
-
-    /**
-     * @return string|null
-     */
-    public function getLat(): ?string
-    {
-        return $this->lat;
-    }
-
-    /**
-     * @param string|null $lat
-     */
-    public function setLat(?string $lat): void
-    {
-        $this->lat = $lat;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getLng(): ?string
-    {
-        return $this->lng;
-    }
-
-    /**
-     * @param string|null $lng
-     */
-    public function setLng(?string $lng): void
-    {
-        $this->lng = $lng;
-    }
-
-
-    /**
-     * @return string
-     */
-    public function getPassword(): string
-    {
-        return $this->password;
-    }
-
-    /**
-     * @param string $password
-     */
-    public function setPassword(string $password): void
-    {
-        $this->password = Hash::make($password);
-    }
-
-    /**
-     * @return mixed|null
+     * @return mixed
      */
     public function getAvatar()
     {
@@ -223,7 +191,7 @@ class User extends Authenticatable
     }
 
     /**
-     * @param mixed|null $avatar
+     * @param mixed $avatar
      */
     public function setAvatar($avatar): void
     {
@@ -231,116 +199,131 @@ class User extends Authenticatable
     }
 
     /**
-     * @return mixed|null
+     * @return mixed
      */
-    public function getPortfolioImage()
+    public function getBio()
     {
-        return ($this->portfolio_image)?asset($this->portfolio_image):null;
+        return $this->bio;
     }
 
     /**
-     * @param mixed|null $portfolio_image
+     * @param mixed $bio
      */
-    public function setPortfolioImage($portfolio_image): void
+    public function setBio($bio): void
     {
-        $this->avatar = Functions::StoreImageModel($portfolio_image,'users/portfolio_image');
+        $this->bio = $bio;
     }
-
-    /**
-     * @return mixed|null
-     */
-    public function getIdImage()
-    {
-        return ($this->id_image)?asset($this->id_image):null;
-    }
-
-    /**
-     * @param mixed|null $id_image
-     */
-    public function setIdImage($id_image): void
-    {
-        $this->id_image = Functions::StoreImageModel($id_image,'users/$id_image');
-    }
-
-    /**
-     * @return int
-     */
-    public function getType(): int
-    {
-        return $this->type;
-    }
-
-    /**
-     * @param int $type
-     */
-    public function setType(int $type): void
-    {
-        $this->type = $type;
-    }
-
 
     /**
      * @return mixed
      */
-    public function getProviderId()
+    public function getGender()
     {
-        return $this->provider_id;
+        return $this->gender;
     }
 
     /**
-     * @param mixed $provider_id
+     * @param mixed $gender
      */
-    public function setProviderType($provider_id): void
+    public function setGender($gender): void
     {
-        $this->provider_id = $provider_id;
+        $this->gender = $gender;
     }
 
     /**
-     * @return string
+     * @return mixed
      */
-    public function getAppLocale(): string
+    public function getIbanNumber()
     {
-        return $this->app_locale;
+        return $this->iban_number;
     }
 
     /**
-     * @param string $app_locale
+     * @param mixed $iban_number
      */
-    public function setAppLocale(string $app_locale): void
+    public function setIbanNumber($iban_number): void
     {
-        $this->app_locale = $app_locale;
+        $this->iban_number = $iban_number;
     }
 
     /**
-     * @return string|null
+     * @return mixed
      */
-    public function getDeviceToken(): ?string
+    public function getIdentityImage()
+    {
+        return ($this->identity_image)?asset($this->identity_image):null;
+    }
+
+    /**
+     * @param mixed $identity_image
+     */
+    public function setIdentityImage($identity_image): void
+    {
+        $this->identity_image = Functions::StoreImageModel($identity_image,'users/identity_image');
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDeviceToken()
     {
         return $this->device_token;
     }
 
     /**
-     * @param string|null $device_token
+     * @param mixed $device_token
      */
-    public function setDeviceToken(?string $device_token): void
+    public function setDeviceToken($device_token): void
     {
         $this->device_token = $device_token;
     }
 
     /**
-     * @return string|null
+     * @return mixed
      */
-    public function getDeviceType(): ?string
+    public function getDeviceType()
     {
         return $this->device_type;
     }
 
     /**
-     * @param string|null $device_type
+     * @param mixed $device_type
      */
-    public function setDeviceType(?string $device_type): void
+    public function setDeviceType($device_type): void
     {
         $this->device_type = $device_type;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLat()
+    {
+        return $this->lat;
+    }
+
+    /**
+     * @param mixed $lat
+     */
+    public function setLat($lat): void
+    {
+        $this->lat = $lat;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLng()
+    {
+        return $this->lng;
+    }
+
+    /**
+     * @param mixed $lng
+     */
+    public function setLng($lng): void
+    {
+        $this->lng = $lng;
     }
 
     /**
@@ -378,17 +361,49 @@ class User extends Authenticatable
     /**
      * @return mixed
      */
-    public function getBio()
+    public function getAppLocale()
     {
-        return $this->bio;
+        return $this->app_locale;
     }
 
     /**
-     * @param mixed $bio
+     * @param mixed $app_locale
      */
-    public function setBio($bio): void
+    public function setAppLocale($app_locale): void
     {
-        $this->bio = $bio;
+        $this->app_locale = $app_locale;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIsAvailable()
+    {
+        return $this->is_available;
+    }
+
+    /**
+     * @param mixed $is_available
+     */
+    public function setIsAvailable($is_available): void
+    {
+        $this->is_available = $is_available;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIsActive()
+    {
+        return $this->is_active;
+    }
+
+    /**
+     * @param mixed $is_active
+     */
+    public function setIsActive($is_active): void
+    {
+        $this->is_active = $is_active;
     }
 
 }

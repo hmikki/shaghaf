@@ -75,7 +75,7 @@ return [
     |--------------------------------------------------------------------------
     |
     | The application locale determines the default locale that will be used
-    | by the translation service Provider. You are free to set this value
+    | by the translation service provider. You are free to set this value
     | to any of the locales which will be supported by the application.
     |
     */
@@ -122,6 +122,16 @@ return [
     'key' => env('APP_KEY'),
 
     'cipher' => 'AES-256-CBC',
+
+    /*
+    |--------------------------------------------------------------------------
+    | App Variable
+    |--------------------------------------------------------------------------
+    */
+
+    'color' => env('APP_COLOR', 'blue'),
+
+    'notification_key' => env('NOTIFICATION_KEY', ''),
 
     /*
     |--------------------------------------------------------------------------
@@ -174,7 +184,6 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        Laravel\Passport\PassportServiceProvider::class,
 
     ],
 

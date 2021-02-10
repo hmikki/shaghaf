@@ -3,40 +3,24 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
  * @property integer id
- * @property integer country_id
  * @property string name
  * @property string name_ar
+ * @property integer country_id
  * @property boolean is_active
  */
 class City extends Model
 {
-    protected $table = 'city';
-    protected $fillable = ['country_id','name','name_ar','is_active'];
+    protected $table = 'cities';
+    protected $fillable = ['name','name_ar','country_id','is_active'];
 
-
-    public function Country(){
-        return $this->belongsTo(Country::class);
-    }
-
-    /**
-     * @return int
-     */
-    public function getCountryId(): int
+    public function country(): BelongsTo
     {
-        return $this->country_id;
+        return $this->belongsTo(Country::class,'country_id');
     }
-
-    /**
-     * @param int $country_id
-     */
-    public function setCountryId(int $country_id): void
-    {
-        $this->country_id = $country_id;
-    }
-
     /**
      * @return int
      */
@@ -85,6 +69,21 @@ class City extends Model
         $this->name_ar = $name_ar;
     }
 
+    /**
+     * @return int
+     */
+    public function getCountryId(): int
+    {
+        return $this->country_id;
+    }
+
+    /**
+     * @param int $country_id
+     */
+    public function setCountryId(int $country_id): void
+    {
+        $this->country_id = $country_id;
+    }
 
     /**
      * @return bool

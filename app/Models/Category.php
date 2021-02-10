@@ -2,29 +2,26 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
  * @property integer id
  * @property string name
  * @property string name_ar
  * @property string image
- * @property integer  sub_category_id
+ * @property integer|null parent_id
  * @property boolean is_active
  */
-
 class Category extends Model
 {
-    use HasFactory;
+    protected $table = 'categories';
+    protected $fillable = ['name','name_ar','image','parent_id','is_active'];
 
-    protected $table = 'category';
-    protected $fillable = ['title','title_ar','image','is_active'];
-
-    public function subCategory(){
-        return $this->hasMany(SubCategory::class);
+    public function parent(): BelongsTo
+    {
+        return $this->belongsTo(Category::class,'parent_id');
     }
-
     /**
      * @return int
      */
@@ -44,39 +41,38 @@ class Category extends Model
     /**
      * @return string
      */
-    public function getTitle(): string
+    public function getName(): string
     {
-        return $this->title;
+        return $this->name;
     }
 
     /**
-     * @param string $title
+     * @param string $name
      */
-    public function setTitle(string $title): void
+    public function setName(string $name): void
     {
-        $this->title = $title;
-    }
-
-    /**
-     * @return string
-     */
-    public function getTitleAr(): string
-    {
-        return $this->title_ar;
-    }
-
-    /**
-     * @param string $title_ar
-     */
-    public function setTitleAr(string $title_ar): void
-    {
-        $this->title_ar = $title_ar;
+        $this->name = $name;
     }
 
     /**
      * @return string
      */
+    public function getNameAr(): string
+    {
+        return $this->name_ar;
+    }
 
+    /**
+     * @param string $name_ar
+     */
+    public function setNameAr(string $name_ar): void
+    {
+        $this->name_ar = $name_ar;
+    }
+
+    /**
+     * @return string
+     */
     public function getImage(): string
     {
         return $this->image;
@@ -88,6 +84,22 @@ class Category extends Model
     public function setImage(string $image): void
     {
         $this->image = $image;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getParentId(): ?int
+    {
+        return $this->parent_id;
+    }
+
+    /**
+     * @param int|null $parent_id
+     */
+    public function setParentId(?int $parent_id): void
+    {
+        $this->parent_id = $parent_id;
     }
 
     /**

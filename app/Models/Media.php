@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use App\Helpers\Functions;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -14,10 +13,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method Media find(int $id)
  * @method static updateOrCreate(array $array, array $array1)
  */
-
 class Media extends Model
 {
-    use HasFactory;
     protected $table = 'media';
     protected $fillable = ['ref_id','file','media_type'];
 

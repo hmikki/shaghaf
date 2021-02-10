@@ -25,9 +25,9 @@ return [
     |
     | Next, you may define every authentication guard for your application.
     | Of course, a great default configuration has been defined for you
-    | here which uses session storage and the Eloquent user Provider.
+    | here which uses session storage and the Eloquent user provider.
     |
-    | All authentication drivers have a user Provider. This defines how the
+    | All authentication drivers have a user provider. This defines how the
     | users are actually retrieved out of your database or other storage
     | mechanisms used by this application to persist your user's data.
     |
@@ -38,13 +38,17 @@ return [
     'guards' => [
         'web' => [
             'driver' => 'session',
-            'Provider' => 'users',
+            'provider' => 'users',
         ],
 
+        'admin' => [
+            'driver' => 'session',
+            'provider' => 'admins',
+        ],
         'api' => [
             'driver' => 'passport',
-            'Provider' => 'users',
-            'hash' => 'false',
+            'provider' => 'users',
+            'hash' => false,
         ],
     ],
 
@@ -53,7 +57,7 @@ return [
     | User Providers
     |--------------------------------------------------------------------------
     |
-    | All authentication drivers have a user Provider. This defines how the
+    | All authentication drivers have a user provider. This defines how the
     | users are actually retrieved out of your database or other storage
     | mechanisms used by this application to persist your user's data.
     |
@@ -69,6 +73,11 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
+        ],
+
+        'admins' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Admin::class,
         ],
 
         // 'users' => [
@@ -94,7 +103,7 @@ return [
 
     'passwords' => [
         'users' => [
-            'Provider' => 'users',
+            'provider' => 'users',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,
