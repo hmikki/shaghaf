@@ -13,7 +13,7 @@ use Illuminate\Http\JsonResponse;
  * @property mixed order_id
  */
 
-class showRequest extends ApiRequest
+class ShowRequest extends ApiRequest
 {
     use ResponseTrait;
     /**
