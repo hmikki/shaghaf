@@ -19,8 +19,8 @@ class CategoryResource extends JsonResource
         $Objects['id'] = $this->id;
         $Objects['name'] = (app()->getLocale() == 'ar')?$this->name_ar:$this->name;
         $Objects['image'] = asset($this->image);
-        $Objects['is_product'] = $this->is_product;
-        $Objects['is_service'] = $this->is_service;
+        $Objects['has_product'] = $this->has_product;
+        $Objects['has_service'] = $this->has_service;
         return $Objects;
     }
 }
