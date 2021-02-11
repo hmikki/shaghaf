@@ -21,6 +21,7 @@ class CategoryResource extends JsonResource
         $Objects['image'] = asset($this->image);
         $Objects['has_product'] = $this->has_product;
         $Objects['has_service'] = $this->has_service;
+        $Objects['SubCategories'] = CategoryResource::collection($this->sub_categories);
         return $Objects;
     }
 }
