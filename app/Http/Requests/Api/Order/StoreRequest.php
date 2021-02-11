@@ -29,22 +29,22 @@ class StoreRequest extends FormRequest
             'delivered_date'=>'sometimes|date_format:Y-m-d H:i:s',
             'code'=>'sometimes|string',
             'products'=>'required|array',
-            'products.*.product_id'=>'required|exists:foods,id',
+            'products.*.product_id'=>'required|exists:products,id',
             'products.*.quantity'=>'required|numeric',
         ];
     }
 
     public function run(): JsonResponse
     {
-        $provider_id = null;
+        $freelancer_id = null;
         $amount = 0;
         $discount = 0;
         foreach ($this->products as $product){
             $Product = (new Provider())->find($product['product_id']);
-            if ($provider_id == null) {
-                $provider_id = $Product->getUserId();
+            if ($freelancer_id == null) {
+                $freelancer_id = $Product->getUserId();
             }else{
-                if ($provider_id != $Product->getUserId()) {
+                if ($freelancer_id != $Product->getUserId()) {
                     return $this->failJsonResponse([__('messages.you_cannot_add_products_from_several_provider_at_the_same_time')]);
                 }
             }
@@ -53,9 +53,8 @@ class StoreRequest extends FormRequest
 
         $Object = new Order();
         $Object->setUserId(auth()->user()->getId());
-        $Object->setProviderId($provider_id);
-        $Object->setAmount($amount);
-        $Object->setDiscountAmount($discount);
+        $Object->setFreelancerId($freelancer_id);
+        $Object->setPrice($amount);
         $Object->setOrderDate(Carbon::today());
         if($this->filled('delivered_date')){
             $Object->setDeliveredDate(Carbon::parse($this->delivered_date));
@@ -69,7 +68,7 @@ class StoreRequest extends FormRequest
             $OrderProduct->setQuantity($product['quantity']);
             $OrderProduct->save();
         }
-        OrderStatus::ChangeStatus($Object->getId(),Constant::ORDER_STATUSES['PendingApproval']);
+        OrderStatus::ChangeStatus($Object->getId(),Constant::ORDER_STATUSES['New']);
         return $this->successJsonResponse([__('messages.created_successful')],new OrderResource($Object),'Order');
 
     }

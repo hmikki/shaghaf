@@ -62,13 +62,15 @@ class Constant
         'Accept' => 2,
         'Rejected' => 3,
         'Cancelled' => 4,
-        'In_progress' => 5,
-        'Delivered' => 6,
-        'Recieved' => 7,
-        'NOTRecieved' => 8,
-        'RecievedByAdmin' => 9,
-        'NotRecievedByAdmin' => 10,
+        'Payed' =>5,
+        'In_progress' => 6,
+        'Delivered' => 7,
+        'Recieved' => 8,
+        'NotDelivered' => 9,
+        'NOTRecieved' => 10,
+        'RecievedByAdmin' => 11,
+        'NotRecievedByAdmin' => 12,
     ];
 
-    const ORDER_STATUSES_RULE = '1,2,3,4,5,6,7,8,9,10';
+    const ORDER_STATUSES_RULE = '1,2,3,4,5,6,7,8,9,10,11,12';
 }

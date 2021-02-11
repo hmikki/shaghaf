@@ -280,15 +280,17 @@ class Functions
             }
         }
     }
-    public static function check_coupon($Object){
-        $CouponHistory = CouponHistory::where('coupon_id',$Object->getId())->where('user_id',auth()->user()->getId())->count();
-        $coupon_date = Carbon::parse($Object->getExpireAt())->format('Y-m-d');
-        if ($coupon_date >= Carbon::today()->format('Y-m-d')) {
-            return __('messages.offer_expired');
+    public static function CreateTicket($user_id,$order_id,$dispute){
+        $object = new Order();
+        $request = $object->status;
+        if($request != Constant::ORDER_STATUSES['NotRecieved']){
+            return $request->failJsonResponse([__('messages.wrong_sequence')]);
         }
-        if ($CouponHistory >= $Object->getMaxUseTimes()) {
-            return __('messages.you_cannot_do_it_at_this_time');
-        }
-        return '';
+        ///لازم اضيف حالة تم التسليم من قبل الادمن
+        $object->setStatus(Constant::ORDER_STATUSES['NotRecievedByAdmin']);
+        $object->save();
+        OrderStatus::ChangeStatus($object->getId(),Constant::ORDER_STATUSES['NotRecievedByAdmin']);
+        Functions::SendNotification($object->provider,'Order Not Recieved By Admin','Provider did not deliver the order !','لم يتم توصيل الطلب !','لم يقم المزود بتوصيل الطلب',$object->getId(),Constant::NOTIFICATION_TYPE['Order']);
+
     }
 }

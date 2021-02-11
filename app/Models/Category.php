@@ -16,7 +16,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Category extends Model
 {
     protected $table = 'categories';
-    protected $fillable = ['name','name_ar','image','parent_id','is_active'];
+    protected $fillable = ['name','name_ar','image','parent_id','is_product','is_service','is_active'];
 
     public function parent(): BelongsTo
     {
@@ -100,6 +100,38 @@ class Category extends Model
     public function setParentId(?int $parent_id): void
     {
         $this->parent_id = $parent_id;
+    }
+
+    /**
+     * @return bool
+     */
+    public function getIsProduct(): bool
+    {
+        return $this->is_product;
+    }
+
+    /**
+     * @param bool $is_product
+     */
+    public function setIsProduct(bool $is_product): void
+    {
+        $this->is_product = $is_product;
+    }
+
+    /**
+     * @return bool
+     */
+    public function getIsService(): bool
+    {
+        return $this->is_service;
+    }
+
+    /**
+     * @param bool $is_service
+     */
+    public function setIsService(bool $is_service): void
+    {
+        $this->is_service = $is_service;
     }
 
     /**

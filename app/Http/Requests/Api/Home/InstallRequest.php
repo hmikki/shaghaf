@@ -6,6 +6,7 @@ use App\Helpers\Constant;
 use App\Http\Requests\Api\ApiRequest;
 use App\Http\Resources\Api\Home\AdvertisementResource;
 use App\Http\Resources\Api\Home\CategoryResource;
+use App\Http\Resources\Api\Home\CountryResource;
 use App\Http\Resources\Api\Home\CityResource;
 use App\Http\Resources\Api\Home\FaqResource;
 use App\Models\Advertisement;
@@ -47,7 +48,7 @@ class InstallRequest extends ApiRequest
         $data['Settings'] = Setting::pluck((app()->getLocale() =='en')?'value':'value_ar','key')->toArray();
         $data['Faqs'] = FaqResource::collection(Faq::where('is_active',true)->get());
         $data['Categories'] = CategoryResource::collection(Category::where('is_active',true)->get());
-        $data['Countries'] = CategoryResource::collection(Country::where('is_active',true)->get());
+        $data['Countries'] = CountryResource::collection(Country::where('is_active',true)->get());
         $data['Advertisements'] = AdvertisementResource::collection(Advertisement::where('is_active',true)->get());
         $data['Essentials'] = [
             'TicketsStatus'=>Constant::TICKETS_STATUS,
