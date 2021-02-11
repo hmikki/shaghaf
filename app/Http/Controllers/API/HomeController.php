@@ -30,7 +30,7 @@ class HomeController extends Controller
         return $request->run();
     }
 
-    public function getFreelancerByCategory(FreelancerRequest $request){
+    public function getFreelancers(FreelancerRequest $request){
         return $request->run();
     }
 }

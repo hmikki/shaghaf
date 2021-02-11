@@ -16,8 +16,8 @@ class CreateFreelancerCategoriesTable extends Migration
         Schema::create('freelancer_categories', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
-            $table->foreign('category_id');
-            $table->foreign('sub_category_id');
+            $table->foreignId('category_id');
+            $table->foreignId('sub_category_id');
 
             $table->timestamps();
         });
