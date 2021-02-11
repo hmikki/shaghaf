@@ -7,13 +7,14 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
+use Illuminate\Support\Facades\Hash;
 
 /**
  * @property integer id
  * @property mixed name
  * @property mixed email
  * @property mixed mobile
- * @property mixed password
+ * @property string password
  * @property mixed type
  * @property mixed country_id
  * @property mixed city_id
@@ -37,7 +38,7 @@ class User extends Authenticatable
 {
     use Notifiable,HasApiTokens;
 
-    protected $fillable = ['name','email','mobile','password','type','country_id','city_id','avatar','bio','gender','iban_number','identity_image','device_token','device_type','lat','lng','email_verified_at','mobile_verified_at','app_locale','is_available','is_active',];
+    protected $fillable = ['name','email','mobile','type','country_id','city_id','avatar','bio','gender','iban_number','identity_image','device_token','device_type','lat','lng','email_verified_at','mobile_verified_at','app_locale','is_available','is_active',];
 
     protected $hidden = ['password'];
 
@@ -119,7 +120,7 @@ class User extends Authenticatable
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getPassword()
     {
@@ -127,11 +128,11 @@ class User extends Authenticatable
     }
 
     /**
-     * @param mixed $password
+     * @param string $password
      */
     public function setPassword($password): void
     {
-        $this->password = $password;
+        $this->password = Hash::make($password);
     }
 
     /**

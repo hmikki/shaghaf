@@ -17,7 +17,7 @@ Route::group([
     'prefix' => 'auth',
 ], function () {
     Route::post('login','AuthController@login');
-    Route::post('signup','AuthController@register');
+    Route::post('register','AuthController@register');
     Route::post('forget_password','AuthController@forget_password');
     Route::post('check_reset_code','AuthController@check_reset_code');
     Route::post('reset_password','AuthController@reset_password');
@@ -94,7 +94,7 @@ Route::group([
         Route::get('show','OrderController@index');
         Route::post('store','OrderController@store');
         Route::post('update', 'OrderController@update');
-        
+
     });
 });
 
