@@ -10,13 +10,15 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property string name
  * @property string name_ar
  * @property string image
+ * @property mixed has_product
+ * @property mixed has_service
  * @property integer|null parent_id
  * @property boolean is_active
  */
 class Category extends Model
 {
     protected $table = 'categories';
-    protected $fillable = ['name','name_ar','image','parent_id','is_product','is_service','is_active'];
+    protected $fillable = ['name','name_ar','image','parent_id','has_product','has_service','is_active'];
 
     public function parent(): BelongsTo
     {
@@ -103,35 +105,35 @@ class Category extends Model
     }
 
     /**
-     * @return bool
+     * @return mixed
      */
-    public function getIsProduct(): bool
+    public function getHasProduct()
     {
-        return $this->is_product;
+        return $this->has_product;
     }
 
     /**
-     * @param bool $is_product
+     * @param mixed $has_product
      */
-    public function setIsProduct(bool $is_product): void
+    public function setHasProduct($has_product): void
     {
-        $this->is_product = $is_product;
+        $this->has_product = $has_product;
     }
 
     /**
-     * @return bool
+     * @return mixed
      */
-    public function getIsService(): bool
+    public function getHasService()
     {
-        return $this->is_service;
+        return $this->has_service;
     }
 
     /**
-     * @param bool $is_service
+     * @param mixed $has_service
      */
-    public function setIsService(bool $is_service): void
+    public function setHasService($has_service): void
     {
-        $this->is_service = $is_service;
+        $this->has_service = $has_service;
     }
 
     /**

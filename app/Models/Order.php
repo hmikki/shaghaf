@@ -21,7 +21,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Order extends Model
 {
     protected $table = 'orders';
-    protected $fillable = ['user_id','freelancer_id','product_id','status','quantity','price','order_date','delivered_date','is_finished','reject_reason','cancel_reason',];
+    protected $fillable = ['user_id','freelancer_id','product_id','status','quantity','price','order_date','delivered_date','reject_reason','cancel_reason',];
 
     public function user(): BelongsTo
     {
@@ -34,13 +34,6 @@ class Order extends Model
     public function product(): BelongsTo
     {
         return $this->belongsTo(Product::class,'product_id');
-    }
-    /**
-     * @return HasMany
-     */
-    public function order_products(): HasMany
-    {
-        return $this->hasMany(OrderProduct::class);
     }
     /**
      * @return HasMany
@@ -223,20 +216,4 @@ class Order extends Model
     {
         $this->cancel_reason = $cancel_reason;
     }
-    /**
-     * @return bool
-     */
-    public function getIsFinished(): bool
-    {
-        return $this->is_finished;
-    }
-
-    /**
-     * @param bool $is_finished
-     */
-    public function setIsFinished(bool $is_finished): void
-    {
-        $this->is_finished = $is_finished;
-    }
-
 }
