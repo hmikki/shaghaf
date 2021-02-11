@@ -31,7 +31,7 @@ use Illuminate\Support\Facades\Hash;
  * @property mixed mobile_verified_at
  * @property mixed app_locale
  * @property mixed is_available
- * @property mixed is_active
+ * @property boolean is_active
  * @method User find(int $id)
  */
 class User extends Authenticatable
@@ -392,19 +392,21 @@ class User extends Authenticatable
     }
 
     /**
-     * @return mixed
+     * @return bool
      */
-    public function getIsActive()
+    public function isIsActive(): bool
     {
         return $this->is_active;
     }
 
     /**
-     * @param mixed $is_active
+     * @param bool $is_active
      */
-    public function setIsActive($is_active): void
+    public function setIsActive(bool $is_active): void
     {
         $this->is_active = $is_active;
     }
+
+
 
 }
