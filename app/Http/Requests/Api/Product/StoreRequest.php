@@ -5,6 +5,7 @@ namespace App\Http\Requests\Api\Product;
 use App\Helpers\Constant;
 use App\Http\Requests\Api\ApiRequest;
 use App\Http\Resources\Api\Product\ProductResource;
+use App\Models\FreelancerCategory;
 use App\Models\Media;
 use App\Models\Product;
 use App\Traits\ResponseTrait;
@@ -60,6 +61,10 @@ class StoreRequest extends ApiRequest
             $Media->save();
         }
         $Product->save();
+        FreelancerCategory::firstOrCreate(
+            ['category_id' => $this->category_id,'sub_category_id' => $this->sub_category_id, 'user_id' => $logged->getId()]
+        );
+
         $Product->refresh();
         return $this->successJsonResponse([__('messages.saved_successfully')],new ProductResource($Product),'Product');
     }

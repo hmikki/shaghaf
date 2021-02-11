@@ -81,6 +81,7 @@ Route::group([
         'middleware' => 'auth:api'
     ], function() {
         Route::post('send_notification','HomeController@send_notification');
+        Route::get('get_freelancers','HomeController@getFreelancers');
     });
 });
 

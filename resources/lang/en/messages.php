@@ -42,6 +42,7 @@ return [
     'you_cannot_do_it_at_this_time'=>'You can not do this action at this time !',
     'payment_verified'=>'Payment Verified !',
     'payment_not_verified'=>'Payment Not Verified !',
+    'there is no freelancers for this category' =>'There is no freelancer for this category',
     'OrderStatus'=>[
         'New'=>[
             'title'=>'New Order',

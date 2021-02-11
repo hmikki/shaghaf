@@ -4,7 +4,7 @@ namespace App\Http\Resources\Api\Order;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 use App\Http\Resources\Api\Home\ProviderResource;
-use App\Http\Resources\Api\Home\UserResource;
+use App\Http\Resources\Api\Home\FreelancerResource;
 
 
 class OrderResource extends JsonResource
@@ -20,7 +20,7 @@ class OrderResource extends JsonResource
         $Objects = array();
         $Objects['id'] = $this->getId();
         $Objects['user_id'] = $this->getUserId();
-        $Objects['User'] = new UserResource($this->user);
+        $Objects['User'] = new FreelancerResource($this->user);
         $Objects['provider_id'] = $this->getProviderId();
         $Objects['Provider'] = new ProviderResource($this->provider);
         $Objects['amount'] = $this->getAmount();

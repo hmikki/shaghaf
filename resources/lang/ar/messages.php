@@ -42,6 +42,7 @@ return [
     'you_cannot_do_it_at_this_time'=>'لا يمكنك القيام بهذا الإجراء في الوقت الحالي !',
     'payment_verified'=>'تم التأكد من الدفع !',
     'payment_not_verified'=>'لم يتم الدفع !',
+    'there is no freelancers for this category' =>'لا يوجد مزودين لهذه الخدمة',
 
     'OrderStatus'=>[
         'New'=>[
