@@ -113,6 +113,8 @@ return [
         'name' => 'الاسم',
         'name_ar' => 'الاسم عربي',
         'image' => 'الصورة',
+        'has_product' => 'يسمح بمنتج',
+        'has_service' => 'يسمح بخدمة',
         'is_active' => 'الحالة',
     ],
     'Country'=>[

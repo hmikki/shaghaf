@@ -85,6 +85,16 @@ class CategoryController extends Controller
                 'is_required'=>true,
                 'is_required_update'=>false
             ],
+            'has_product'=> [
+                'name'=>'has_product',
+                'type'=>'boolean',
+                'is_required'=>true
+            ],
+            'has_service'=> [
+                'name'=>'has_service',
+                'type'=>'boolean',
+                'is_required'=>true
+            ],
             'is_active'=> [
                 'name'=>'is_active',
                 'type'=>'active',

@@ -85,7 +85,7 @@ Route::group([
 });
 
 Route::group([
-    'prefix' => 'order'
+    'prefix' => 'orders'
 ], function (){
     Route::group([
         'middleware' => 'auth:api'

@@ -112,6 +112,8 @@ return [
         'name' => 'Name',
         'name_ar' => 'Name Ar',
         'image' => 'Image',
+        'has_product' => 'Has Product',
+        'has_service' => 'Has Service',
         'is_active' => 'Status',
     ],
     'Country'=>[
