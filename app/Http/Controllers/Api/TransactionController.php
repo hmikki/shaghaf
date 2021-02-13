@@ -19,7 +19,8 @@ class TransactionController extends Controller
      * @param IndexRequest $request
      * @return JsonResponse
      */
-    public function index(IndexRequest $request){
+    public function index(IndexRequest $request): JsonResponse
+    {
         return $request->run();
     }
 
@@ -27,7 +28,8 @@ class TransactionController extends Controller
      * @param MyBalanceRequest $request
      * @return JsonResponse
      */
-    public function my_balance(MyBalanceRequest $request){
+    public function my_balance(MyBalanceRequest $request): JsonResponse
+    {
         return $request->run();
     }
 
@@ -35,7 +37,8 @@ class TransactionController extends Controller
      * @param GenerateCheckoutRequest $request
      * @return JsonResponse
      */
-    public function generate_checkout(GenerateCheckoutRequest $request){
+    public function generate_checkout(GenerateCheckoutRequest $request): JsonResponse
+    {
         return $request->run();
     }
 
@@ -43,14 +46,16 @@ class TransactionController extends Controller
      * @param CheckPaymentRequest $request
      * @return JsonResponse
      */
-    public function check_payment(CheckPaymentRequest $request){
+    public function check_payment(CheckPaymentRequest $request): JsonResponse
+    {
         return $request->run();
     }
     /**
      * @param RequestRefundRequest $request
      * @return JsonResponse
      */
-    public function request_refund(RequestRefundRequest $request){
+    public function request_refund(RequestRefundRequest $request): JsonResponse
+    {
         return $request->run();
     }
 }

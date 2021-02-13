@@ -18,7 +18,6 @@ class CreateFreelancerCategoriesTable extends Migration
             $table->foreignId('user_id');
             $table->foreignId('category_id');
             $table->foreignId('sub_category_id');
-
             $table->timestamps();
         });
     }

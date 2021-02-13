@@ -10,25 +10,19 @@ use App\Helpers\Constant;
 use App\Http\Requests\Api\ApiRequest;
 use App\Http\Resources\Api\Order\OrderResource;
 
+/**
+ * @property mixed per_page
+ */
 class IndexRequest extends FormRequest
 {
     use ResponseTrait;
-    /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
-    public function authorize()
-    {
-        return true;
-    }
 
     /**
      * Get the validation rules that apply to the request.
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         return [
             'per_page'=>'sometimes|numeric'

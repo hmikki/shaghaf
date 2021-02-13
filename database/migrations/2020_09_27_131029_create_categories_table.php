@@ -19,6 +19,8 @@ class CreateCategoriesTable extends Migration
             $table->string('name_ar');
             $table->string('image')->nullable();
             $table->foreignId('parent_id')->nullable();
+            $table->boolean('has_product')->default(false);
+            $table->boolean('has_service')->default(true);
             $table->boolean('is_active')->default(true);
             $table->timestamps();
         });

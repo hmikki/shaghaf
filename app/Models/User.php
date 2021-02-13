@@ -30,6 +30,7 @@ use Illuminate\Support\Facades\Hash;
  * @property mixed lng
  * @property mixed email_verified_at
  * @property mixed mobile_verified_at
+ * @property mixed order_count
  * @property mixed app_locale
  * @property mixed is_available
  * @property boolean is_active
@@ -39,7 +40,7 @@ class User extends Authenticatable
 {
     use Notifiable,HasApiTokens;
 
-    protected $fillable = ['name','email','mobile','type','country_id','city_id','avatar','bio','gender','iban_number','identity_image','portfolio_image','device_token','device_type','lat','lng','email_verified_at','mobile_verified_at','app_locale','is_available','is_active',];
+    protected $fillable = ['name','email','mobile','type','country_id','city_id','avatar','bio','gender','iban_number','identity_image','portfolio_image','device_token','device_type','lat','lng','email_verified_at','mobile_verified_at','app_locale','order_count','is_available','is_active',];
 
     protected $hidden = ['password'];
 
@@ -424,6 +425,20 @@ class User extends Authenticatable
         $this->is_active = $is_active;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getOrderCount()
+    {
+        return $this->order_count;
+    }
 
+    /**
+     * @param mixed $order_count
+     */
+    public function setOrderCount($order_count): void
+    {
+        $this->order_count = $order_count;
+    }
 
 }

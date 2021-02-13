@@ -53,6 +53,8 @@ class StoreRequest extends ApiRequest
         $Product->setSubCategoryId($this->sub_category_id);
         $Product->setPrice($this->price);
         $Product->setType($this->type);
+        $Product->save();
+        $Product->refresh();
         foreach ($this->file('media') as $media) {
             $Media = new Media();
             $Media->setRefId($Product->getId());
@@ -60,7 +62,6 @@ class StoreRequest extends ApiRequest
             $Media->setFile($media);
             $Media->save();
         }
-        $Product->save();
         FreelancerCategory::firstOrCreate(
             ['category_id' => $this->category_id,'sub_category_id' => $this->sub_category_id, 'user_id' => $logged->getId()]
         );

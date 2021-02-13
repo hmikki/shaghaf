@@ -65,6 +65,8 @@ class UpdateRequest extends ApiRequest
         if ($this->filled('type')) {
             $Product->setType($this->type);
         }
+        $Product->save();
+        $Product->refresh();
         foreach ($this->file('media') as $media) {
             $Media = new Media();
             $Media->setRefId($Product->getId());
@@ -72,8 +74,6 @@ class UpdateRequest extends ApiRequest
             $Media->setFile($media);
             $Media->save();
         }
-        $Product->save();
-        $Product->refresh();
         return $this->successJsonResponse([__('messages.saved_successfully')],new ProductResource($Product),'Product');
     }
 }

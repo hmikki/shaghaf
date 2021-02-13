@@ -4,31 +4,23 @@
 namespace App\Helpers;
 
 
-use App\Models\Auction;
-use App\Models\Bid;
-use App\Models\Coupon;
-use App\Models\CouponHistory;
-use App\Models\Favourite;
 use App\Models\Notification;
 use App\Models\Order;
 use App\Models\OrderStatus;
 use App\Models\PasswordReset;
-use App\Models\Setting;
 use App\Models\Transaction;
-use App\Models\User;
 use App\Models\VerifyAccounts;
 use App\Notifications\PasswordReset as PasswordResetNotification;
 use App\Notifications\VerifyAccount;
 use App\Traits\ResponseTrait;
-use Carbon\Carbon;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Request;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class Functions
 {
     use ResponseTrait;
-    public static function SendNotification($user,$title,$msg,$title_ar,$msg_ar,$ref_id = null,$type= 0,$store = true,$replace =[])
+    public static function SendNotification($user,$title,$msg,$title_ar,$msg_ar,$ref_id = null,$type= 0,$store = true,$replace =[]): bool
     {
         $fcmUrl = 'https://fcm.googleapis.com/fcm/send';
         $registrationIds = $user->device_token;
@@ -74,7 +66,7 @@ class Functions
         }
         return true;
     }
-    public static function SendNotifications($users,$title,$msg,$ref_id = null,$type= 0,$store = true,$replace =[])
+    public static function SendNotifications($users,$title,$msg,$ref_id = null,$type= 0,$store = true,$replace =[]): bool
     {
         $fcmUrl = 'https://fcm.googleapis.com/fcm/send';
         $registrationIds = [];
@@ -140,7 +132,8 @@ class Functions
         curl_close($ch);
     }
 
-    public static function SendVerification($user,$type = null){
+    public static function SendVerification($user,$type = null): JsonResponse
+    {
         if($type != null){
             switch ($type){
                 case Constant::VERIFICATION_TYPE['Email']:{
@@ -225,7 +218,8 @@ class Functions
             new PasswordResetNotification($code)
         );
     }
-    public static function StoreImage($attribute_name,$destination_path){
+    public static function StoreImage($attribute_name,$destination_path): ?string
+    {
         $destination_path = "storage/".$destination_path.'/';
         $request = Request::instance();
         if ($request->hasFile($attribute_name)) {
@@ -238,7 +232,8 @@ class Functions
         }
         return $attribute_value??null;
     }
-    public static function StoreImageModel($file,$destination_path){
+    public static function StoreImageModel($file,$destination_path): ?string
+    {
         $destination_path = "storage/".$destination_path.'/';
         if ($file->isValid()) {
             $file_name = md5($file->getClientOriginalName().time()).'.'.$file->getClientOriginalExtension();

@@ -71,6 +71,16 @@ Route::group([
         Route::post('update','ProductController@update');
         Route::post('destroy','ProductController@destroy');
     });
+
+    Route::group([
+        'prefix' => 'orders'
+    ], function (){
+        Route::get('/','OrderController@index');
+        Route::get('show','OrderController@index');
+        Route::post('store','OrderController@store');
+        Route::post('update', 'OrderController@update');
+    });
+
 });
 
 Route::group([
@@ -80,38 +90,6 @@ Route::group([
     Route::group([
         'middleware' => 'auth:api'
     ], function() {
-        Route::post('send_notification','HomeController@send_notification');
-        Route::get('get_freelancers','HomeController@getFreelancers');
+        Route::get('get_freelancers','HomeController@get_freelancers');
     });
 });
-
-Route::group([
-    'prefix' => 'orders'
-], function (){
-    Route::group([
-        'middleware' => 'auth:api'
-    ], function() {
-        Route::get('/','OrderController@index');
-        Route::get('show','OrderController@index');
-        Route::post('store','OrderController@store');
-        Route::post('update', 'OrderController@update');
-
-    });
-});
-/************* category *************/
-Route::group([
-    'prefix' => 'category',
-    'middleware' => 'auth:api'
-],function (){
-    Route::get('/','CategoryController@index');
-});
-
-/************* contact *******************/
-Route::group([
-    'prefix' => 'contact',
-    'middleware' => 'auth:api'
-],function (){
-    Route::post('/','ContactController@store');
-});
-
-

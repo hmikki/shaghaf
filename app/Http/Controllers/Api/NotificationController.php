@@ -18,7 +18,8 @@ class NotificationController extends Controller
      * @param SearchRequest $form
      * @return JsonResponse
      */
-    public function index(SearchRequest $form){
+    public function index(SearchRequest $form): JsonResponse
+    {
         return $form->run();
     }
 
@@ -26,7 +27,8 @@ class NotificationController extends Controller
      * @param ReadRequest $form
      * @return JsonResponse
      */
-    public function read(ReadRequest $form){
+    public function read(ReadRequest $form): JsonResponse
+    {
         return $form->run();
     }
 
@@ -34,7 +36,8 @@ class NotificationController extends Controller
      * @param ReadAllRequest $form
      * @return JsonResponse
      */
-    public function read_all(ReadAllRequest $form){
+    public function read_all(ReadAllRequest $form): JsonResponse
+    {
         return $form->run();
     }
 
@@ -42,7 +45,8 @@ class NotificationController extends Controller
      * @param SendRequest $request
      * @return JsonResponse
      */
-    public function send(SendRequest $request){
+    public function send(SendRequest $request): JsonResponse
+    {
         return $request->run();
     }
 }
