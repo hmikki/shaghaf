@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * @property integer id
@@ -21,7 +22,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Order extends Model
 {
     protected $table = 'orders';
-    protected $fillable = ['user_id','freelancer_id','product_id','status','quantity','price','order_date','delivered_date','reject_reason','cancel_reason',];
+    protected $fillable = ['user_id','freelancer_id','product_id','status','quantity','price','order_date','delivered_date','reject_reason','cancel_reason'];
 
     public function user(): BelongsTo
     {
@@ -216,4 +217,7 @@ class Order extends Model
     {
         $this->cancel_reason = $cancel_reason;
     }
+
+
+
 }

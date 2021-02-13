@@ -37,8 +37,7 @@ class StoreRequest extends FormRequest
     public function run(): JsonResponse
     {
         $freelancer_id = null;
-        $amount = 0;
-        $discount = 0;
+        $price = 0;
         foreach ($this->products as $product){
             $Product = (new Provider())->find($product['product_id']);
             if ($freelancer_id == null) {
@@ -48,13 +47,13 @@ class StoreRequest extends FormRequest
                     return $this->failJsonResponse([__('messages.you_cannot_add_products_from_several_provider_at_the_same_time')]);
                 }
             }
-            $amount += ($Product->getPrice() * $product['quantity']);
+            $price += ($Product->getPrice() * $product['quantity']);
         }
 
         $Object = new Order();
         $Object->setUserId(auth()->user()->getId());
         $Object->setFreelancerId($freelancer_id);
-        $Object->setPrice($amount);
+        $Object->setPrice($price);
         $Object->setOrderDate(Carbon::today());
         if($this->filled('delivered_date')){
             $Object->setDeliveredDate(Carbon::parse($this->delivered_date));

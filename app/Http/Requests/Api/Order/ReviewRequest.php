@@ -4,7 +4,7 @@ namespace App\Http\Requests\Api\Order;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class DestroyRequest extends FormRequest
+class ReviewRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,11 @@ class DestroyRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+
         ];
+    }
+
+    public function run(){
+
     }
 }

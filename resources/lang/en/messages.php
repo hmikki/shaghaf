@@ -43,6 +43,7 @@ return [
     'payment_verified'=>'Payment Verified !',
     'payment_not_verified'=>'Payment Not Verified !',
     'there is no freelancers for this category' =>'There is no freelancer for this category',
+    'Message Sent, we will reply soon' => 'Message Sent, we will reply soon',
     'OrderStatus'=>[
         'New'=>[
             'title'=>'New Order',

@@ -23,6 +23,7 @@ use Illuminate\Support\Facades\Hash;
  * @property mixed gender
  * @property mixed iban_number
  * @property mixed identity_image
+ * @property mixed portfolio_image
  * @property mixed device_token
  * @property mixed device_type
  * @property mixed lat
@@ -38,7 +39,7 @@ class User extends Authenticatable
 {
     use Notifiable,HasApiTokens;
 
-    protected $fillable = ['name','email','mobile','type','country_id','city_id','avatar','bio','gender','iban_number','identity_image','device_token','device_type','lat','lng','email_verified_at','mobile_verified_at','app_locale','is_available','is_active',];
+    protected $fillable = ['name','email','mobile','type','country_id','city_id','avatar','bio','gender','iban_number','identity_image','portfolio_image','device_token','device_type','lat','lng','email_verified_at','mobile_verified_at','app_locale','is_available','is_active',];
 
     protected $hidden = ['password'];
 
@@ -261,6 +262,22 @@ class User extends Authenticatable
     public function setIdentityImage($identity_image): void
     {
         $this->identity_image = Functions::StoreImageModel($identity_image,'users/identity_image');
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPortfolioImage()
+    {
+        return ($this->portfolio_image)?asset($this->portfolio_image):null;
+    }
+
+    /**
+     * @param mixed $portfolio_image
+     */
+    public function setPortfolioImage($portfolio_image): void
+    {
+        $this->portfolio_image = Functions::StoreImageModel($portfolio_image,'users/portfolio_image');
     }
 
     /**

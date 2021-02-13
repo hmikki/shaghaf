@@ -21,9 +21,6 @@ class CreateOrdersTable extends Migration
             $table->tinyInteger('status');
             $table->integer('quantity');
             $table->double('price');
-            $table->timestamp('order_date');
-            $table->timestamp('delivered_date')->nullable();
-            $table->boolean('is_finished');
             $table->string('reject_reason')->nullable();
             $table->string('cancel_reason')->nullable();
             $table->timestamps();

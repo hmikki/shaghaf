@@ -31,7 +31,6 @@ class IndexRequest extends FormRequest
     public function rules()
     {
         return [
-            'is_finished'=>'sometimes|in:0,1',
             'per_page'=>'sometimes|numeric'
         ];
     }
@@ -43,10 +42,7 @@ class IndexRequest extends FormRequest
         if($logged->getType() == Constant::USER_TYPE['Customer']){
             $Objects = $Objects->where('user_id',$logged->getId());
         }else{
-            $Objects = $Objects->where('provider_id',$logged->getId());
-        }
-        if($this->filled('is_finished')){
-            $Objects = $Objects->where('is_finished',$this->is_finished);
+            $Objects = $Objects->where('freelancer_id',$logged->getId());
         }
         $Objects = $Objects->paginate($this->filled('per_page')?$this->per_page:10);
         $Objects = OrderResource::collection($Objects);

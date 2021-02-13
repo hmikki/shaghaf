@@ -11,6 +11,7 @@ class Constant
         'Ticket'=>2,
         'Subscription'=>3,
         'Order'=>4,
+        'Message' => 5
     ];
     const VERIFICATION_TYPE = [
         'Email'=>1,

@@ -43,6 +43,7 @@ return [
     'payment_verified'=>'تم التأكد من الدفع !',
     'payment_not_verified'=>'لم يتم الدفع !',
     'there is no freelancers for this category' =>'لا يوجد مزودين لهذه الخدمة',
+    'Message Sent, we will reply soon' => 'تم ارسال الرسالة ،و سيتم الرد في أقرب وقت ممكن',
 
     'OrderStatus'=>[
         'New'=>[

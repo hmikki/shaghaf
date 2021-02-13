@@ -98,4 +98,20 @@ Route::group([
 
     });
 });
+/************* category *************/
+Route::group([
+    'prefix' => 'category',
+    'middleware' => 'auth:api'
+],function (){
+    Route::get('/','CategoryController@index');
+});
+
+/************* contact *******************/
+Route::group([
+    'prefix' => 'contact',
+    'middleware' => 'auth:api'
+],function (){
+    Route::post('/','ContactController@store');
+});
+
 

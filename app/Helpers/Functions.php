@@ -10,6 +10,8 @@ use App\Models\Coupon;
 use App\Models\CouponHistory;
 use App\Models\Favourite;
 use App\Models\Notification;
+use App\Models\Order;
+use App\Models\OrderStatus;
 use App\Models\PasswordReset;
 use App\Models\Setting;
 use App\Models\Transaction;
@@ -137,6 +139,7 @@ class Functions
         $response = curl_exec($ch);
         curl_close($ch);
     }
+
     public static function SendVerification($user,$type = null){
         if($type != null){
             switch ($type){
@@ -280,17 +283,25 @@ class Functions
             }
         }
     }
-    public static function CreateTicket($user_id,$order_id,$dispute){
-        $object = new Order();
+    public static function CreateTicket($user_id,$freelancer_id,$order_id){
+        $object = Order::where('user_id', $user_id)->where('order_id', $order_id)->where('freelancer_id', $freelancer_id)->first();
         $request = $object->status;
         if($request != Constant::ORDER_STATUSES['NotRecieved']){
             return $request->failJsonResponse([__('messages.wrong_sequence')]);
         }
-        ///لازم اضيف حالة تم التسليم من قبل الادمن
-        $object->setStatus(Constant::ORDER_STATUSES['NotRecievedByAdmin']);
-        $object->save();
-        OrderStatus::ChangeStatus($object->getId(),Constant::ORDER_STATUSES['NotRecievedByAdmin']);
-        Functions::SendNotification($object->provider,'Order Not Recieved By Admin','Provider did not deliver the order !','لم يتم توصيل الطلب !','لم يقم المزود بتوصيل الطلب',$object->getId(),Constant::NOTIFICATION_TYPE['Order']);
+        if($request != Constant::ORDER_STATUSES['NotDelivered']){
+            $object->setStatus(Constant::ORDER_STATUSES['RecievedByAdmin']);
+            $object->save();
+            OrderStatus::ChangeStatus($object->getId(),Constant::ORDER_STATUSES['RecievedByAdmin']);
+            Functions::SendNotification($object->user,'Order Recieved By Admin','freelancer delivered the order !','تم توصيل الطلب !','قام المزود بتوصيل الطلب',$object->getId(),Constant::NOTIFICATION_TYPE['Order']);
+
+        }
+            $object->setStatus(Constant::ORDER_STATUSES['NotRecievedByAdmin']);
+            $object->save();
+            OrderStatus::ChangeStatus($object->getId(),Constant::ORDER_STATUSES['NotRecievedByAdmin']);
+            Functions::SendNotification($object->freelancer,'Order Not Recieved By Admin','freelancer did not deliver the order !','لم يتم توصيل الطلب !','لم يقم المزود بتوصيل الطلب',$object->getId(),Constant::NOTIFICATION_TYPE['Order']);
+
+
 
     }
 }
