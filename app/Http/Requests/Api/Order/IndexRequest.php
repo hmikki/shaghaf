@@ -2,7 +2,6 @@
 
 namespace App\Http\Requests\Api\Order;
 
-use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\JsonResponse;
 use App\Models\Order;
 use App\Traits\ResponseTrait;
@@ -13,9 +12,8 @@ use App\Http\Resources\Api\Order\OrderResource;
 /**
  * @property mixed per_page
  */
-class IndexRequest extends FormRequest
+class IndexRequest extends ApiRequest
 {
-    use ResponseTrait;
 
     /**
      * Get the validation rules that apply to the request.

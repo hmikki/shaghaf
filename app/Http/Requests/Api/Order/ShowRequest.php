@@ -2,7 +2,6 @@
 
 namespace App\Http\Requests\Api\Order;
 
-use Illuminate\Foundation\Http\FormRequest;
 use App\Traits\ResponseTrait;
 use App\Http\Requests\Api\ApiRequest;
 use App\Http\Resources\Api\Order\OrderResource;
@@ -15,23 +14,13 @@ use Illuminate\Http\JsonResponse;
 
 class ShowRequest extends ApiRequest
 {
-    use ResponseTrait;
-    /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
-    public function authorize()
-    {
-        return true;
-    }
 
     /**
      * Get the validation rules that apply to the request.
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         return [
             'order_id'=>'required|exists:orders,id',
