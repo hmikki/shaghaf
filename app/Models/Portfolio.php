@@ -13,14 +13,14 @@ class Portfolio extends Model
 
     /**
      * @property integer id
-     * @property string title
-     * @property string title_ar
+     * @property mixed title
+     * @property mixed title_ar
      * @property mixed media
      * @property mixed user_id
      */
     use HasFactory;
 
-    protected $table = 'Portfolios';
+    protected $table = 'portfolios';
     protected $fillable= ['title', 'title_ar', 'media', 'user_id'];
 
     public function user(): belongsTo
@@ -48,7 +48,7 @@ class Portfolio extends Model
         $this->id = $id;
     }
     /**
-     * @return string
+     * @return mixed
      */
     public function getTitle(): string
     {
@@ -56,22 +56,22 @@ class Portfolio extends Model
     }
 
     /**
-     * @param string $title
+     * @param mixed $title
      */
     public function setTitle(int $title): void
     {
         $this->title = $title;
     }
     /**
-     * @return string
+     * @return mixed
      */
-    public function getTitle_ar(): string
+    public function getTitle_ar()
     {
         return $this->title_ar;
     }
 
     /**
-     * @param string $title_ar
+     * @param mixed $title_ar
      */
     public function setTitle_ar(int $title_ar): void
     {
