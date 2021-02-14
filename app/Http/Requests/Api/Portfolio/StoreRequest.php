@@ -39,7 +39,7 @@ class StoreRequest extends FormRequest
         $logged = auth()->user();
         $portfolio =new  Portfolio();
         $portfolio->setUserId($this->user_id);
-        $portfolio->setTitle((app()->getLocale() == 'ar')?$this->title_ar : $this->title);
+        $portfolio->setTitle($this->title);
         $portfolio->save();
         $portfolio->refresh();
         foreach ($this->file('media') as $media) {
