@@ -30,7 +30,7 @@ class StoreRequest extends FormRequest
         return [
             'user_id' => 'required|exists:users,id',
             'title' => 'required',
-            'media'=>'required|array',
+            'media'=>'required',
             'media.*'=>'required'
         ];
     }
