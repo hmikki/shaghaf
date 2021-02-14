@@ -10,7 +10,7 @@ class CountryResource extends JsonResource
     {
         $Objects = array();
         $Objects['id'] = $this->getId();
-        $Objects['name'] = (app()->getLocale() == 'ar')?$this->getNamAr():$this->getName();
+        $Objects['name'] = (app()->getLocale() == 'ar')?$this->getNameAr():$this->getName();
         $Objects['country_code'] = $this->getCountryCode();
         $Objects['flag'] = asset($this->getFlag());
         $Objects['Cities'] = CityResource::collection($this->cities);

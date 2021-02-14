@@ -2,14 +2,16 @@
 
 namespace App\Models;
 
+use App\Helpers\Functions;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * @property integer id
- * @property string name
- * @property string name_ar
- * @property string country_code
+ * @property mixed name
+ * @property mixed name_ar
+ * @property mixed country_code
+ * @property mixed flag
  * @property boolean is_active
  */
 class Country extends Model
