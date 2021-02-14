@@ -93,3 +93,12 @@ Route::group([
         Route::get('get_freelancers','HomeController@get_freelancers');
     });
 });
+
+Route::group([
+    'prefix' => 'portfolio',
+], function (){
+    Route::get('/','PortfolioController@index');
+    Route::post('store','PortfolioController@store');
+    Route::post('update', 'PortfolioController@update');
+    Route::post('destroy', 'PortfolioController@destroy');
+});

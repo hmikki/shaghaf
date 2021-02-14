@@ -6,7 +6,7 @@ use App\Http\Resources\Api\User\PortfolioResource;
 use App\Models\Portfolio;
 use Illuminate\Foundation\Http\FormRequest;
 
-class indexRequest extends FormRequest
+class IndexRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
