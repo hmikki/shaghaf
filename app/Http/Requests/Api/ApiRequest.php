@@ -10,10 +10,14 @@ use Illuminate\Http\Exceptions\HttpResponseException;
 class ApiRequest extends FormRequest
 {
     use ResponseTrait;
-
     public function authorize(): bool
     {
         return true;
+    }
+    public function rules(): array
+    {
+        return [
+        ];
     }
     public function failedValidation(Validator $validator)
     {

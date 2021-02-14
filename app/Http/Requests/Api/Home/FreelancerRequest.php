@@ -18,10 +18,6 @@ use Illuminate\Http\JsonResponse;
  */
 class FreelancerRequest extends ApiRequest
 {
-    public function authorize(): bool
-    {
-        return $this->user()->getType() == Constant::USER_TYPE['Customer'];
-    }
     public function rules(): array
     {
         return [
