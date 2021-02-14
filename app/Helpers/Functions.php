@@ -257,7 +257,12 @@ class Functions
             }
         }
     }
-
+    public static function ChangeOrderStatus($OrderId,$Status){
+        $OrderStatus = new OrderStatus();
+        $OrderStatus->setOrderId($OrderId);
+        $OrderStatus->setStatus($Status);
+        $OrderStatus->save();
+    }
     public static function distance($lat1, $lon1, $lat2, $lon2, $unit) {
         if (($lat1 == $lat2) && ($lon1 == $lon2)) {
             return 0;

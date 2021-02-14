@@ -66,12 +66,12 @@ class Constant
         'Payed' =>5,
         'In_progress' => 6,
         'Delivered' => 7,
-        'Recieved' => 8,
+        'Received' => 8,
         'NotDelivered' => 9,
-        'NOTRecieved' => 10,
-        'RecievedByAdmin' => 11,
-        'NotRecievedByAdmin' => 12,
+        'NOTReceived' => 10,
+        'ReceivedByAdmin' => 11,
+        'NotReceivedByAdmin' => 12,
     ];
 
-    const ORDER_STATUSES_RULE = '1,2,3,4,5,6,7,8,9,10,11,12';
+    const ORDER_STATUSES_RULES = '1,2,3,4,5,6,7,8,9,10,11,12';
 }

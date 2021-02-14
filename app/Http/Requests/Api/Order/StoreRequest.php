@@ -2,72 +2,60 @@
 
 namespace App\Http\Requests\Api\Order;
 
-use Illuminate\Foundation\Http\FormRequest;
+use App\Helpers\Constant;
+use App\Helpers\Functions;
+use App\Http\Requests\Api\ApiRequest;
+use App\Http\Resources\Api\Order\OrderResource;
+use App\Models\Order;
+use App\Models\OrderStatus;
+use App\Models\Product;
+use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\JsonResponse;
-use NunoMaduro\Collision\Provider;
 
-class StoreRequest extends FormRequest
+/**
+ * @property mixed product_id
+ * @property mixed quantity
+ * @property mixed note
+ * @property mixed delivered_date
+ * @property mixed delivered_time
+ */
+class StoreRequest extends ApiRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
-    public function authorize()
-    {
-        return true;
-    }
 
     /**
      * Get the validation rules that apply to the request.
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         return [
-            'delivered_date'=>'sometimes|date_format:Y-m-d H:i:s',
-            'code'=>'sometimes|string',
-            'products'=>'required|array',
-            'products.*.product_id'=>'required|exists:products,id',
-            'products.*.quantity'=>'required|numeric',
+            'delivered_date'=>'required|date',
+            'delivered_time'=>'required|time',
+            'product_id'=>'required|exists:products,id',
+            'quantity'=>'required|numeric',
+            'note'=>'sometimes|string'
         ];
     }
 
     public function run(): JsonResponse
     {
-        $freelancer_id = null;
-        $price = 0;
-        foreach ($this->products as $product){
-            $Product = (new Provider())->find($product['product_id']);
-            if ($freelancer_id == null) {
-                $freelancer_id = $Product->getUserId();
-            }else{
-                if ($freelancer_id != $Product->getUserId()) {
-                    return $this->failJsonResponse([__('messages.you_cannot_add_products_from_several_provider_at_the_same_time')]);
-                }
-            }
-            $price += ($Product->getPrice() * $product['quantity']);
-        }
-
+        $Product = (new Product())->find($this->product_id);
         $Object = new Order();
         $Object->setUserId(auth()->user()->getId());
-        $Object->setFreelancerId($freelancer_id);
-        $Object->setPrice($price);
-        $Object->setOrderDate(Carbon::today());
-        if($this->filled('delivered_date')){
-            $Object->setDeliveredDate(Carbon::parse($this->delivered_date));
-        }
+        $Object->setFreelancerId($Product->getUserId());
+        $Object->setPrice($Product->getPrice());
+        $Object->setQuantity($this->quantity);
+        $Object->setDeliveredDate($this->delivered_date);
+        $Object->setDeliveredTime($this->delivered_time);
+        $Object->setNote(@$this->note);
         $Object->save();
         $Object->refresh();
-        foreach ($this->products as $product){
-            $OrderProduct = new OrderProduct();
-            $OrderProduct->setOrderId($Object->getId());
-            $OrderProduct->setProductId($product['product_id']);
-            $OrderProduct->setQuantity($product['quantity']);
-            $OrderProduct->save();
-        }
-        OrderStatus::ChangeStatus($Object->getId(),Constant::ORDER_STATUSES['New']);
+        $Freelancer = (new User)->find($Product->getUserId());
+        $Freelancer->setOrderCount($Freelancer->getOrderCount()+1);
+        $Freelancer->save();
+        Functions::ChangeOrderStatus($Object->getId(),Constant::ORDER_STATUSES['New']);
         return $this->successJsonResponse([__('messages.created_successful')],new OrderResource($Object),'Order');
 
     }

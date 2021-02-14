@@ -13,16 +13,18 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property mixed product_id
  * @property mixed status
  * @property mixed quantity
+ * @property mixed note
  * @property mixed price
- * @property mixed order_date
  * @property mixed delivered_date
+ * @property mixed delivered_time
  * @property mixed reject_reason
  * @property mixed cancel_reason
+ * @method Order find(mixed $order_id)
  */
 class Order extends Model
 {
     protected $table = 'orders';
-    protected $fillable = ['user_id','freelancer_id','product_id','status','quantity','price','order_date','delivered_date','reject_reason','cancel_reason'];
+    protected $fillable = ['user_id','freelancer_id','product_id','status','quantity','price','note','delivered_date','delivered_time','reject_reason','cancel_reason'];
 
     public function user(): BelongsTo
     {
@@ -130,20 +132,21 @@ class Order extends Model
     {
         return $this->quantity;
     }
+
     /**
      * @return mixed
      */
-    public function getOrderDate()
+    public function getNote()
     {
-        return $this->order_date;
+        return $this->note;
     }
 
     /**
-     * @param mixed $order_date
+     * @param mixed $note
      */
-    public function setOrderDate($order_date): void
+    public function setNote($note): void
     {
-        $this->order_date = $order_date;
+        $this->note = $note;
     }
 
     /**
@@ -216,6 +219,22 @@ class Order extends Model
     public function setCancelReason($cancel_reason): void
     {
         $this->cancel_reason = $cancel_reason;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDeliveredTime()
+    {
+        return $this->delivered_time;
+    }
+
+    /**
+     * @param mixed $delivered_time
+     */
+    public function setDeliveredTime($delivered_time): void
+    {
+        $this->delivered_time = $delivered_time;
     }
 
 
