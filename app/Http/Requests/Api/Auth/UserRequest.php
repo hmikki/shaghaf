@@ -47,6 +47,7 @@ class UserRequest extends ApiRequest
             'device_token' => 'string|required_with:device_type',
             'device_type' => 'string|required_with:device_token',
             'app_locale' => 'string|in:ar,en',
+            'portfolio_id' => 'sometimes|exists:Portfolio'
         ];
     }
     public function attributes()

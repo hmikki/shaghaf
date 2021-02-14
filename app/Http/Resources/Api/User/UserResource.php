@@ -5,8 +5,10 @@ namespace App\Http\Resources\Api\User;
 use App\Http\Resources\Api\Home\CityResource;
 use App\Http\Resources\Api\Home\CountryResource;
 use App\Models\Notification;
+use App\Models\Portfolio;
 use Carbon\Carbon;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Collection;
 
 class UserResource extends JsonResource
 {
@@ -48,7 +50,7 @@ class UserResource extends JsonResource
         $Object['lat'] = $this->getLat();
         $Object['lng'] = $this->getLng();
         $Object['type'] = $this->getType();
-        $Object['portfolio_image'] = $this->getPortfolioImage();
+        $Object['Portfolio'] = PortfolioResource::collection($this->portfolio);
         $Object['is_available'] = $this->getIsAvailable();
         $Object['app_locale'] = $this->getAppLocale();
         $Object['notification_count'] = Notification::where('user_id',$this->getId())->where('read_at',null)->count();

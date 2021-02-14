@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Helpers\Functions;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
@@ -23,7 +24,7 @@ use Illuminate\Support\Facades\Hash;
  * @property mixed gender
  * @property mixed iban_number
  * @property mixed identity_image
- * @property mixed portfolio_image
+ * @property mixed portfolio_id
  * @property mixed device_token
  * @property mixed device_type
  * @property mixed lat
@@ -40,13 +41,18 @@ class User extends Authenticatable
 {
     use Notifiable,HasApiTokens;
 
-    protected $fillable = ['name','email','mobile','type','country_id','city_id','avatar','bio','gender','iban_number','identity_image','portfolio_image','device_token','device_type','lat','lng','email_verified_at','mobile_verified_at','app_locale','order_count','is_available','is_active',];
+    protected $fillable = ['name','email','mobile','type','country_id','city_id','avatar','bio','gender','iban_number','identity_image','portfolio_id','device_token','device_type','lat','lng','email_verified_at','mobile_verified_at','app_locale','order_count','is_available','is_active',];
 
     protected $hidden = ['password'];
 
     public function city(): BelongsTo
     {
         return $this->belongsTo(City::class);
+    }
+
+    public function portfolio(): hasMany
+    {
+        return $this->hasMany(Portfolio::class);
     }
 
 //    protected static function boot()
@@ -268,17 +274,17 @@ class User extends Authenticatable
     /**
      * @return mixed
      */
-    public function getPortfolioImage()
+    public function getPortfolioId()
     {
-        return ($this->portfolio_image)?asset($this->portfolio_image):null;
+        return $this->portfolio_id;
     }
 
     /**
-     * @param mixed $portfolio_image
+     * @param mixed $portfolio_id
      */
-    public function setPortfolioImage($portfolio_image): void
+    public function setPortfolioId($portfolio_id): int
     {
-        $this->portfolio_image = Functions::StoreImageModel($portfolio_image,'users/portfolio_image');
+        $this->portfolio_id = $portfolio_id;
     }
 
     /**

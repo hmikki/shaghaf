@@ -57,6 +57,8 @@ class Constant
     const PRODUCT_TYPE_RULES = '1,2';
     const MEDIA_TYPES = [
         'Product'=>1,
+        'Portfolio_Image' => 2,
+        'Portfolio_video' => 3
     ];
     const ORDER_STATUSES = [
         'New' => 1,

@@ -178,5 +178,4 @@ class Product extends Model
     {
         $this->is_active = $is_active;
     }
-
 }
