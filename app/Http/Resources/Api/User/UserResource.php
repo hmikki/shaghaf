@@ -5,32 +5,18 @@ namespace App\Http\Resources\Api\User;
 use App\Http\Resources\Api\Home\CityResource;
 use App\Http\Resources\Api\Home\CountryResource;
 use App\Models\Notification;
-use App\Models\Portfolio;
 use Carbon\Carbon;
 use Illuminate\Http\Resources\Json\JsonResource;
-use Illuminate\Support\Collection;
 
 class UserResource extends JsonResource
 {
     protected $token;
-
-    /**
-     * ExportResource constructor.
-     * @param $resource
-     * @param array $token
-     */
     public function __construct($resource, $token =null)
     {
         $this->token = $token;
         parent::__construct($resource);
     }
-    /**
-     * Transform the resource into an array.
-     *
-     * @param  $request
-     * @return array
-     */
-    public function toArray($request)
+    public function toArray($request): array
     {
         $Object['id'] = $this->getId();
         $Object['name'] = $this->getName();

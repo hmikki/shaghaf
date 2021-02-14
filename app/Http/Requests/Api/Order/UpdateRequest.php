@@ -18,12 +18,6 @@ use Illuminate\Http\JsonResponse;
  */
 class UpdateRequest extends ApiRequest
 {
-
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array
-     */
     public function rules(): array
     {
         return [

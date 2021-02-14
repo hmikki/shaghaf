@@ -13,38 +13,18 @@ use Illuminate\Http\JsonResponse;
 class NotificationController extends Controller
 {
     use ResponseTrait;
-
-    /**
-     * @param SearchRequest $form
-     * @return JsonResponse
-     */
     public function index(SearchRequest $form): JsonResponse
     {
         return $form->run();
     }
-
-    /**
-     * @param ReadRequest $form
-     * @return JsonResponse
-     */
     public function read(ReadRequest $form): JsonResponse
     {
         return $form->run();
     }
-
-    /**
-     * @param ReadAllRequest $form
-     * @return JsonResponse
-     */
     public function read_all(ReadAllRequest $form): JsonResponse
     {
         return $form->run();
     }
-
-    /**
-     * @param SendRequest $request
-     * @return JsonResponse
-     */
     public function send(SendRequest $request): JsonResponse
     {
         return $request->run();
