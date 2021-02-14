@@ -20,12 +20,12 @@ class Portfolio extends Model
      */
     use HasFactory;
 
-    protected $table = 'Portfolio';
+    protected $table = 'Portfolios';
     protected $fillable= ['title', 'title_ar', 'media', 'user_id'];
 
     public function user(): belongsTo
     {
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->belongsTo(User::class);
     }
     public function media(): HasMany
     {

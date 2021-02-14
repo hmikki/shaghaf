@@ -4,6 +4,7 @@ namespace App\Http\Requests\Api\Portfolio;
 
 use App\Helpers\Constant;
 use App\Http\Resources\Api\User\PortfolioResource;
+use App\Models\Media;
 use App\Models\Portfolio;
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -60,7 +61,7 @@ class UpdateRequest extends FormRequest
             }
             $Media->save();
         }
-        return $this->successJsonResponse([__('messages.saved_successfully')],new PortfolioResource($Product),'Product');
+        return $this->successJsonResponse([__('messages.saved_successfully')],new PortfolioResource($Portfolio),'Product');
 
     }
 }
