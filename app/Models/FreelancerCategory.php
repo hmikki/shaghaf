@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
  * @property integer id
@@ -19,17 +20,18 @@ class FreelancerCategory extends Model
     protected $table = 'freelancer_categories';
     protected $fillable = ['user_id', 'category_id', 'sub_category_id'];
 
-    public function user(){
+    public function user(): BelongsTo
+    {
         return $this->belongsTo(User::class );
     }
-
-    public function category(){
+    public function category(): BelongsTo
+    {
         return $this->belongsTo(Category::class );
     }
-    public function sub_category(){
+    public function sub_category(): BelongsTo
+    {
         return $this->belongsTo(Category::class , 'sub_category_id');
     }
-
     /**
      * @return int
      */

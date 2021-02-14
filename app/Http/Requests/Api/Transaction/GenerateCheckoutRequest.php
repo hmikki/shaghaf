@@ -8,35 +8,22 @@ use App\Http\Requests\Api\ApiRequest;
 use App\Http\Resources\Api\Transaction\TransactionResource;
 use App\Models\Transaction;
 use App\Traits\ResponseTrait;
+use Illuminate\Http\JsonResponse;
 
+/**
+ * @property mixed value
+ * @property mixed payment_token
+ */
 class GenerateCheckoutRequest extends ApiRequest
 {
-    use ResponseTrait;
-
-    /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
-    public function authorize()
-    {
-        return true;
-    }
-
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array
-     */
-    public function rules()
+    public function rules(): array
     {
         return [
             'value'=>'required|numeric',
             'payment_token'=>'required'
         ];
     }
-
-    public function run()
+    public function run(): JsonResponse
     {
         $Object = new Transaction();
         $Object->setType(Constant::TRANSACTION_TYPES['Deposit']);

@@ -131,7 +131,6 @@ class Functions
         $response = curl_exec($ch);
         curl_close($ch);
     }
-
     public static function SendVerification($user,$type = null): JsonResponse
     {
         if($type != null){
@@ -248,7 +247,8 @@ class Functions
         $Holding = Transaction::where('user_id',$user_id)->where('type',Constant::TRANSACTION_TYPES['Holding'])->where('status',Constant::TRANSACTION_STATUS['Paid'])->sum('value');
         return $Deposits - $Withdraws - $Holding;
     }
-    public static function CheckPayment($type,$Transaction){
+    public static function CheckPayment($type,$Transaction): bool
+    {
         switch ($type){
             case Constant::PAYMENT_METHOD['BankTransfer']:
             case Constant::PAYMENT_METHOD['Cash']:{
@@ -282,26 +282,5 @@ class Functions
                 return $miles;
             }
         }
-    }
-    public static function CreateTicket($user_id,$freelancer_id,$order_id){
-        $object = Order::where('user_id', $user_id)->where('order_id', $order_id)->where('freelancer_id', $freelancer_id)->first();
-        $request = $object->status;
-        if($request != Constant::ORDER_STATUSES['NotRecieved']){
-            return $request->failJsonResponse([__('messages.wrong_sequence')]);
-        }
-        if($request != Constant::ORDER_STATUSES['NotDelivered']){
-            $object->setStatus(Constant::ORDER_STATUSES['RecievedByAdmin']);
-            $object->save();
-            OrderStatus::ChangeStatus($object->getId(),Constant::ORDER_STATUSES['RecievedByAdmin']);
-            Functions::SendNotification($object->user,'Order Recieved By Admin','freelancer delivered the order !','تم توصيل الطلب !','قام المزود بتوصيل الطلب',$object->getId(),Constant::NOTIFICATION_TYPE['Order']);
-
-        }
-            $object->setStatus(Constant::ORDER_STATUSES['NotRecievedByAdmin']);
-            $object->save();
-            OrderStatus::ChangeStatus($object->getId(),Constant::ORDER_STATUSES['NotRecievedByAdmin']);
-            Functions::SendNotification($object->freelancer,'Order Not Recieved By Admin','freelancer did not deliver the order !','لم يتم توصيل الطلب !','لم يقم المزود بتوصيل الطلب',$object->getId(),Constant::NOTIFICATION_TYPE['Order']);
-
-
-
     }
 }

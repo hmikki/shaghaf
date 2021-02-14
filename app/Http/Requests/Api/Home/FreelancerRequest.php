@@ -18,21 +18,10 @@ use Illuminate\Http\JsonResponse;
  */
 class FreelancerRequest extends ApiRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
     public function authorize(): bool
     {
-        return $this->user()->getType() == Constant::USER_TYPE['Freelancer'];
+        return $this->user()->getType() == Constant::USER_TYPE['Customer'];
     }
-
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array
-     */
     public function rules(): array
     {
         return [
@@ -42,7 +31,6 @@ class FreelancerRequest extends ApiRequest
     }
     public function run(): JsonResponse
     {
-        $logged = auth()->user();
         $user_id = FreelancerCategory::where('category_id', $this->category_id)->pluck('user_id');
         $Objects = new User();
         $Objects = $Objects->whereIn('id', $user_id);

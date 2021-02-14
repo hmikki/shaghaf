@@ -15,10 +15,10 @@ class CreatePortfolioTable extends Migration
     {
         Schema::create('Portfolio', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->string('title_ar');
             $table->foreignId('user_id');
+            $table->string('description')->nullable();
             $table->string('media');
+            $table->tinyInteger('type');
             $table->timestamps();
         });
     }

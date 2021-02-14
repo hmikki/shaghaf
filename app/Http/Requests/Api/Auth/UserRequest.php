@@ -6,6 +6,7 @@ use App\Http\Requests\Api\ApiRequest;
 use App\Http\Resources\Api\User\UserResource;
 use App\Traits\ResponseTrait;
 use Carbon\Carbon;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\DB;
 
 /**
@@ -27,16 +28,7 @@ use Illuminate\Support\Facades\DB;
  */
 class UserRequest extends ApiRequest
 {
-    use ResponseTrait;
-
-
-
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array
-     */
-    public function rules()
+    public function rules(): array
     {
         return [
             'name' => 'string|max:255,',
@@ -50,14 +42,9 @@ class UserRequest extends ApiRequest
             'portfolio_id' => 'sometimes|exists:Portfolio'
         ];
     }
-    public function attributes()
-    {
-        return [];
-    }
-    public function run()
+    public function run(): JsonResponse
     {
         $logged = auth()->user();
-
         if($this->hasFile('identity_image')){
             $logged->setIdentityImage($this->file('identity_image'));
         }

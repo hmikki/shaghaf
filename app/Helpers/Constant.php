@@ -49,6 +49,10 @@ class Constant
         'Customer'=>1,
         'Freelancer'=>2
     ];
+    const USER_GENDER=[
+        'Male'=>1,
+        'Female'=>2
+    ];
     const USER_TYPE_RULES = '1,2';
     const PRODUCT_TYPE=[
         'Service'=>1,

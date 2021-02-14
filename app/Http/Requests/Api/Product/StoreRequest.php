@@ -9,6 +9,7 @@ use App\Models\FreelancerCategory;
 use App\Models\Media;
 use App\Models\Product;
 use App\Traits\ResponseTrait;
+use Illuminate\Http\JsonResponse;
 
 /**
  * @property mixed name
@@ -20,15 +21,7 @@ use App\Traits\ResponseTrait;
  */
 class StoreRequest extends ApiRequest
 {
-    use ResponseTrait;
-
-
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array
-     */
-    public function rules()
+    public function rules(): array
     {
         return [
             'name'=>'required|string',
@@ -41,8 +34,7 @@ class StoreRequest extends ApiRequest
             'media.*'=>'required|mimes:jpeg,jpg,png'
         ];
     }
-
-    public function run()
+    public function run(): JsonResponse
     {
         $logged = auth()->user();
         $Product =new  Product();
@@ -65,7 +57,6 @@ class StoreRequest extends ApiRequest
         FreelancerCategory::firstOrCreate(
             ['category_id' => $this->category_id,'sub_category_id' => $this->sub_category_id, 'user_id' => $logged->getId()]
         );
-
         $Product->refresh();
         return $this->successJsonResponse([__('messages.saved_successfully')],new ProductResource($Product),'Product');
     }

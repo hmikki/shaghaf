@@ -6,7 +6,6 @@ use App\Helpers\Constant;
 use App\Helpers\Functions;
 use App\Http\Requests\Api\ApiRequest;
 use App\Http\Resources\Api\User\UserResource;
-use App\Traits\ResponseTrait;
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
 
@@ -26,13 +25,6 @@ use Illuminate\Http\JsonResponse;
  */
 class RegistrationRequest extends ApiRequest
 {
-    use ResponseTrait;
-
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array
-     */
     public function rules(): array
     {
         return [

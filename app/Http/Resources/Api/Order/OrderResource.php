@@ -5,23 +5,16 @@ namespace App\Http\Resources\Api\Order;
 use Illuminate\Http\Resources\Json\JsonResource;
 use App\Http\Resources\Api\Home\FreelancerResource;
 
-
 class OrderResource extends JsonResource
 {
-    /**
-     * Transform the resource into an array.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return array
-     */
-    public function toArray($request)
+    public function toArray($request): array
     {
         $Objects = array();
         $Objects['id'] = $this->getId();
         $Objects['user_id'] = $this->getUserId();
         $Objects['User'] = new FreelancerResource($this->user);
         $Objects['Freelancer_id'] = $this->getProviderId();
-        $Objects['Freelancer'] = new FreelancerResource($this->Freelancer);
+        $Objects['Freelancer'] = new FreelancerResource($this->freelancer);
         $Objects['price'] = $this->getAmount();
         $Objects['order_date'] = $this->getOrderDate();
         $Objects['delivered_date'] = $this->getDeliveredDate();

@@ -11,21 +11,10 @@ use Illuminate\Http\JsonResponse;
 class HomeController extends Controller
 {
     use ResponseTrait;
-
-
-    /**
-     * @param InstallRequest $request
-     * @return JsonResponse
-     */
     public function install(InstallRequest $request): JsonResponse
     {
         return $request->run();
     }
-
-    /**
-     * @param FreelancerRequest $request
-     * @return JsonResponse
-     */
     public function get_freelancers(FreelancerRequest $request): JsonResponse
     {
         return $request->run();

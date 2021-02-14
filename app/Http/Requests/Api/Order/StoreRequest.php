@@ -7,10 +7,8 @@ use App\Helpers\Functions;
 use App\Http\Requests\Api\ApiRequest;
 use App\Http\Resources\Api\Order\OrderResource;
 use App\Models\Order;
-use App\Models\OrderStatus;
 use App\Models\Product;
 use App\Models\User;
-use Carbon\Carbon;
 use Illuminate\Http\JsonResponse;
 
 /**
@@ -22,12 +20,6 @@ use Illuminate\Http\JsonResponse;
  */
 class StoreRequest extends ApiRequest
 {
-
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array
-     */
     public function rules(): array
     {
         return [
