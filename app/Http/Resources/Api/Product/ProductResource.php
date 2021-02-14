@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources\Api\Product;
 
+use App\Http\Resources\Api\Home\CategoryResource;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class ProductResource extends JsonResource
@@ -19,6 +20,7 @@ class ProductResource extends JsonResource
         $Objects['name'] = $this->getName();
         $Objects['description'] = $this->getDescription();
         $Objects['category_id'] = $this->getCategoryId();
+        $Objects['category_name'] = $this->category()->name;
         $Objects['sub_category_id'] = $this->getSubCategoryId();
         $Objects['price'] = $this->getPrice();
         $Objects['type'] = $this->getType();

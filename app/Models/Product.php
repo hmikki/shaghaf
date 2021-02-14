@@ -32,6 +32,9 @@ class Product extends Model
     {
         return $this->hasMany(Media::class,'ref_id')->where('media_type',Constant::MEDIA_TYPES['Product']);
     }
+    public function category(){
+        return $this->belongsTo(Category::class, 'category_id');
+    }
     /**
      * @return int
      */
