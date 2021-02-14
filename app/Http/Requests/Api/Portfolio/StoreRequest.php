@@ -48,10 +48,12 @@ class StoreRequest extends FormRequest
             if($this->media == Constant::MEDIA_TYPES['Portfolio_Image']){
                 $Media->setMediaType(Constant::MEDIA_TYPES['Portfolio_Image']);
                 $Media->setFile($media);
+                $portfolio->setMedia($media);
             }
             else if ($this->media == Constant::MEDIA_TYPES['Portfolio_video']){
                 $Media->setMediaType(Constant::MEDIA_TYPES['Portfolio_video']);
                 $Media->setFileVideo($media);
+                $portfolio->setMedia($media);
             }
             $Media->save();
         }
