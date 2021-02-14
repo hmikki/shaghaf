@@ -20,7 +20,7 @@ class ProductResource extends JsonResource
         $Objects['name'] = $this->getName();
         $Objects['description'] = $this->getDescription();
         $Objects['category_id'] = $this->getCategoryId();
-        $Objects['category_name'] = $this->category()->name;
+        $Objects['category_name'] = $this->category_id->name;
         $Objects['sub_category_id'] = $this->getSubCategoryId();
         $Objects['price'] = $this->getPrice();
         $Objects['type'] = $this->getType();
