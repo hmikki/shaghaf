@@ -16,7 +16,7 @@ class IndexRequest extends ApiRequest
     public function rules(): array
     {
         return [
-            'user_id' => 'sometimes|exists:users',
+            'user_id' => 'sometimes|exists:users,id',
             'per_page'=> 'sometimes|numeric'
         ];
     }
