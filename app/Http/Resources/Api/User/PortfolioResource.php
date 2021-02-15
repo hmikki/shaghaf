@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources\Api\User;
 
+use App\Helpers\Constant;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class PortfolioResource extends JsonResource
@@ -12,7 +13,7 @@ class PortfolioResource extends JsonResource
         $Objects['id'] = $this->getId();
         $Objects['description'] = $this->getDescription();
         $Objects['type'] = $this->getType();
-        $Objects['media'] = $this->getMedia();
+        $Objects['media'] = ($this->getType() == Constant::PORTFOLIO_MEDIA_TYPE['Image'])?asset($this->getMedia()):$this->getMedia();
         return $Objects;
     }
 }
