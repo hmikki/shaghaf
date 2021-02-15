@@ -20,7 +20,7 @@ class UpdateRequest extends ApiRequest
     public function rules(): array
     {
         return [
-            'portfolio_id' => 'required|exists:portfolio,id',
+            'portfolio_id' => 'required|exists:portfolios,id',
             'type' => 'required_with:media|in:'.Constant::PORTFOLIO_MEDIA_TYPE_RULES,
             'media'=>'required_with:type'
         ];

@@ -3,13 +3,14 @@
 namespace App\Http\Requests\Api\Portfolio;
 
 use App\Http\Requests\Api\ApiRequest;
+use App\Http\Resources\Api\User\PortfolioResource;
 use App\Models\Portfolio;
 use Illuminate\Http\JsonResponse;
 
 /**
  * @property mixed portfolio_id
  */
-class DestroyRequest extends ApiRequest
+class ShowRequest extends ApiRequest
 {
     public function rules(): array
     {
@@ -19,12 +20,6 @@ class DestroyRequest extends ApiRequest
     }
     public function run(): JsonResponse
     {
-        $Object = (new  Portfolio())->find($this->portfolio_id);
-        try {
-            $Object->delete();
-            return $this->successJsonResponse([__('messages.deleted_successful')]);
-        } catch (\Exception $e) {
-            return $this->errorJsonResponse([$e->getMessage()]);
-        }
+        return $this->successJsonResponse([],new PortfolioResource((new  Portfolio())->find($this->portfolio_id)),'Portfolio');
     }
 }

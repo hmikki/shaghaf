@@ -84,6 +84,7 @@ Route::group([
         'prefix' => 'portfolios',
     ], function (){
         Route::get('/','PortfolioController@index');
+        Route::get('show','PortfolioController@show');
         Route::post('store','PortfolioController@store');
         Route::post('update', 'PortfolioController@update');
         Route::post('destroy', 'PortfolioController@destroy');
