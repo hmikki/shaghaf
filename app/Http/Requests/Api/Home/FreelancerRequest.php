@@ -35,7 +35,7 @@ class FreelancerRequest extends ApiRequest
             $Objects = $Objects->whereIn('id', $user_id);
         }
         if($this->filled('q')){
-            $Objects = $Objects->where('name', '%'.$this->q.'%');
+            $Objects = $Objects->where('name','Like', '%'.$this->q.'%');
         }
         if($this->filled('top_orders') && $this->top_orders){
             $Objects = $Objects->orderBy('order_count', 'desc');
