@@ -81,6 +81,9 @@ class UserRequest extends ApiRequest
         if ($this->filled('bio')){
             $logged->setBio($this->bio);
         }
+        if ($this->filled('gender')){
+            $logged->setGender($this->gender);
+        }
         if ($this->filled('app_locale')){
             $logged->setAppLocale($this->app_locale);
         }
