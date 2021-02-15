@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="46a3cdaa-e07b-49ec-b3a1-f165cf9fa8eb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Requests/Api/Portfolio/ShowRequest.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/PortfolioController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/PortfolioController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Api/Portfolio/DestroyRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Api/Portfolio/DestroyRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Api/Portfolio/UpdateRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Api/Portfolio/UpdateRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Api/Home/FreelancerRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Api/Home/FreelancerRequest.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -223,6 +219,8 @@
       <workItem from="1613292894148" duration="322000" />
       <workItem from="1613293953974" duration="1044000" />
       <workItem from="1613297772350" duration="9017000" />
+      <workItem from="1613369822414" duration="76000" />
+      <workItem from="1613373971963" duration="39000" />
     </task>
     <task id="LOCAL-00001" summary="cities">
       <created>1613291293054</created>

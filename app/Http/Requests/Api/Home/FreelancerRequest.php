@@ -21,8 +21,8 @@ class FreelancerRequest extends ApiRequest
     public function rules(): array
     {
         return [
-        'category_id' => 'required|exists:categories',
-        'sub_category_id' => 'exists:categories'
+            'category_id' => 'required|exists:categories,id',
+            'sub_category_id' => 'exists:categories,id'
         ];
     }
     public function run(): JsonResponse
