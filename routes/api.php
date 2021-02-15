@@ -80,7 +80,14 @@ Route::group([
         Route::post('store','OrderController@store');
         Route::post('update', 'OrderController@update');
     });
-
+    Route::group([
+        'prefix' => 'portfolios',
+    ], function (){
+        Route::get('/','PortfolioController@index');
+        Route::post('store','PortfolioController@store');
+        Route::post('update', 'PortfolioController@update');
+        Route::post('destroy', 'PortfolioController@destroy');
+    });
 });
 
 Route::group([
@@ -94,11 +101,3 @@ Route::group([
     });
 });
 
-Route::group([
-    'prefix' => 'portfolio',
-], function (){
-    Route::get('/','PortfolioController@index');
-    Route::post('store','PortfolioController@store');
-    Route::post('update', 'PortfolioController@update');
-    Route::post('destroy', 'PortfolioController@destroy');
-});

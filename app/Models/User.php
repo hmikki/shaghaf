@@ -50,19 +50,10 @@ class User extends Authenticatable
         return $this->belongsTo(City::class);
     }
 
-    public function portfolio(): hasMany
+    public function portfolios(): hasMany
     {
         return $this->hasMany(Portfolio::class);
     }
-
-//    protected static function boot()
-//    {
-//        parent::boot();
-//        static::deleting(function($Object) {
-////            $doctor = Doctor::where('user_id',$object->id)->first();
-////            $doctor->delete();
-//        });
-//    }
     /**
      * @return int
      */
@@ -128,7 +119,7 @@ class User extends Authenticatable
     }
 
     /**
-     * @return string
+     * @return mixed
      */
     public function getPassword()
     {
@@ -136,7 +127,7 @@ class User extends Authenticatable
     }
 
     /**
-     * @param string $password
+     * @param mixed $password
      */
     public function setPassword($password): void
     {

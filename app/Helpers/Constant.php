@@ -54,6 +54,11 @@ class Constant
         'Female'=>2
     ];
     const USER_TYPE_RULES = '1,2';
+    const PORTFOLIO_MEDIA_TYPE=[
+        'Image'=>1,
+        'Youtube'=>2
+    ];
+    const PORTFOLIO_MEDIA_TYPE_RULES = '1,2';
     const PRODUCT_TYPE=[
         'Service'=>1,
         'Product'=>2

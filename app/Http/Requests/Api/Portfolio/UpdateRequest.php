@@ -3,65 +3,44 @@
 namespace App\Http\Requests\Api\Portfolio;
 
 use App\Helpers\Constant;
+use App\Helpers\Functions;
+use App\Http\Requests\Api\ApiRequest;
 use App\Http\Resources\Api\User\PortfolioResource;
-use App\Models\Media;
 use App\Models\Portfolio;
-use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\JsonResponse;
 
-class UpdateRequest extends FormRequest
+/**
+ * @property mixed portfolio_id
+ * @property mixed description
+ * @property mixed type
+ * @property mixed media
+ */
+class UpdateRequest extends ApiRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
-    public function authorize()
-    {
-        return true;
-    }
-
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array
-     */
-    public function rules()
+    public function rules(): array
     {
         return [
             'portfolio_id' => 'required|exists:portfolio,id',
-            'user_id'=>'required|exists:user,id',
-            'title'=>'string',
-            'media'=>'array',
-            'media.*'=>'mimes:jpeg,jpg,png'
+            'type' => 'required_with:media|in:'.Constant::PORTFOLIO_MEDIA_TYPE_RULES,
+            'media'=>'required_with:type'
         ];
     }
-
-    public function run(){
-        $logged = auth()->user();
-        $Portfolio = (new  Portfolio())->find($this->portfolio_id);
-        if ($this->filled('name')) {
-            $Portfolio->setName($this->name);
+    public function run(): JsonResponse
+    {
+        $Object = (new  Portfolio())->find($this->portfolio_id);
+        if ($this->filled('description')) {
+            $Object->setDescription($this->description);
         }
-        if ($this->filled('title')) {
-            $Portfolio->setTitle((app()->getLocale() == 'ar')? $this->title_ar : $this->title);
-        }
-        $Portfolio->save();
-        $Portfolio->refresh();
-        foreach ($this->file('media') as $media) {
-            $Media = new Media();
-            $Media->setRefId($Portfolio->getId());
-
-            if($this->media == Constant::MEDIA_TYPES['Portfolio_Image']){
-                $Media->setMediaType(Constant::MEDIA_TYPES['Portfolio_Image']);
-                $Media->setFile($media);
+        if ($this->filled('type')) {
+            $Object->setType($this->type);
+            if ($this->type == Constant::PORTFOLIO_MEDIA_TYPE['Image']) {
+                $Object->setMedia(Functions::StoreImage('media','portfolio/media'));
+            }else{
+                $Object->setMedia($this->media);
             }
-            else if ($this->media == Constant::MEDIA_TYPES['Portfolio_video']){
-                $Media->setMediaType(Constant::MEDIA_TYPES['Portfolio_video']);
-                $Media->setFileVideo($media);
-            }
-            $Media->save();
         }
-        return $this->successJsonResponse([__('messages.saved_successfully')],new PortfolioResource($Portfolio),'Product');
-
+        $Object->save();
+        $Object->refresh();
+        return $this->successJsonResponse([__('messages.saved_successfully')],new PortfolioResource($Object),'Portfolio');
     }
 }
