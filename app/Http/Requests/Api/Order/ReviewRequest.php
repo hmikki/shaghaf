@@ -30,7 +30,7 @@ class ReviewRequest extends ApiRequest
         $Order = (new Order())->find($this->order_id);
         $Freelancer = (new User())->find($Order->getFreelancerId());
         $Object = new Review();
-        $Object->setOrderId($Object->getOrderId());
+        $Object->setOrderId($Order->getId());
         $Object->setRate($this->rate);
         $Object->setReview($this->review);
         $Object->save();

@@ -21,6 +21,7 @@ class OrderResource extends JsonResource
         $Objects['total'] = $this->getTotal();
         $Objects['order_date'] = Carbon::parse($this->created_at);
         $Objects['delivered_date'] = $this->getDeliveredDate();
+        $Objects['delivered_time'] = $this->getDeliveredTime();
         $Objects['reject_reason'] = $this->getRejectReason();
         $Objects['cancel_reason'] = $this->getCancelReason();
         $Objects['rate'] = $this->reviews()->avg('rate')??0;
