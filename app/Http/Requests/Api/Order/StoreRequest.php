@@ -24,7 +24,7 @@ class StoreRequest extends ApiRequest
     {
         return [
             'delivered_date'=>'required|date',
-            'delivered_time'=>'required|time',
+            'delivered_time'=>'required',
             'product_id'=>'required|exists:products,id',
             'quantity'=>'required|numeric',
             'note'=>'sometimes|string'
