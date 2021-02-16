@@ -13,7 +13,7 @@ class OrderStatusResource extends JsonResource
         $Objects = array();
         $Objects['created_at'] = Carbon::parse($this->created_at)->format('Y-m-d h:i A');
         $Objects['status'] = $this->getStatus();
-        $Objects['status_str'] = Constant::ORDER_STATUSES[''];
+        $Objects['status_str'] = __('crud.Order.Statuses.'.$this->getStatus());
         return $Objects;
     }
 }
