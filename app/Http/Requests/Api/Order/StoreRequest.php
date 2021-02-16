@@ -37,6 +37,7 @@ class StoreRequest extends ApiRequest
         $Object = new Order();
         $Object->setUserId(auth()->user()->getId());
         $Object->setFreelancerId($Product->getUserId());
+        $Object->setProductId($Product->getId());
         $Object->setPrice($Product->getPrice());
         $Object->setQuantity($this->quantity);
         $Object->setTotal($this->quantity*$Product->getPrice());
