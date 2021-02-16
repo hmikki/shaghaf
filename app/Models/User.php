@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Hash;
  * @property mixed name
  * @property mixed email
  * @property mixed mobile
- * @property string password
+ * @property mixed password
  * @property mixed type
  * @property mixed country_id
  * @property mixed city_id
@@ -29,6 +29,7 @@ use Illuminate\Support\Facades\Hash;
  * @property mixed device_type
  * @property mixed lat
  * @property mixed lng
+ * @property mixed rate
  * @property mixed email_verified_at
  * @property mixed mobile_verified_at
  * @property mixed order_count
@@ -41,7 +42,7 @@ class User extends Authenticatable
 {
     use Notifiable,HasApiTokens;
 
-    protected $fillable = ['name','email','mobile','type','country_id','city_id','avatar','bio','gender','iban_number','identity_image','portfolio_id','device_token','device_type','lat','lng','email_verified_at','mobile_verified_at','app_locale','order_count','is_available','is_active',];
+    protected $fillable = ['name','email','mobile','type','country_id','city_id','avatar','bio','gender','iban_number','identity_image','portfolio_id','device_token','device_type','rate','lat','lng','email_verified_at','mobile_verified_at','app_locale','order_count','is_available','is_active',];
 
     protected $hidden = ['password'];
 
@@ -308,6 +309,22 @@ class User extends Authenticatable
     public function setDeviceType($device_type): void
     {
         $this->device_type = $device_type;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRate()
+    {
+        return $this->rate;
+    }
+
+    /**
+     * @param mixed $rate
+     */
+    public function setRate($rate): void
+    {
+        $this->rate = $rate;
     }
 
     /**

@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Requests\Api\Order\StoreRequest;
-use App\Http\Requests\Api\Order\UpdateRequest;
-use Illuminate\Http\JsonResponse;
 use App\Http\Requests\Api\Order\IndexRequest;
 use App\Http\Requests\Api\Order\ShowRequest;
+use App\Http\Requests\Api\Order\StoreRequest;
+use App\Http\Requests\Api\Order\UpdateRequest;
+use App\Http\Requests\Api\Order\ReviewRequest;
+use Illuminate\Http\JsonResponse;
 use App\Http\Controllers\Controller;
 
 class OrderController extends Controller
@@ -27,9 +28,8 @@ class OrderController extends Controller
     {
         return $request->run();
     }
-//    public function review(ReviewRequest $request): JsonResponse
-//    {
-//        return $request->run();
-//    }
-
+    public function review(ReviewRequest $request): JsonResponse
+    {
+        return $request->run();
+    }
 }

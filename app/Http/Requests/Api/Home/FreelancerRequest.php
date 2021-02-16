@@ -15,6 +15,7 @@ use Illuminate\Http\JsonResponse;
  * @property mixed sub_category_id
  * @property mixed q
  * @property mixed top_orders
+ * @property mixed rate
  */
 class FreelancerRequest extends ApiRequest
 {
@@ -39,6 +40,9 @@ class FreelancerRequest extends ApiRequest
         }
         if($this->filled('top_orders') && $this->top_orders){
             $Objects = $Objects->orderBy('order_count', 'desc');
+        }
+        if($this->filled('rate')){
+            $Objects = $Objects->where('rate', $this->rate);
         }
         $Objects = $Objects->paginate($this->filled('per_page')?$this->per_page:10);
         $Objects = FreelancerResource::collection($Objects);

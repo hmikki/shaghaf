@@ -39,6 +39,7 @@ class StoreRequest extends ApiRequest
         $Object->setFreelancerId($Product->getUserId());
         $Object->setPrice($Product->getPrice());
         $Object->setQuantity($this->quantity);
+        $Object->setTotal($this->quantity*$Product->getPrice());
         $Object->setDeliveredDate($this->delivered_date);
         $Object->setDeliveredTime($this->delivered_time);
         $Object->setNote(@$this->note);
@@ -48,6 +49,7 @@ class StoreRequest extends ApiRequest
         $Freelancer->setOrderCount($Freelancer->getOrderCount()+1);
         $Freelancer->save();
         Functions::ChangeOrderStatus($Object->getId(),Constant::ORDER_STATUSES['New']);
+        Functions::SendNotification($Object->freelancer,'New Order','You have new order !','طلب جديد','لديك طلب جديد !',$Object->getId(),Constant::NOTIFICATION_TYPE['Order'],true);
         return $this->successJsonResponse([__('messages.created_successful')],new OrderResource($Object),'Order');
 
     }

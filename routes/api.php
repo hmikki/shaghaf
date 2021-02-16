@@ -79,6 +79,7 @@ Route::group([
         Route::get('show','OrderController@index');
         Route::post('store','OrderController@store');
         Route::post('update', 'OrderController@update');
+        Route::post('review', 'OrderController@review');
     });
     Route::group([
         'prefix' => 'portfolios',

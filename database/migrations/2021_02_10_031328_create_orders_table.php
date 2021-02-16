@@ -21,6 +21,7 @@ class CreateOrdersTable extends Migration
             $table->tinyInteger('status');
             $table->integer('quantity');
             $table->double('price');
+            $table->double('total');
             $table->date('delivered_date')->nullable();
             $table->time('delivered_time')->nullable();
             $table->string('note')->nullable();

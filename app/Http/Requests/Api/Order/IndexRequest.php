@@ -26,6 +26,5 @@ class IndexRequest extends ApiRequest
         $Objects = $Objects->paginate($this->filled('per_page')?$this->per_page:10);
         $Objects = OrderResource::collection($Objects);
         return $this->successJsonResponse([],$Objects->items(),'Orders',$Objects);
-
     }
 }
