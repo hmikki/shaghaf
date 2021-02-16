@@ -24,6 +24,7 @@ class FreelancerResource extends JsonResource
         $Object['avatar'] = asset($this->getAvatar());
         $Object['lat'] = $this->getLat();
         $Object['lng'] = $this->getLng();
+        $Object['rate'] = $this->getRate();
         $Object['is_available'] = $this->getIsAvailable();
         return $Object;
     }
