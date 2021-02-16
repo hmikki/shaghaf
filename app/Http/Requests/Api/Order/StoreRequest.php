@@ -43,6 +43,7 @@ class StoreRequest extends ApiRequest
         $Object->setTotal($this->quantity*$Product->getPrice());
         $Object->setDeliveredDate($this->delivered_date);
         $Object->setDeliveredTime($this->delivered_time);
+        $Object->setStatus(Constant::ORDER_STATUSES['New']);
         $Object->setNote(@$this->note);
         $Object->save();
         $Object->refresh();
