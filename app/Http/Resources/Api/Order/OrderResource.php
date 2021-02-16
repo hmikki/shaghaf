@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources\Api\Order;
 
+use App\Http\Resources\Api\Product\ProductResource;
 use Carbon\Carbon;
 use Illuminate\Http\Resources\Json\JsonResource;
 use App\Http\Resources\Api\Home\FreelancerResource;
@@ -14,6 +15,8 @@ class OrderResource extends JsonResource
         $Objects['id'] = $this->getId();
         $Objects['user_id'] = $this->getUserId();
         $Objects['User'] = new FreelancerResource($this->user);
+        $Objects['product_id'] = $this->getProductId();
+        $Objects['Product'] = new ProductResource($this->product);
         $Objects['freelancer_id'] = $this->getFreelancerId();
         $Objects['Freelancer'] = new FreelancerResource($this->freelancer);
         $Objects['quantity'] = $this->getQuantity();

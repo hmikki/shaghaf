@@ -36,6 +36,7 @@ class InstallRequest extends ApiRequest
             'UserTypes'=>Constant::USER_TYPE,
             'UserGender'=>Constant::USER_GENDER,
             'ProductTypes'=>Constant::PRODUCT_TYPE,
+            'OrderStatuses'=>Constant::ORDER_STATUSES,
         ];
         return $this->successJsonResponse([],$data);
     }

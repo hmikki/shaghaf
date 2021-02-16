@@ -75,11 +75,11 @@ class Constant
         'Rejected' => 3,
         'Cancelled' => 4,
         'Payed' =>5,
-        'In_progress' => 6,
+        'InProgress' => 6,
         'Delivered' => 7,
         'Received' => 8,
         'NotDelivered' => 9,
-        'NOTReceived' => 10,
+        'NotReceived' => 10,
         'ReceivedByAdmin' => 11,
         'NotReceivedByAdmin' => 12,
     ];

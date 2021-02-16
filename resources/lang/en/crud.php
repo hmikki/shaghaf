@@ -143,4 +143,23 @@ return [
         'title_ar' => 'Title Ar',
         'is_active' => 'Status',
     ],
+    'Order'=>[
+        'crud_names' => 'Orders',
+        'crud_name' => 'Order',
+        'crud_the_name' => 'The Order',
+        'Statuses' => [
+            ''.Constant::ORDER_STATUSES['New']=>'New',
+            ''.Constant::ORDER_STATUSES['Accept']=>'Accept',
+            ''.Constant::ORDER_STATUSES['Rejected']=>'Rejected',
+            ''.Constant::ORDER_STATUSES['Cancelled']=>'Cancelled',
+            ''.Constant::ORDER_STATUSES['Payed']=>'Payed',
+            ''.Constant::ORDER_STATUSES['InProgress']=>'In Progress',
+            ''.Constant::ORDER_STATUSES['Delivered']=>'Delivered',
+            ''.Constant::ORDER_STATUSES['Received']=>'Received',
+            ''.Constant::ORDER_STATUSES['NotDelivered']=>'Not Delivered',
+            ''.Constant::ORDER_STATUSES['NotReceived']=>'Not Received',
+            ''.Constant::ORDER_STATUSES['ReceivedByAdmin']=>'Received Closed',
+            ''.Constant::ORDER_STATUSES['NotReceivedByAdmin']=>'Not Received Closed',
+        ],
+    ],
 ];

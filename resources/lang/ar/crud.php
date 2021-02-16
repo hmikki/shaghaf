@@ -145,4 +145,23 @@ return [
         'title_ar' => 'العنوان عربي',
         'is_active' => 'الحالة',
     ],
+    'Order'=>[
+        'crud_names' => 'الطلبات',
+        'crud_name' => 'طلب',
+        'crud_the_name' => 'الطلب',
+        'Statuses' => [
+            ''.Constant::ORDER_STATUSES['New']=>'جديد',
+            ''.Constant::ORDER_STATUSES['Accept']=>'مقبول',
+            ''.Constant::ORDER_STATUSES['Rejected']=>'مرفوض',
+            ''.Constant::ORDER_STATUSES['Cancelled']=>'ملغي',
+            ''.Constant::ORDER_STATUSES['Payed']=>'مدفوع',
+            ''.Constant::ORDER_STATUSES['InProgress']=>'قيد التنفيذ',
+            ''.Constant::ORDER_STATUSES['Delivered']=>'تم التوصيل',
+            ''.Constant::ORDER_STATUSES['Received']=>'تم التسليم',
+            ''.Constant::ORDER_STATUSES['NotDelivered']=>'لم يتم التوصيل',
+            ''.Constant::ORDER_STATUSES['NotReceived']=>'لم يتم التسليم',
+            ''.Constant::ORDER_STATUSES['ReceivedByAdmin']=>'مغلق تم التسليم',
+            ''.Constant::ORDER_STATUSES['NotReceivedByAdmin']=>'مغلق  لم يتم التسليم',
+        ],
+    ],
 ];

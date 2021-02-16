@@ -39,13 +39,13 @@ class UpdateRequest extends ApiRequest
                 Functions::SendNotification($Object->user,'Order Accept','Freelancer Accepted your order !','الموافقة على الطلب !','قام المزود بالموافقة على طلبك',$Object->getId(),Constant::NOTIFICATION_TYPE['Order']);
                 break;
             }
-            case Constant::ORDER_STATUSES['In_progress']:{
+            case Constant::ORDER_STATUSES['InProgress']:{
                 if ($Object->getStatus() !=Constant::ORDER_STATUSES['Payed']) {
                     return $this->failJsonResponse([__('messages.wrong_sequence')]);
                 }
-                $Object->setStatus(Constant::ORDER_STATUSES['In_progress']);
+                $Object->setStatus(Constant::ORDER_STATUSES['InProgress']);
                 $Object->save();
-                Functions::ChangeOrderStatus($Object->getId(),Constant::ORDER_STATUSES['In_progress']);
+                Functions::ChangeOrderStatus($Object->getId(),Constant::ORDER_STATUSES['InProgress']);
                 Functions::SendNotification($Object->user,'Order In Progress','Provider start work your order !','الطلب قيد التنفيذ !','قام المزود ببدء العمل',$Object->getId(),Constant::NOTIFICATION_TYPE['Order']);
                 break;
             }
