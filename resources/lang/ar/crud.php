@@ -153,7 +153,7 @@ return [
             ''.Constant::ORDER_STATUSES['New']=>'جديد',
             ''.Constant::ORDER_STATUSES['Accept']=>'مقبول',
             ''.Constant::ORDER_STATUSES['Rejected']=>'مرفوض',
-            ''.Constant::ORDER_STATUSES['Cancelled']=>'ملغي',
+            ''.Constant::ORDER_STATUSES['Canceled']=>'ملغي',
             ''.Constant::ORDER_STATUSES['Payed']=>'مدفوع',
             ''.Constant::ORDER_STATUSES['InProgress']=>'قيد التنفيذ',
             ''.Constant::ORDER_STATUSES['Delivered']=>'تم التوصيل',

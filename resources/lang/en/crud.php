@@ -151,7 +151,7 @@ return [
             ''.Constant::ORDER_STATUSES['New']=>'New',
             ''.Constant::ORDER_STATUSES['Accept']=>'Accept',
             ''.Constant::ORDER_STATUSES['Rejected']=>'Rejected',
-            ''.Constant::ORDER_STATUSES['Cancelled']=>'Cancelled',
+            ''.Constant::ORDER_STATUSES['Canceled']=>'Cancelled',
             ''.Constant::ORDER_STATUSES['Payed']=>'Payed',
             ''.Constant::ORDER_STATUSES['InProgress']=>'In Progress',
             ''.Constant::ORDER_STATUSES['Delivered']=>'Delivered',
