@@ -96,6 +96,7 @@ Route::group([
     'prefix' => 'home',
 ], function() {
     Route::get('install','HomeController@install');
+    Route::get('faqs','HomeController@faqs');
     Route::group([
         'middleware' => 'auth:api'
     ], function() {

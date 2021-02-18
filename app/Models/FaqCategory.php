@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * @property integer id
@@ -14,7 +15,8 @@ class FaqCategory extends Model
     protected $table = 'faqs_categories';
     protected $fillable = ['name','name_ar'];
 
-    public function faqs(){
+    public function faqs(): HasMany
+    {
         return $this->hasMany(Faq::class)->where('is_active',true);
     }
     /**
