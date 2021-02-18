@@ -128,6 +128,19 @@ Route::group([
             Route::get('/{id}/activation','FaqController@activation');
         });
         Route::group([
+            'prefix'=>'faq_categories'
+        ],function () {
+            Route::get('/','FaqCategoryController@index');
+            Route::get('/create','FaqCategoryController@create');
+            Route::post('/','FaqCategoryController@store');
+            Route::get('/{faq_category}','FaqCategoryController@show');
+            Route::get('/{faq_category}/edit','FaqCategoryController@edit');
+            Route::put('/{faq_category}','FaqCategoryController@update');
+            Route::delete('/{faq_category}','FaqCategoryController@destroy');
+            Route::get('/option/export','FaqCategoryController@export');
+            Route::get('/{id}/activation','FaqCategoryController@activation');
+        });
+        Route::group([
             'prefix'=>'categories'
         ],function () {
             Route::get('/','CategoryController@index');

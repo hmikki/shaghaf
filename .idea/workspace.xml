@@ -2,14 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="46a3cdaa-e07b-49ec-b3a1-f165cf9fa8eb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Requests/Api/Home/FaqRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Resources/Api/Home/FaqCategoryResource.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/AppData/FaqCategoryController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2020_11_14_190906_create_faqs_categories_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Helpers/Constant.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Helpers/Constant.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Resources/Api/Home/FaqResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/Api/Home/FaqResource.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Faq.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Faq.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/FaqCategory.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/FaqCategory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/AppData/FaqController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/AppData/FaqController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_07_18_082436_create_faqs_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_07_18_082436_create_faqs_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/admin.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -182,7 +180,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Http/Requests/Api/Home" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/database/migrations" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -194,10 +192,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\localhost\shaghaf\database\migrations" />
+      <recent name="D:\localhost\shaghaf\app\Http\Controllers\Admin\AppData" />
+      <recent name="D:\localhost\shaghaf\app\Http\Requests\Api\Home" />
+      <recent name="D:\localhost\shaghaf\app\Http\Resources\Api\Home" />
       <recent name="D:\localhost\shaghaf\app\Http\Resources\Api\Order" />
-      <recent name="D:\localhost\shaghaf\app\Models" />
-      <recent name="D:\localhost\shaghaf\app\Http\Requests\Api\Portfolio" />
-      <recent name="C:\xampp\htdocs\shaghaf\app\Http\Controllers\Api" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\shaghaf\app\Http\Controllers\Api" />
@@ -242,7 +241,7 @@
       <workItem from="1613544546024" duration="81000" />
       <workItem from="1613546810193" duration="5002000" />
       <workItem from="1613637587713" duration="588000" />
-      <workItem from="1613639731781" duration="352000" />
+      <workItem from="1613639731781" duration="1733000" />
     </task>
     <task id="LOCAL-00001" summary="cities">
       <created>1613291293054</created>
