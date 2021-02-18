@@ -56,6 +56,13 @@ return [
         'answer_ar' => 'Answer Ar',
         'is_active' => 'Status',
     ],
+    'FaqCategory'=>[
+        'crud_names' => 'Faq Categories',
+        'crud_name' => 'Faq Category',
+        'crud_the_name' => 'The Faq Category',
+        'name' => 'Name',
+        'name_ar' => 'Name Ar',
+    ],
     'Ticket'=>[
         'crud_names' => 'Tickets',
         'crud_name' => 'Ticket',

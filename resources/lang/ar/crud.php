@@ -57,6 +57,13 @@ return [
         'answer_ar' => 'الإجابة عربي',
         'is_active' => 'الحالة',
     ],
+    'FaqCategory'=>[
+        'crud_names' => 'تصنيفات الأسئلة الشائعة',
+        'crud_name' => 'تصنيف الأسئلة الشائعة',
+        'crud_the_name' => 'التصنيف',
+        'name' => 'الاسم',
+        'name_ar' => 'الاسم عربي',
+    ],
     'Ticket'=>[
         'crud_names' => 'التذاكر',
         'crud_name' => 'تذكرة',
