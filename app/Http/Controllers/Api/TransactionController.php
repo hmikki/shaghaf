@@ -29,8 +29,4 @@ class TransactionController extends Controller
     {
         return $request->run();
     }
-    public function request_refund(RequestRefundRequest $request): JsonResponse
-    {
-        return $request->run();
-    }
 }

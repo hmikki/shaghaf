@@ -20,7 +20,6 @@ class GenerateCheckoutRequest extends ApiRequest
     {
         return [
             'value'=>'required|numeric',
-            'payment_token'=>'required'
         ];
     }
     public function run(): JsonResponse
@@ -29,7 +28,7 @@ class GenerateCheckoutRequest extends ApiRequest
         $Object->setType(Constant::TRANSACTION_TYPES['Deposit']);
         $Object->setValue($this->value);
         $Object->setStatus(Constant::TRANSACTION_STATUS['Pending']);
-        $Object->setPaymentToken($this->payment_token);
+        $Object->setPaymentToken(@$this->payment_token);
         $Object->setUserId(auth()->user()->getId());
         $Object->save();
         return $this->successJsonResponse([],new TransactionResource($Object),'Transaction');

@@ -7,11 +7,9 @@ use App\Http\Requests\Api\ApiRequest;
 use App\Http\Resources\Api\Home\AdvertisementResource;
 use App\Http\Resources\Api\Home\CategoryResource;
 use App\Http\Resources\Api\Home\CountryResource;
-use App\Http\Resources\Api\Home\FaqResource;
 use App\Models\Advertisement;
 use App\Models\Category;
 use App\Models\Country;
-use App\Models\Faq;
 use App\Models\Setting;
 use Illuminate\Http\JsonResponse;
 
@@ -21,7 +19,6 @@ class InstallRequest extends ApiRequest
     {
         $data = [];
         $data['Settings'] = Setting::pluck((app()->getLocale() =='en')?'value':'value_ar','key')->toArray();
-        $data['Faqs'] = FaqResource::collection(Faq::where('is_active',true)->get());
         $data['Categories'] = CategoryResource::collection(Category::where('is_active',true)->whereNull('parent_id')->get());
         $data['Countries'] = CountryResource::collection(Country::where('is_active',true)->get());
         $data['Advertisements'] = AdvertisementResource::collection(Advertisement::where('is_active',true)->get());
