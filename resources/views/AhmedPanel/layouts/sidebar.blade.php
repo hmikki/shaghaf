@@ -56,6 +56,14 @@
                     </a>
                 </li>
             @endif
+            @if (auth('admin')->user()->can('FaqsCategories'))
+                <li class="nav-item @if(strpos(url()->current() , url('app_data/faq_categories'))===0) active @endif">
+                    <a href="{{url('app_data/faq_categories')}}" class="nav-link">
+                        <i class="material-icons">category</i>
+                        <p>{{__('admin.sidebar.faqs_categories')}}</p>
+                    </a>
+                </li>
+            @endif
             @if (auth('admin')->user()->can('Faqs'))
                 <li class="nav-item @if(strpos(url()->current() , url('app_data/faqs'))===0) active @endif">
                     <a href="{{url('app_data/faqs')}}" class="nav-link">
