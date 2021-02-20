@@ -24,4 +24,8 @@ class HomeController extends Controller
     {
         return $request->run();
     }
+    public function advertisements(FaqRequest $request): JsonResponse
+    {
+        return $request->run();
+    }
 }
