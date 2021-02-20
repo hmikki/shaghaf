@@ -4,6 +4,7 @@ namespace App\Http\Requests\Api\Auth;
 
 use App\Http\Requests\Api\ApiRequest;
 use App\Http\Resources\Api\User\UserResource;
+use App\Models\User;
 use App\Traits\ResponseTrait;
 use Carbon\Carbon;
 use Illuminate\Http\JsonResponse;
@@ -44,7 +45,7 @@ class UserRequest extends ApiRequest
     }
     public function run(): JsonResponse
     {
-        $logged = auth()->user();
+        $logged = (new User())->find(auth()->user()->getId());
         if($this->hasFile('identity_image')){
             $logged->setIdentityImage($this->file('identity_image'));
         }
