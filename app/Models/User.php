@@ -12,29 +12,29 @@ use Illuminate\Support\Facades\Hash;
 
 /**
  * @property integer id
- * @property mixed name
- * @property mixed email
- * @property mixed mobile
- * @property mixed password
- * @property mixed type
- * @property mixed country_id
- * @property mixed city_id
- * @property mixed avatar
- * @property mixed bio
- * @property mixed gender
- * @property mixed iban_number
- * @property mixed identity_image
- * @property mixed portfolio_id
- * @property mixed device_token
- * @property mixed device_type
- * @property mixed lat
- * @property mixed lng
- * @property mixed rate
- * @property mixed email_verified_at
- * @property mixed mobile_verified_at
- * @property mixed order_count
- * @property mixed app_locale
- * @property mixed is_available
+ * @property string|null name
+ * @property string|null email
+ * @property string|null mobile
+ * @property string|null password
+ * @property string|null type
+ * @property string|null country_id
+ * @property string|null city_id
+ * @property string|null avatar
+ * @property string|null bio
+ * @property string|null gender
+ * @property string|null iban_number
+ * @property string|null identity_image
+ * @property string|null portfolio_id
+ * @property string|null device_token
+ * @property string|null device_type
+ * @property string|null lat
+ * @property string|null lng
+ * @property string|null rate
+ * @property string|null email_verified_at
+ * @property string|null mobile_verified_at
+ * @property string|null order_count
+ * @property string|null app_locale
+ * @property string|null is_available
  * @property boolean is_active
  * @method User find(int $id)
  */
@@ -74,7 +74,7 @@ class User extends Authenticatable
     /**
      * @return mixed
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
@@ -90,7 +90,7 @@ class User extends Authenticatable
     /**
      * @return mixed
      */
-    public function getEmail()
+    public function getEmail(): ?string
     {
         return $this->email;
     }
@@ -106,7 +106,7 @@ class User extends Authenticatable
     /**
      * @return mixed
      */
-    public function getMobile()
+    public function getMobile(): ?string
     {
         return $this->mobile;
     }
@@ -122,7 +122,7 @@ class User extends Authenticatable
     /**
      * @return mixed
      */
-    public function getPassword()
+    public function getPassword(): ?string
     {
         return $this->password;
     }
@@ -138,7 +138,7 @@ class User extends Authenticatable
     /**
      * @return mixed
      */
-    public function getType()
+    public function getType(): ?string
     {
         return $this->type;
     }
@@ -154,7 +154,7 @@ class User extends Authenticatable
     /**
      * @return mixed
      */
-    public function getCountryId()
+    public function getCountryId(): ?string
     {
         return $this->country_id;
     }
@@ -170,7 +170,7 @@ class User extends Authenticatable
     /**
      * @return mixed
      */
-    public function getCityId()
+    public function getCityId(): ?string
     {
         return $this->city_id;
     }
@@ -202,7 +202,7 @@ class User extends Authenticatable
     /**
      * @return mixed
      */
-    public function getBio()
+    public function getBio(): ?string
     {
         return $this->bio;
     }
@@ -218,7 +218,7 @@ class User extends Authenticatable
     /**
      * @return mixed
      */
-    public function getGender()
+    public function getGender(): ?string
     {
         return $this->gender;
     }
@@ -234,7 +234,7 @@ class User extends Authenticatable
     /**
      * @return mixed
      */
-    public function getIbanNumber()
+    public function getIbanNumber(): ?string
     {
         return $this->iban_number;
     }
@@ -266,7 +266,7 @@ class User extends Authenticatable
     /**
      * @return mixed
      */
-    public function getPortfolioId()
+    public function getPortfolioId(): ?string
     {
         return $this->portfolio_id;
     }
@@ -282,7 +282,7 @@ class User extends Authenticatable
     /**
      * @return mixed
      */
-    public function getDeviceToken()
+    public function getDeviceToken(): ?string
     {
         return $this->device_token;
     }
@@ -298,7 +298,7 @@ class User extends Authenticatable
     /**
      * @return mixed
      */
-    public function getDeviceType()
+    public function getDeviceType(): ?string
     {
         return $this->device_type;
     }
@@ -314,7 +314,7 @@ class User extends Authenticatable
     /**
      * @return mixed
      */
-    public function getRate()
+    public function getRate(): ?string
     {
         return $this->rate;
     }
@@ -330,7 +330,7 @@ class User extends Authenticatable
     /**
      * @return mixed
      */
-    public function getLat()
+    public function getLat(): ?string
     {
         return $this->lat;
     }
@@ -346,7 +346,7 @@ class User extends Authenticatable
     /**
      * @return mixed
      */
-    public function getLng()
+    public function getLng(): ?string
     {
         return $this->lng;
     }
@@ -362,7 +362,7 @@ class User extends Authenticatable
     /**
      * @return mixed
      */
-    public function getEmailVerifiedAt()
+    public function getEmailVerifiedAt(): ?string
     {
         return $this->email_verified_at;
     }
@@ -378,7 +378,7 @@ class User extends Authenticatable
     /**
      * @return mixed
      */
-    public function getMobileVerifiedAt()
+    public function getMobileVerifiedAt(): ?string
     {
         return $this->mobile_verified_at;
     }
@@ -394,7 +394,7 @@ class User extends Authenticatable
     /**
      * @return mixed
      */
-    public function getAppLocale()
+    public function getAppLocale(): ?string
     {
         return $this->app_locale;
     }
@@ -410,7 +410,7 @@ class User extends Authenticatable
     /**
      * @return mixed
      */
-    public function getIsAvailable()
+    public function getIsAvailable(): ?string
     {
         return $this->is_available;
     }
@@ -442,7 +442,7 @@ class User extends Authenticatable
     /**
      * @return mixed
      */
-    public function getOrderCount()
+    public function getOrderCount(): ?string
     {
         return $this->order_count;
     }
