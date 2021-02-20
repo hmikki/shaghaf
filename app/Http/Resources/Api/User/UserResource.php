@@ -18,28 +18,28 @@ class UserResource extends JsonResource
     }
     public function toArray($request): array
     {
-        $Object['id'] = $this->getId();
-        $Object['name'] = $this->getName();
-        $Object['mobile'] = $this->getMobile();
-        $Object['country_id'] = $this->getCountryId();
-        $Object['city_id'] = $this->getCityId();
+        $Object['id'] = (string) $this->getId();
+        $Object['name'] = (string) $this->getName();
+        $Object['mobile'] = (string) $this->getMobile();
+        $Object['country_id'] = (string) $this->getCountryId();
+        $Object['city_id'] = (string) $this->getCityId();
         $Object['Country'] = new CountryResource($this->country);
         $Object['City'] = new CityResource($this->city);
-        $Object['email'] = $this->getEmail();
-        $Object['bio'] = $this->getBio();
-        $Object['gender'] = $this->getGender();
-        $Object['iban_number'] = $this->getIbanNumber();
-        $Object['identity_image'] = $this->getIdentityImage();
-        $Object['mobile_verified_at'] = $this->getMobileVerifiedAt()?Carbon::parse($this->getMobileVerifiedAt())->format('Y-m-d'):null;
-        $Object['email_verified_at'] = $this->getEmailVerifiedAt()?Carbon::parse($this->getEmailVerifiedAt())->format('Y-m-d'):null;
-        $Object['avatar'] = asset($this->getAvatar());
-        $Object['lat'] = $this->getLat();
-        $Object['lng'] = $this->getLng();
-        $Object['type'] = $this->getType();
+        $Object['email'] = (string) $this->getEmail();
+        $Object['bio'] = (string) $this->getBio();
+        $Object['gender'] = (string) $this->getGender();
+        $Object['iban_number'] = (string) $this->getIbanNumber();
+        $Object['identity_image'] = (string) $this->getIdentityImage();
+        $Object['mobile_verified_at'] = (string) $this->getMobileVerifiedAt()?Carbon::parse($this->getMobileVerifiedAt())->format('Y-m-d'):null;
+        $Object['email_verified_at'] = (string) $this->getEmailVerifiedAt()?Carbon::parse($this->getEmailVerifiedAt())->format('Y-m-d'):null;
+        $Object['avatar'] = (string) asset($this->getAvatar());
+        $Object['lat'] = (string) $this->getLat();
+        $Object['lng'] = (string) $this->getLng();
+        $Object['type'] = (string) $this->getType();
         $Object['Portfolios'] = PortfolioResource::collection($this->portfolios);
-        $Object['is_available'] = $this->getIsAvailable();
-        $Object['app_locale'] = $this->getAppLocale();
-        $Object['notification_count'] = Notification::where('user_id',$this->getId())->where('read_at',null)->count();
+        $Object['is_available'] = (string) $this->getIsAvailable();
+        $Object['app_locale'] = (string) $this->getAppLocale();
+        $Object['notification_count'] = (string) Notification::where('user_id',$this->getId())->where('read_at',null)->count();
         $Object['access_token'] = $this->token;
         $Object['token_type'] = 'Bearer';
         return $Object;
