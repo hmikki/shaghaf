@@ -45,7 +45,7 @@ class UserRequest extends ApiRequest
     }
     public function run(): JsonResponse
     {
-        $logged = (new User())->find(auth()->user()->getId());
+        $logged = $this->user();
         if($this->hasFile('identity_image')){
             $logged->setIdentityImage($this->file('identity_image'));
         }
