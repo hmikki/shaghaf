@@ -12,7 +12,7 @@ class CategoryRequest extends ApiRequest
 
     public function run(): JsonResponse
     {
-        return $this->successJsonResponse([],CategoryResource::collection(Category::where('is_active',true)->get()),'Categories');
+        return $this->successJsonResponse([],CategoryResource::collection(Category::where('is_active',true)->whereNull('parent_id')->get()),'Categories');
 
     }
 }
