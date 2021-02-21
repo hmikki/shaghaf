@@ -8,6 +8,7 @@ use App\Http\Requests\Api\Product\ShowRequest;
 use App\Http\Requests\Api\Product\StoreRequest;
 use App\Http\Requests\Api\Product\UpdateRequest;
 use App\Http\Requests\Api\Product\DestroyRequest;
+use App\Http\Requests\Api\Product\DestroyMediaRequest;
 use Illuminate\Http\JsonResponse;
 
 class ProductController extends Controller
@@ -29,6 +30,10 @@ class ProductController extends Controller
         return $request->run();
     }
     public function destroy(DestroyRequest $request): JsonResponse
+    {
+        return $request->run();
+    }
+    public function destroy_media(DestroyMediaRequest $request): JsonResponse
     {
         return $request->run();
     }

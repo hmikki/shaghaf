@@ -69,6 +69,7 @@ Route::group([
         Route::post('store','ProductController@store');
         Route::post('update','ProductController@update');
         Route::post('destroy','ProductController@destroy');
+        Route::post('media/destroy','ProductController@destroy_media');
     });
 
     Route::group([
