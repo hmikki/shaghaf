@@ -29,4 +29,8 @@ class HomeController extends Controller
     {
         return $request->run();
     }
+    public function categories(AdvertisementRequest $request): JsonResponse
+    {
+        return $request->run();
+    }
 }

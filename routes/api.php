@@ -97,6 +97,7 @@ Route::group([
     Route::get('install','HomeController@install');
     Route::get('faqs','HomeController@faqs');
     Route::get('advertisements','HomeController@advertisements');
+    Route::get('categories','HomeController@advertisements');
     Route::group([
         'middleware' => 'auth:api'
     ], function() {
