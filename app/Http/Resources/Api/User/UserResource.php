@@ -36,7 +36,7 @@ class UserResource extends JsonResource
         $Object['lat'] = $this->getLat();
         $Object['lng'] = $this->getLng();
         $Object['type'] = $this->getType();
-        $Object['Portfolio'] = PortfolioResource::collection($this->portfolio);
+        $Object['Portfolios'] = PortfolioResource::collection($this->portfolios);
         $Object['is_available'] = $this->getIsAvailable();
         $Object['app_locale'] = $this->getAppLocale();
         $Object['notification_count'] = Notification::where('user_id',$this->getId())->where('read_at',null)->count();

@@ -6,7 +6,6 @@ use App\Helpers\Functions;
 use App\Http\Requests\Api\ApiRequest;
 use App\Http\Resources\Api\Order\OrderResource;
 use App\Models\Order;
-use App\Models\OrderStatus;
 use App\Helpers\Constant;
 use Illuminate\Http\JsonResponse;
 
@@ -37,16 +36,26 @@ class UpdateRequest extends ApiRequest
                 $Object->setStatus(Constant::ORDER_STATUSES['Accept']);
                 $Object->save();
                 Functions::ChangeOrderStatus($Object->getId(),Constant::ORDER_STATUSES['Accept']);
-                Functions::SendNotification($Object->user,'Order Accept','Provider Accepted your order !','الموافقة على الطلب !','قام المزود بالموافقة على طلبك',$Object->getId(),Constant::NOTIFICATION_TYPE['Order']);
+                Functions::SendNotification($Object->user,'Order Accept','Freelancer Accepted your order !','الموافقة على الطلب !','قام المزود بالموافقة على طلبك',$Object->getId(),Constant::NOTIFICATION_TYPE['Order']);
                 break;
             }
-            case Constant::ORDER_STATUSES['In_progress']:{
+            case Constant::ORDER_STATUSES['Payed']:{
+                if ($Object->getStatus() !=Constant::ORDER_STATUSES['Accept']) {
+                    return $this->failJsonResponse([__('messages.wrong_sequence')]);
+                }
+                $Object->setStatus(Constant::ORDER_STATUSES['Payed']);
+                $Object->save();
+                Functions::ChangeOrderStatus($Object->getId(),Constant::ORDER_STATUSES['Payed']);
+                Functions::SendNotification($Object->freelancer,'Order Payed','Customer Payed your order !','تم الدفع !','قام الزبون بدفع قيمة طلبك',$Object->getId(),Constant::NOTIFICATION_TYPE['Order']);
+                break;
+            }
+            case Constant::ORDER_STATUSES['InProgress']:{
                 if ($Object->getStatus() !=Constant::ORDER_STATUSES['Payed']) {
                     return $this->failJsonResponse([__('messages.wrong_sequence')]);
                 }
-                $Object->setStatus(Constant::ORDER_STATUSES['In_progress']);
+                $Object->setStatus(Constant::ORDER_STATUSES['InProgress']);
                 $Object->save();
-                Functions::ChangeOrderStatus($Object->getId(),Constant::ORDER_STATUSES['In_progress']);
+                Functions::ChangeOrderStatus($Object->getId(),Constant::ORDER_STATUSES['InProgress']);
                 Functions::SendNotification($Object->user,'Order In Progress','Provider start work your order !','الطلب قيد التنفيذ !','قام المزود ببدء العمل',$Object->getId(),Constant::NOTIFICATION_TYPE['Order']);
                 break;
             }
@@ -72,15 +81,14 @@ class UpdateRequest extends ApiRequest
                 Functions::SendNotification($Object->freelancer,'Order Canceled','Customer Canceled the order !','إلغاء الطلب !','قام المستخدم بإلغاء الطلب',$Object->getId(),Constant::NOTIFICATION_TYPE['Order']);
                 break;
             }
-            //ممكن اضيف حالة complete اذا صار الطلب كامل بقدر احول حالتو ل delivered
             case Constant::ORDER_STATUSES['Delivered']:{
-                if ($Object->getStatus() !=Constant::ORDER_STATUSES['In_progress']) {
+                if ($Object->getStatus() !=Constant::ORDER_STATUSES['InProgress']) {
                     return $this->failJsonResponse([__('messages.wrong_sequence')]);
                 }
                 $Object->setStatus(Constant::ORDER_STATUSES['Delivered']);
                 $Object->save();
                 Functions::ChangeOrderStatus($Object->getId(),Constant::ORDER_STATUSES['Delivered']);
-                Functions::SendNotification($Object->freelancer,'Order Delivered','Provider Delivered the order !','تم تسليم الطلب','قام المزود بتسليم الطلب',$Object->getId(),Constant::NOTIFICATION_TYPE['Order']);
+                Functions::SendNotification($Object->user,'Order Delivered','Provider Delivered the order !','تم تسليم الطلب','قام المزود بتسليم الطلب',$Object->getId(),Constant::NOTIFICATION_TYPE['Order']);
                 break;
             }
             case Constant::ORDER_STATUSES['Received']:{
@@ -102,7 +110,6 @@ class UpdateRequest extends ApiRequest
                 $Object->save();
                 Functions::ChangeOrderStatus($Object->getId(),Constant::ORDER_STATUSES['NotReceived']);
                 Functions::SendNotification($Object->user,'Order Not Received','Customer did not receive the order !','لم يتم استلام الطلب !','لم يقم المستخدم باستلام الطلب',$Object->getId(),Constant::NOTIFICATION_TYPE['Order']);
-//                Functions::CreateTicket();
                 break;
             }
             case Constant::ORDER_STATUSES['NotDelivered']:{
@@ -118,6 +125,5 @@ class UpdateRequest extends ApiRequest
         }
         $Object->save();
         return $this->successJsonResponse([__('messages.updated_successful')],new OrderResource($Object),'Order');
-
     }
 }

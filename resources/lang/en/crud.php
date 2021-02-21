@@ -56,6 +56,13 @@ return [
         'answer_ar' => 'Answer Ar',
         'is_active' => 'Status',
     ],
+    'FaqCategory'=>[
+        'crud_names' => 'Faq Categories',
+        'crud_name' => 'Faq Category',
+        'crud_the_name' => 'The Faq Category',
+        'name' => 'Name',
+        'name_ar' => 'Name Ar',
+    ],
     'Ticket'=>[
         'crud_names' => 'Tickets',
         'crud_name' => 'Ticket',
@@ -142,5 +149,24 @@ return [
         'title' => 'Title',
         'title_ar' => 'Title Ar',
         'is_active' => 'Status',
+    ],
+    'Order'=>[
+        'crud_names' => 'Orders',
+        'crud_name' => 'Order',
+        'crud_the_name' => 'The Order',
+        'Statuses' => [
+            ''.Constant::ORDER_STATUSES['New']=>'New',
+            ''.Constant::ORDER_STATUSES['Accept']=>'Accept',
+            ''.Constant::ORDER_STATUSES['Rejected']=>'Rejected',
+            ''.Constant::ORDER_STATUSES['Canceled']=>'Cancelled',
+            ''.Constant::ORDER_STATUSES['Payed']=>'Payed',
+            ''.Constant::ORDER_STATUSES['InProgress']=>'In Progress',
+            ''.Constant::ORDER_STATUSES['Delivered']=>'Delivered',
+            ''.Constant::ORDER_STATUSES['Received']=>'Received',
+            ''.Constant::ORDER_STATUSES['NotDelivered']=>'Not Delivered',
+            ''.Constant::ORDER_STATUSES['NotReceived']=>'Not Received',
+            ''.Constant::ORDER_STATUSES['ReceivedByAdmin']=>'Received Closed',
+            ''.Constant::ORDER_STATUSES['NotReceivedByAdmin']=>'Not Received Closed',
+        ],
     ],
 ];

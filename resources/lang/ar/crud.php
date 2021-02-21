@@ -57,6 +57,13 @@ return [
         'answer_ar' => 'الإجابة عربي',
         'is_active' => 'الحالة',
     ],
+    'FaqCategory'=>[
+        'crud_names' => 'تصنيفات الأسئلة الشائعة',
+        'crud_name' => 'تصنيف الأسئلة الشائعة',
+        'crud_the_name' => 'التصنيف',
+        'name' => 'الاسم',
+        'name_ar' => 'الاسم عربي',
+    ],
     'Ticket'=>[
         'crud_names' => 'التذاكر',
         'crud_name' => 'تذكرة',
@@ -144,5 +151,24 @@ return [
         'title' => 'العنوان',
         'title_ar' => 'العنوان عربي',
         'is_active' => 'الحالة',
+    ],
+    'Order'=>[
+        'crud_names' => 'الطلبات',
+        'crud_name' => 'طلب',
+        'crud_the_name' => 'الطلب',
+        'Statuses' => [
+            ''.Constant::ORDER_STATUSES['New']=>'جديد',
+            ''.Constant::ORDER_STATUSES['Accept']=>'مقبول',
+            ''.Constant::ORDER_STATUSES['Rejected']=>'مرفوض',
+            ''.Constant::ORDER_STATUSES['Canceled']=>'ملغي',
+            ''.Constant::ORDER_STATUSES['Payed']=>'مدفوع',
+            ''.Constant::ORDER_STATUSES['InProgress']=>'قيد التنفيذ',
+            ''.Constant::ORDER_STATUSES['Delivered']=>'تم التوصيل',
+            ''.Constant::ORDER_STATUSES['Received']=>'تم التسليم',
+            ''.Constant::ORDER_STATUSES['NotDelivered']=>'لم يتم التوصيل',
+            ''.Constant::ORDER_STATUSES['NotReceived']=>'لم يتم التسليم',
+            ''.Constant::ORDER_STATUSES['ReceivedByAdmin']=>'مغلق تم التسليم',
+            ''.Constant::ORDER_STATUSES['NotReceivedByAdmin']=>'مغلق  لم يتم التسليم',
+        ],
     ],
 ];

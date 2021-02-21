@@ -9,9 +9,8 @@ class Constant
     const NOTIFICATION_TYPE = [
         'General'=>1,
         'Ticket'=>2,
-        'Subscription'=>3,
-        'Order'=>4,
-        'Message' => 5
+        'Order'=>3,
+        'Message' => 4
     ];
     const VERIFICATION_TYPE = [
         'Email'=>1,
@@ -54,6 +53,11 @@ class Constant
         'Female'=>2
     ];
     const USER_TYPE_RULES = '1,2';
+    const PORTFOLIO_MEDIA_TYPE=[
+        'Image'=>1,
+        'Youtube'=>2
+    ];
+    const PORTFOLIO_MEDIA_TYPE_RULES = '1,2';
     const PRODUCT_TYPE=[
         'Service'=>1,
         'Product'=>2
@@ -68,16 +72,16 @@ class Constant
         'New' => 1,
         'Accept' => 2,
         'Rejected' => 3,
-        'Cancelled' => 4,
+        'Canceled' => 4,
         'Payed' =>5,
-        'In_progress' => 6,
+        'InProgress' => 6,
         'Delivered' => 7,
         'Received' => 8,
         'NotDelivered' => 9,
-        'NOTReceived' => 10,
+        'NotReceived' => 10,
         'ReceivedByAdmin' => 11,
         'NotReceivedByAdmin' => 12,
     ];
-
+    const COMPLETED_ORDER_STATUSES = [self::ORDER_STATUSES['Rejected'],self::ORDER_STATUSES['Canceled'],self::ORDER_STATUSES['Received'],self::ORDER_STATUSES['ReceivedByAdmin'],self::ORDER_STATUSES['NotReceivedByAdmin']];
     const ORDER_STATUSES_RULES = '1,2,3,4,5,6,7,8,9,10,11,12';
 }

@@ -26,6 +26,7 @@ return [
         'advertisements'=>'الإعلانات',
         'settings'=>'الإعدادات',
         'faqs'=>'الأسئلة الشائعة',
+        'faqs_categories'=>'تصنيفات الأسئلة الشائعة',
         'categories'=>'التصنيفات',
         'users'=>'المستخدمين',
         'tickets'=>'التذاكر',

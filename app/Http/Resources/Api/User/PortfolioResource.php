@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources\Api\User;
 
+use App\Helpers\Constant;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class PortfolioResource extends JsonResource
@@ -10,9 +11,9 @@ class PortfolioResource extends JsonResource
     {
         $Objects = array();
         $Objects['id'] = $this->getId();
-        $Objects['title'] = (app()->getLocale() == 'ar')?$this->getTitleAr() : $this->getTitle();
-        $Objects['user_id'] = $this->getUserId();
-        $Objects['Media'] = MediaResource::collection($this->media);
+        $Objects['description'] = $this->getDescription();
+        $Objects['type'] = $this->getType();
+        $Objects['media'] = ($this->getType() == Constant::PORTFOLIO_MEDIA_TYPE['Image'])?asset($this->getMedia()):$this->getMedia();
         return $Objects;
     }
 }

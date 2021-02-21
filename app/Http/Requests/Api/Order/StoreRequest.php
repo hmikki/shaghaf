@@ -24,7 +24,7 @@ class StoreRequest extends ApiRequest
     {
         return [
             'delivered_date'=>'required|date',
-            'delivered_time'=>'required|time',
+            'delivered_time'=>'required',
             'product_id'=>'required|exists:products,id',
             'quantity'=>'required|numeric',
             'note'=>'sometimes|string'
@@ -37,10 +37,13 @@ class StoreRequest extends ApiRequest
         $Object = new Order();
         $Object->setUserId(auth()->user()->getId());
         $Object->setFreelancerId($Product->getUserId());
+        $Object->setProductId($Product->getId());
         $Object->setPrice($Product->getPrice());
         $Object->setQuantity($this->quantity);
+        $Object->setTotal($this->quantity*$Product->getPrice());
         $Object->setDeliveredDate($this->delivered_date);
         $Object->setDeliveredTime($this->delivered_time);
+        $Object->setStatus(Constant::ORDER_STATUSES['New']);
         $Object->setNote(@$this->note);
         $Object->save();
         $Object->refresh();
@@ -48,6 +51,7 @@ class StoreRequest extends ApiRequest
         $Freelancer->setOrderCount($Freelancer->getOrderCount()+1);
         $Freelancer->save();
         Functions::ChangeOrderStatus($Object->getId(),Constant::ORDER_STATUSES['New']);
+        Functions::SendNotification($Object->freelancer,'New Order','You have new order !','طلب جديد','لديك طلب جديد !',$Object->getId(),Constant::NOTIFICATION_TYPE['Order'],true);
         return $this->successJsonResponse([__('messages.created_successful')],new OrderResource($Object),'Order');
 
     }

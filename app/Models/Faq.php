@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
  * @property integer id
@@ -20,7 +21,8 @@ class Faq extends Model
     protected $table = 'faqs';
     protected $fillable = ['faq_category_id','question','question_ar','answer','answer_ar','is_active'];
 
-    public function faq_category(){
+    public function faq_category(): BelongsTo
+    {
         return $this->belongsTo(FaqCategory::class);
     }
     /**

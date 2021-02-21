@@ -25,6 +25,7 @@ return [
         'advertisements'=>'Advertisements',
         'admins'=>'Admins',
         'settings'=>'Settings',
+        'faqs_categories'=>'FAQ Categories',
         'faqs'=>'FAQ',
         'users'=>'Users',
         'tickets'=>'Tickets',

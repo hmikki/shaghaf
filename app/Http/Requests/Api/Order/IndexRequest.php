@@ -11,6 +11,7 @@ use App\Http\Resources\Api\Order\OrderResource;
 
 /**
  * @property mixed per_page
+ * @property mixed is_completed
  */
 class IndexRequest extends ApiRequest
 {
@@ -23,9 +24,13 @@ class IndexRequest extends ApiRequest
         }else{
             $Objects = $Objects->where('freelancer_id',$logged->getId());
         }
+        if ($this->filled('is_completed') && $this->is_completed) {
+            $Objects = $Objects->whereIn('status',Constant::COMPLETED_ORDER_STATUSES);
+        }else{
+            $Objects = $Objects->whereNotIn('status',Constant::COMPLETED_ORDER_STATUSES);
+        }
         $Objects = $Objects->paginate($this->filled('per_page')?$this->per_page:10);
         $Objects = OrderResource::collection($Objects);
         return $this->successJsonResponse([],$Objects->items(),'Orders',$Objects);
-
     }
 }

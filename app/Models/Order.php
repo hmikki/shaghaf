@@ -15,6 +15,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property mixed quantity
  * @property mixed note
  * @property mixed price
+ * @property mixed total
  * @property mixed delivered_date
  * @property mixed delivered_time
  * @property mixed reject_reason
@@ -24,7 +25,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Order extends Model
 {
     protected $table = 'orders';
-    protected $fillable = ['user_id','freelancer_id','product_id','status','quantity','price','note','delivered_date','delivered_time','reject_reason','cancel_reason'];
+    protected $fillable = ['user_id','freelancer_id','product_id','status','quantity','price','total','note','delivered_date','delivered_time','reject_reason','cancel_reason'];
 
     public function user(): BelongsTo
     {
@@ -41,6 +42,10 @@ class Order extends Model
     public function order_statuses(): HasMany
     {
         return $this->hasMany(OrderStatus::class);
+    }
+    public function reviews(): HasMany
+    {
+        return $this->hasMany(Review::class);
     }
     /**
      * @return int
@@ -184,6 +189,22 @@ class Order extends Model
     public function setPrice($price): void
     {
         $this->price = $price;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTotal()
+    {
+        return $this->total;
+    }
+
+    /**
+     * @param mixed $total
+     */
+    public function setTotal($total): void
+    {
+        $this->total = $total;
     }
 
     /**

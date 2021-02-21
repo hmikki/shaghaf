@@ -58,12 +58,14 @@ class UpdateRequest extends ApiRequest
         }
         $Product->save();
         $Product->refresh();
-        foreach ($this->file('media') as $media) {
-            $Media = new Media();
-            $Media->setRefId($Product->getId());
-            $Media->setMediaType(Constant::MEDIA_TYPES['Product']);
-            $Media->setFile($media);
-            $Media->save();
+        if ($this->hasFile('media')) {
+            foreach ($this->file('media') as $media) {
+                $Media = new Media();
+                $Media->setRefId($Product->getId());
+                $Media->setMediaType(Constant::MEDIA_TYPES['Product']);
+                $Media->setFile($media);
+                $Media->save();
+            }
         }
         return $this->successJsonResponse([__('messages.saved_successfully')],new ProductResource($Product),'Product');
     }

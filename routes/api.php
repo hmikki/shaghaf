@@ -52,7 +52,6 @@ Route::group([
         Route::get('my_balance', 'TransactionController@my_balance');
         Route::post('generate_checkout', 'TransactionController@generate_checkout');
         Route::get('check_payment', 'TransactionController@check_payment');
-        Route::post('request_refund', 'TransactionController@request_refund');
     });
     Route::group([
         'prefix' => 'tickets',
@@ -76,17 +75,28 @@ Route::group([
         'prefix' => 'orders'
     ], function (){
         Route::get('/','OrderController@index');
-        Route::get('show','OrderController@index');
+        Route::get('show','OrderController@show');
         Route::post('store','OrderController@store');
         Route::post('update', 'OrderController@update');
+        Route::post('review', 'OrderController@review');
     });
-
+    Route::group([
+        'prefix' => 'portfolios',
+    ], function (){
+        Route::get('/','PortfolioController@index');
+        Route::get('show','PortfolioController@show');
+        Route::post('store','PortfolioController@store');
+        Route::post('update', 'PortfolioController@update');
+        Route::post('destroy', 'PortfolioController@destroy');
+    });
 });
 
 Route::group([
     'prefix' => 'home',
 ], function() {
     Route::get('install','HomeController@install');
+    Route::get('faqs','HomeController@faqs');
+    Route::get('advertisements','HomeController@advertisements');
     Route::group([
         'middleware' => 'auth:api'
     ], function() {
@@ -94,11 +104,3 @@ Route::group([
     });
 });
 
-Route::group([
-    'prefix' => 'portfolio',
-], function (){
-    Route::get('/','PortfolioController@index');
-    Route::post('store','PortfolioController@store');
-    Route::post('update', 'PortfolioController@update');
-    Route::post('destroy', 'PortfolioController@destroy');
-});
