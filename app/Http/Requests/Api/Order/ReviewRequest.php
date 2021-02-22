@@ -35,7 +35,7 @@ class ReviewRequest extends ApiRequest
         $Object->setReview($this->review);
         $Object->save();
         $OrderIds = (new Order())->where('freelancer_id',$Freelancer->getId())->pluck('id');
-        $Rate = (new Review())->whereIn('order_od',$OrderIds)->avg('rate');
+        $Rate = (new Review())->whereIn('order_id',$OrderIds)->avg('rate');
         $Freelancer->setRate($Rate);
         $Freelancer->save();
         return $this->successJsonResponse([],new OrderResource($Order),'Order');
