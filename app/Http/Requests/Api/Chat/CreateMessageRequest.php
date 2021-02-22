@@ -21,7 +21,7 @@ class CreateMessageRequest extends ApiRequest
     {
         return [
             'chat_room_id'=>'required|exists:chats_rooms,id',
-            'type'=>'required|in:'.Constant::CHAT_MESSAGE_TYPE,
+            'type'=>'required|in:'.Constant::CHAT_MESSAGE_TYPE_RULES,
             'message'=>'required'
         ];
     }
