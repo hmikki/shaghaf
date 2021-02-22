@@ -38,7 +38,7 @@ class CreateMessageRequest extends ApiRequest
         $ChatRoom->setLatestMessage($this->message);
         $ChatRoom->setLatestType($this->type);
         $ChatRoom->setLatestUserId($logged->getId());
-        $ChatRoom->setUnreadMessages($ChatRoom->getLatestMessage()+1);
+        $ChatRoom->setUnreadMessages($ChatRoom->getUnreadMessages()+1);
         $ChatRoom->save();
         return $this->successJsonResponse([],new ChatRoomMessageResource($Object),'ChatRoomMessage');
     }
