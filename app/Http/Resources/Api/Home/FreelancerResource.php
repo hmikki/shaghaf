@@ -4,9 +4,6 @@ namespace App\Http\Resources\Api\Home;
 
 use App\Models\Category;
 use App\Models\FreelancerCategory;
-use App\Models\Notification;
-use Carbon\Carbon;
-use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class FreelancerResource extends JsonResource
@@ -28,7 +25,7 @@ class FreelancerResource extends JsonResource
         $Object['lng'] = $this->getLng();
         $Object['rate'] = $this->getRate();
         $Object['is_available'] = $this->getIsAvailable();
-        $Object['Categories'] = CategoryResource::collection(Category::whereIn('id',FreelancerCategory::where('user_id',$this->getId())->pluck('category_id'))->get());
+        $Object['Categories'] = CategoryListResource::collection(Category::whereIn('id',FreelancerCategory::where('user_id',$this->getId())->pluck('category_id'))->get());
         return $Object;
     }
 
