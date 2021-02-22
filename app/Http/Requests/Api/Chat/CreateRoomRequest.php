@@ -23,8 +23,8 @@ class CreateRoomRequest extends ApiRequest
     public function run(): JsonResponse
     {
         $logged = auth()->user()->getId();
-        $LRoomsId = ChatRoomUser::where('user_id',$logged)->pluck('chat_room_id');
-        $URoomsId = ChatRoomUser::where('user_id',$this->user_id)->pluck('chat_room_id');
+        $LRoomsId = ChatRoomUser::where('user_id',$logged)->pluck('chat_room_id')->toArray();
+        $URoomsId = ChatRoomUser::where('user_id',$this->user_id)->pluck('chat_room_id')->toArray();
         $similarity = array_intersect($LRoomsId,$URoomsId);
         if (!empty($similarity)) {
             $Object = new ChatRoom();
@@ -38,9 +38,10 @@ class CreateRoomRequest extends ApiRequest
             $LObject->setUserId($this->user_id);
             $LObject->setChatRoomId($Object->getId());
             $LObject->save();
-            return $this->successJsonResponse([],new ChatRoomResource($Object),'ChatRoom');
         }else {
-            return $this->failJsonResponse([__('messages.object_exists')]);
+            $Object = (new ChatRoom())->whereIn('id',$similarity)->first();
         }
+        return $this->successJsonResponse([],new ChatRoomResource($Object),'ChatRoom');
+
     }
 }
