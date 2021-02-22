@@ -26,7 +26,7 @@ class CreateRoomRequest extends ApiRequest
         $LRoomsId = ChatRoomUser::where('user_id',$logged)->pluck('chat_room_id')->toArray();
         $URoomsId = ChatRoomUser::where('user_id',$this->user_id)->pluck('chat_room_id')->toArray();
         $similarity = array_intersect($LRoomsId,$URoomsId);
-        if (!empty($similarity)) {
+        if (empty($similarity)) {
             $Object = new ChatRoom();
             $Object->setUnreadMessages(0);
             $Object->save();
