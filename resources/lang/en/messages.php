@@ -14,6 +14,7 @@ return [
     */
 
     'object_not_found' => 'Object Not Found',
+    'object_exists' => 'Object already exists',
     'coupon_not_found' => 'Coupon Not Found',
     'deleted_successful' => 'Deleted Successfully !',
     'created_successful' => 'Created Successfully !',

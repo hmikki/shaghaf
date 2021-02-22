@@ -84,4 +84,9 @@ class Constant
     ];
     const COMPLETED_ORDER_STATUSES = [self::ORDER_STATUSES['Rejected'],self::ORDER_STATUSES['Canceled'],self::ORDER_STATUSES['Received'],self::ORDER_STATUSES['ReceivedByAdmin'],self::ORDER_STATUSES['NotReceivedByAdmin']];
     const ORDER_STATUSES_RULES = '1,2,3,4,5,6,7,8,9,10,11,12';
+    const CHAT_MESSAGE_TYPE = [
+        'Text'=>1,
+        'audio' => 2,
+        'image' => 3,
+    ];
 }

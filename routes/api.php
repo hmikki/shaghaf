@@ -73,6 +73,15 @@ Route::group([
     });
 
     Route::group([
+        'prefix' => 'chats',
+    ], function() {
+        Route::get('rooms','ChatController@rooms');
+        Route::get('rooms/messages','ChatController@messages');
+        Route::post('rooms/create','ChatController@create_room');
+        Route::post('rooms/messages/create','ChatController@create_message');
+    });
+
+    Route::group([
         'prefix' => 'orders'
     ], function (){
         Route::get('/','OrderController@index');
