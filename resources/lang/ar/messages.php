@@ -14,6 +14,7 @@ return [
     */
 
     'object_not_found' => 'الهدف غير موجود !',
+    'object_exists' => 'الهدف موجود مسبقا !',
     'coupon_not_found' => 'الكوبون غير موجود !',
     'deleted_successful' => 'تم الحذف بنجاح',
     'created_successful' => 'تم الاضافة بنجاح',
