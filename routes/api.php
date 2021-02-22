@@ -99,6 +99,7 @@ Route::group([
     Route::get('faqs','HomeController@faqs');
     Route::get('advertisements','HomeController@advertisements');
     Route::get('categories','HomeController@categories');
+    Route::get('fetch_freelancers','HomeController@get_freelancers');
     Route::group([
         'middleware' => 'auth:api'
     ], function() {
