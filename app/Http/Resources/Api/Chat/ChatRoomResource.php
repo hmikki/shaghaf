@@ -17,7 +17,7 @@ class ChatRoomResource extends JsonResource
         $Objects['latest_user_id'] = $this->getLatestUserId();
         $Objects['latest_message'] = $this->getLatestMessage();
         $Objects['latest_type'] = $this->getLatestType();
-        $CRU = ChatRoomUser::where('user_id','!=',auth()->user()->getId())->first();
+        $CRU = ChatRoomUser::where('user_id','!=',auth()->user()->getId())->where('chat_room_id',$this->getId())->first();
         $Objects['User'] = new UserResource($CRU->user);
         return $Objects;
     }
