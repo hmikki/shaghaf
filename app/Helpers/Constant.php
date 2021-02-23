@@ -86,8 +86,8 @@ class Constant
     const ORDER_STATUSES_RULES = '1,2,3,4,5,6,7,8,9,10,11,12';
     const CHAT_MESSAGE_TYPE = [
         'Text'=>1,
-        'audio' => 2,
-        'image' => 3,
+        'Audio' => 2,
+        'Image' => 3,
     ];
     const CHAT_MESSAGE_TYPE_RULES = '1,2,3';
 }

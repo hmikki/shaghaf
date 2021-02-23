@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Api\Chat;
 
 use App\Helpers\Constant;
+use App\Helpers\Functions;
 use App\Http\Requests\Api\ApiRequest;
 use App\Http\Resources\Api\Chat\ChatRoomMessageResource;
 use App\Models\ChatRoom;
@@ -21,11 +22,21 @@ class CreateMessageRequest extends ApiRequest
 {
     public function rules(): array
     {
-        return [
+        $rules = [
             'chat_room_id'=>'required|exists:chats_rooms,id',
             'type'=>'required|in:'.Constant::CHAT_MESSAGE_TYPE_RULES,
             'message'=>'required'
         ];
+        if ($this->type == Constant::CHAT_MESSAGE_TYPE['Text']) {
+            $rules['message'] = 'required';
+        }
+        if ($this->type == Constant::CHAT_MESSAGE_TYPE['Image']) {
+            $rules['message'] = 'required|mimes:jpeg,jpg,png';
+        }
+        if ($this->type == Constant::CHAT_MESSAGE_TYPE['Audio']) {
+            $rules['message'] = 'required|mimes:wav,mp3,amr';
+        }
+        return $rules;
     }
     public function run(): JsonResponse
     {
@@ -35,7 +46,15 @@ class CreateMessageRequest extends ApiRequest
         $Object->setChatRoomId($ChatRoom->getId());
         $Object->setUserId($logged->getId());
         $Object->setType($this->type);
-        $Object->setMessage($this->message);
+        if ($this->type == Constant::CHAT_MESSAGE_TYPE['Image']) {
+            $Object->setMessage(Functions::StoreImage('message','chat/images'));
+        }
+        else if ($this->type == Constant::CHAT_MESSAGE_TYPE['Audio']) {
+            $Object->setMessage(Functions::StoreImage('message','chat/audios'));
+        }
+        else{
+            $Object->setMessage($this->message);
+        }
         $Object->save();
         $ChatRoom->setLatestMessage($this->message);
         $ChatRoom->setLatestType($this->type);
