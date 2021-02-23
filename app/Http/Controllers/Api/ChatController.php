@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Api\Chat\ReadMessageRequest;
 use App\Http\Requests\Api\Chat\RoomRequest;
 use App\Http\Requests\Api\Chat\CreateRoomRequest;
 use App\Http\Requests\Api\Chat\MessageRequest;
