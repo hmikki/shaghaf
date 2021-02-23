@@ -34,7 +34,7 @@ class CreateMessageRequest extends ApiRequest
             $rules['message'] = 'required|mimes:jpeg,jpg,png';
         }
         if ($this->type == Constant::CHAT_MESSAGE_TYPE['Audio']) {
-            $rules['message'] = 'required|mimes:wav,mp3,amr';
+            $rules['message'] = 'required|mimes:wav,mp3,amr,m4a';
         }
         return $rules;
     }
