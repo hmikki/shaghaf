@@ -56,7 +56,8 @@ class CreateMessageRequest extends ApiRequest
             $Object->setMessage($this->message);
         }
         $Object->save();
-        $ChatRoom->setLatestMessage($this->message);
+        $Object->refresh();
+        $ChatRoom->setLatestMessage($Object->getMessage());
         $ChatRoom->setLatestType($this->type);
         $ChatRoom->setLatestUserId($logged->getId());
         $ChatRoom->save();
