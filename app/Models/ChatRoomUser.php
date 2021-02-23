@@ -11,11 +11,12 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property integer id
  * @property mixed chat_room_id
  * @property mixed user_id
+ * @property mixed unread_messages
  */
 class ChatRoomUser extends Model
 {
     protected $table = 'chats_rooms_users';
-    protected $fillable = ['chat_room_id','user_id'];
+    protected $fillable = ['chat_room_id','user_id','unread_messages'];
 
     public function chat_room(): belongsTo
     {
@@ -71,6 +72,22 @@ class ChatRoomUser extends Model
     public function setUserId($user_id): void
     {
         $this->user_id = $user_id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUnreadMessages()
+    {
+        return $this->unread_messages;
+    }
+
+    /**
+     * @param mixed $unread_messages
+     */
+    public function setUnreadMessages($unread_messages): void
+    {
+        $this->unread_messages = $unread_messages;
     }
 
 }

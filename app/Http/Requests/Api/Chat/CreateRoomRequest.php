@@ -28,7 +28,6 @@ class CreateRoomRequest extends ApiRequest
         $similarity = array_intersect($LRoomsId,$URoomsId);
         if (empty($similarity)) {
             $Object = new ChatRoom();
-            $Object->setUnreadMessages(0);
             $Object->save();
             $Object->refresh();
             $UObject = new ChatRoomUser();

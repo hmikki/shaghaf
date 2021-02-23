@@ -7,7 +7,9 @@ use App\Http\Requests\Api\ApiRequest;
 use App\Http\Resources\Api\Chat\ChatRoomMessageResource;
 use App\Models\ChatRoom;
 use App\Models\ChatRoomMessage;
+use App\Models\ChatRoomUser;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\DB;
 
 /**
  * @property mixed per_page
@@ -38,8 +40,8 @@ class CreateMessageRequest extends ApiRequest
         $ChatRoom->setLatestMessage($this->message);
         $ChatRoom->setLatestType($this->type);
         $ChatRoom->setLatestUserId($logged->getId());
-        $ChatRoom->setUnreadMessages($ChatRoom->getUnreadMessages()+1);
         $ChatRoom->save();
+        ChatRoomUser::where('user_id','!=',auth()->user()->getId())->where('chat_room_id',$this->chat_room_id)->update(array('unread_messages'=>DB::raw('unread_messages+1')));
         return $this->successJsonResponse([],new ChatRoomMessageResource($Object),'ChatRoomMessage');
     }
 }

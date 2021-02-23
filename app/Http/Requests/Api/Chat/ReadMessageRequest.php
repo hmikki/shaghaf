@@ -12,7 +12,7 @@ use Illuminate\Http\JsonResponse;
  * @property mixed per_page
  * @property mixed chat_room_id
  */
-class MessageRequest extends ApiRequest
+class ReadMessageRequest extends ApiRequest
 {
     public function rules(): array
     {
@@ -24,10 +24,6 @@ class MessageRequest extends ApiRequest
     {
         ChatRoomMessage::where('chat_room_id',$this->chat_room_id)->where('user_id','!=',auth()->user()->getId())->where('read_at',null)->update(array('read_at'=>now()));
         ChatRoomUser::where('user_id',auth()->user()->getId())->where('chat_room_id',$this->chat_room_id)->update(array('unread_messages'=>0));
-        $Objects = new ChatRoomMessage();
-        $Objects = $Objects->where('chat_room_id',$this->chat_room_id);
-        $Objects = $Objects->paginate($this->filled('per_page')?$this->per_page:10);
-        $Objects = ChatRoomMessageResource::collection($Objects);
-        return $this->successJsonResponse([],$Objects->items(),'ChatRoomMessages',$Objects);
+        return $this->successJsonResponse([__('messages.updated_successful')]);
     }
 }

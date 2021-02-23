@@ -23,6 +23,10 @@ class ChatController extends Controller
     {
         return $request->run();
     }
+    public function read_messages(ReadMessageRequest $request): JsonResponse
+    {
+        return $request->run();
+    }
     public function create_message(CreateMessageRequest $request): JsonResponse
     {
         return $request->run();

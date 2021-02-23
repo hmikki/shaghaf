@@ -13,7 +13,8 @@ class ChatRoomResource extends JsonResource
     {
         $Objects = array();
         $Objects['id'] = $this->getId();
-        $Objects['unread_messages'] = $this->getUnreadMessages();
+        $MCRU = ChatRoomUser::where('user_id',auth()->user()->getId())->where('chat_room_id',$this->getId())->first();
+        $Objects['unread_messages'] = $MCRU->getUnreadMessages();
         $Objects['latest_user_id'] = $this->getLatestUserId();
         $Objects['latest_message'] = $this->getLatestMessage();
         $Objects['latest_type'] = $this->getLatestType();

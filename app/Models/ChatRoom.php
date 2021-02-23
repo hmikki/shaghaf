@@ -9,7 +9,6 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * @property integer id
- * @property mixed unread_messages
  * @property mixed latest_user_id
  * @property mixed latest_message
  * @property mixed latest_type
@@ -18,7 +17,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class ChatRoom extends Model
 {
     protected $table = 'chats_rooms';
-    protected $fillable = ['unread_messages','latest_user_id','latest_message','latest_type'];
+    protected $fillable = ['latest_user_id','latest_message','latest_type'];
 
     public function latest_user(): belongsTo
     {
@@ -46,22 +45,6 @@ class ChatRoom extends Model
     public function setId(int $id): void
     {
         $this->id = $id;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getUnreadMessages()
-    {
-        return $this->unread_messages;
-    }
-
-    /**
-     * @param mixed $unread_messages
-     */
-    public function setUnreadMessages($unread_messages): void
-    {
-        $this->unread_messages = $unread_messages;
     }
 
     /**

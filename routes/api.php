@@ -77,6 +77,7 @@ Route::group([
     ], function() {
         Route::get('rooms','ChatController@rooms');
         Route::get('rooms/messages','ChatController@messages');
+        Route::get('rooms/read','ChatController@read_messages');
         Route::post('rooms/create','ChatController@create_room');
         Route::post('rooms/messages/create','ChatController@create_message');
     });
