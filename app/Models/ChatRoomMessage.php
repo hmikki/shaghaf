@@ -5,7 +5,7 @@ namespace App\Models;
 use App\Helpers\Functions;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Builder;
 
 /**
  * @property integer id
@@ -27,6 +27,13 @@ class ChatRoomMessage extends Model
     public function user(): belongsTo
     {
         return $this->belongsTo(User::class);
+    }
+    protected static function boot()
+    {
+        parent::boot();
+        static::addGlobalScope('order', function (Builder $builder) {
+            $builder->orderBy('created_at', 'desc');
+        });
     }
     /**
      * @return int
