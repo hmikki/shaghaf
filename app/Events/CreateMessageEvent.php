@@ -15,7 +15,6 @@ class CreateMessageEvent
     public function __construct($message)
     {
         $this->message = $message;
-        $this->dontBroadcastToCurrentUser();
     }
 
     public function broadcastOn(): Channel
