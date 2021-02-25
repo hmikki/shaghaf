@@ -20,7 +20,7 @@
         "laravel/ui": "^3.2",
         "maatwebsite/excel": "^3.1",
         "mpdf/mpdf": "^8.0",
-        "pusher/pusher-php-server": "^5.0"
+        "pusher/pusher-php-server": "~4.1"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
