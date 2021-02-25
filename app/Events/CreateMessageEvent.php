@@ -23,4 +23,9 @@ class CreateMessageEvent implements ShouldBroadcast
     {
         return new Channel('chat_room.'.$this->message->chat_room_id.'.new_message');
     }
+    
+    public function broadcastAs(): string
+    {
+        return 'CreateMessageEvent';
+    }
 }
