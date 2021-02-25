@@ -2,8 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e54eb8ff-7ec0-4935-a7c9-70b286af6560" name="Default Changelist" comment="Merge branch 'main' of https://github.com/hmikki/shaghaf&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml">
+      <change afterPath="$PROJECT_DIR$/app/Events/CreateMessageEvent.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shaghaf.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shaghaf.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.rnd" beforeDir="false" afterPath="$PROJECT_DIR$/.rnd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Api/Chat/CreateMessageRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Api/Chat/CreateMessageRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Resources/Api/Chat/ChatRoomMessageResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/Api/Chat/ChatRoomMessageResource.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -160,6 +167,8 @@
       <path value="$PROJECT_DIR$/vendor/setasign/fpdi" />
       <path value="$PROJECT_DIR$/vendor/mpdf/mpdf" />
       <path value="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet" />
+      <path value="$PROJECT_DIR$/vendor/paragonie/sodium_compat" />
+      <path value="$PROJECT_DIR$/vendor/pusher/pusher-php-server" />
     </include_path>
   </component>
   <component name="ProjectId" id="1oKsK372kL5qqmbhR5qe0vRAsPJ" />
@@ -176,7 +185,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Http/Requests/Api/Chat" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -188,11 +197,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\localhost\shaghaf\app" />
       <recent name="D:\localhost\shaghaf\app\Http\Requests\Api\Chat" />
       <recent name="D:\localhost\shaghaf\app\Http\Resources\Api\Home" />
       <recent name="D:\localhost\shaghaf\database\migrations" />
       <recent name="D:\localhost\shaghaf\app\Http\Controllers\Admin\AppData" />
-      <recent name="D:\localhost\shaghaf\app\Http\Requests\Api\Home" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\shaghaf\app\Http\Requests\Api\Home" />
@@ -240,7 +249,8 @@
       <workItem from="1613639731781" duration="2049000" />
       <workItem from="1614061538619" duration="595000" />
       <workItem from="1614066407484" duration="4989000" />
-      <workItem from="1614147517166" duration="3251000" />
+      <workItem from="1614147517166" duration="6035000" />
+      <workItem from="1614239491221" duration="2825000" />
     </task>
     <task id="LOCAL-00001" summary="cities">
       <created>1613291293054</created>

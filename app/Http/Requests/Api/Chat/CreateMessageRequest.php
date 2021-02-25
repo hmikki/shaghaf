@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Api\Chat;
 
+use App\Events\CreateMessageEvent;
 use App\Helpers\Constant;
 use App\Helpers\Functions;
 use App\Http\Requests\Api\ApiRequest;
@@ -62,6 +63,8 @@ class CreateMessageRequest extends ApiRequest
         $ChatRoom->setLatestUserId($logged->getId());
         $ChatRoom->save();
         ChatRoomUser::where('user_id','!=',auth()->user()->getId())->where('chat_room_id',$this->chat_room_id)->update(array('unread_messages'=>DB::raw('unread_messages+1')));
-        return $this->successJsonResponse([],new ChatRoomMessageResource($Object),'ChatRoomMessage');
+        $Object = new ChatRoomMessageResource($Object);
+        CreateMessageEvent::dispatch($Object,$this->chat_room_id);
+        return $this->successJsonResponse([],$Object,'ChatRoomMessage');
     }
 }
