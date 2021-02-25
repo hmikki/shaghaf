@@ -18,7 +18,7 @@ class ChatRoomMessageResource extends JsonResource
         $Objects['read_at'] = $this->getReadAt();
         $Objects['user_name'] = $this->user->getName();
         $Objects['created_at'] = Carbon::parse($this->created_at)->diffForHumans();
-        $Objects['created_at_ibrahim'] = Carbon::parse($this->created_at);
+        $Objects['created_at_ibrahim'] = Carbon::parse($this->created_at)->format('Y-m-d h:i:s');
         return $Objects;
     }
 }
