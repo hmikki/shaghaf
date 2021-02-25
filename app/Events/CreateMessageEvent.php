@@ -16,6 +16,7 @@ class CreateMessageEvent implements ShouldBroadcast
     public function __construct($message)
     {
         $this->message = $message;
+        $this->dontBroadcastToCurrentUser();
     }
 
     public function broadcastOn(): Channel
