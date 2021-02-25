@@ -64,7 +64,7 @@ class CreateMessageRequest extends ApiRequest
         $ChatRoom->save();
         ChatRoomUser::where('user_id','!=',auth()->user()->getId())->where('chat_room_id',$this->chat_room_id)->update(array('unread_messages'=>DB::raw('unread_messages+1')));
         $Object = new ChatRoomMessageResource($Object);
-        CreateMessageEvent::dispatch($Object);
+        CreateMessageEvent::dispatch($Object->resource);
         return $this->successJsonResponse([],$Object,'ChatRoomMessage');
     }
 }
