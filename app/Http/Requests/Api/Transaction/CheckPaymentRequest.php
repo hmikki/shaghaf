@@ -19,7 +19,6 @@ class CheckPaymentRequest extends ApiRequest
     {
         return [
             'transaction_id'=>'required|exists:transactions,id',
-            'type'=>'required|in:'.Constant::PAYMENT_METHOD_RULES
         ];
     }
     public function run(): JsonResponse
