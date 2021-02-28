@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="e54eb8ff-7ec0-4935-a7c9-70b286af6560" name="Default Changelist" comment="Merge branch 'main' of https://github.com/hmikki/shaghaf&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Helpers/Functions.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Helpers/Functions.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -256,7 +257,7 @@
       <workItem from="1614431037961" duration="980000" />
       <workItem from="1614475040111" duration="4445000" />
       <workItem from="1614481132883" duration="49000" />
-      <workItem from="1614499840772" duration="1164000" />
+      <workItem from="1614499840772" duration="2141000" />
     </task>
     <task id="LOCAL-00001" summary="cities">
       <created>1613291293054</created>

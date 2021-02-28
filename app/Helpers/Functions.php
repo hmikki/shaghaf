@@ -309,12 +309,12 @@ class Functions
     }
     public static function CheckPayment($id){
         $url = "https://test.oppwa.com/v1/checkouts/{$id}/payment";
-        $url .= "?entityId=8a8294174d0595bb014d05d82e5b01d2";
+        $url .= "?entityId=8a8294174b7ecb28014b9699220015ca";
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-            'Authorization:Bearer OGE4Mjk0MTc0ZDA1OTViYjAxNGQwNWQ4MjllNzAxZDF8OVRuSlBjMm45aA=='));
+            'Authorization:Bearer OGE4Mjk0MTc0YjdlY2IyODAxNGI5Njk5MjIwMDE1Y2N8c3k2S0pzVDg='));
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);// this should be set to true in production
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
