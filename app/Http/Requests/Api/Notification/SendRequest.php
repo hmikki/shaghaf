@@ -30,7 +30,7 @@ class SendRequest extends ApiRequest
     public function run(): JsonResponse
     {
         $User = (new User)->find($this->user_id);
-        Functions::SendNotification($User,$this->title,$this->message,$this->title,$this->message,auth()->user()->getId(),Constant::NOTIFICATION_TYPE['Chat'],false);
+        Functions::SendNotification($User,$this->title,$this->message,$this->title,$this->message,auth()->user()->getId(),Constant::NOTIFICATION_TYPE['Message'],false);
         return $this->successJsonResponse([__('messages.created_successful')]);
     }
 }

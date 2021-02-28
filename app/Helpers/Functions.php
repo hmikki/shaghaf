@@ -120,13 +120,13 @@ class Functions
     }
     public static function SendSms($msg,$to){
         $ch = curl_init();
-        $userid = 'test';
-        $password = 'test';
-        $sender = 'test';
+        $user = 'FHOTAIBI';
+        $password = 'q1w2e3r4';
+        $sender = 'Passion';
         $text = urlencode($msg);
         $encoding = 'UTF8';
         // auth call
-        $url = "http://api.unifonic.com/wrapper/sendSMS.php?userid={$userid}&password={$password}&to={$to}&msg={$text}&sender={$sender}&encoding={$encoding}";
+        $url = "https://apps.gateway.sa/vendorsms/pushsms.aspx?user=${user}&password=${password}&msisdn=${to}&sid=${sender}&msg=${text}";
         $ret  = json_decode(file_get_contents($url), true);
         $response = curl_exec($ch);
         curl_close($ch);
@@ -247,16 +247,6 @@ class Functions
         $Holding = Transaction::where('user_id',$user_id)->where('type',Constant::TRANSACTION_TYPES['Holding'])->where('status',Constant::TRANSACTION_STATUS['Paid'])->sum('value');
         return $Deposits - $Withdraws - $Holding;
     }
-    public static function CheckPayment($type,$Transaction): bool
-    {
-        switch ($type){
-            case Constant::PAYMENT_METHOD['BankTransfer']:
-            case Constant::PAYMENT_METHOD['Cash']:{
-                return true;
-                break;
-            }
-        }
-    }
     public static function ChangeOrderStatus($OrderId,$Status){
         $OrderStatus = new OrderStatus();
         $OrderStatus->setOrderId($OrderId);
@@ -283,4 +273,90 @@ class Functions
             }
         }
     }
+    public static function GenerateCheckout($value){
+        $url = "https://test.oppwa.com/v1/checkouts";
+        $data = "entityId=8a8294174b7ecb28014b9699220015ca" .
+            "&amount=".$value .
+            "&currency=SAR" .
+            "&paymentType=DB" .
+            "&notificationUrl=http://www.example.com/notify";
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+            'Authorization:Bearer OGE4Mjk0MTc0YjdlY2IyODAxNGI5Njk5MjIwMDE1Y2N8c3k2S0pzVDg='));
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);// this should be set to true in production
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $responseData = curl_exec($ch);
+        if(curl_errno($ch)) {
+            return curl_error($ch);
+        }
+        curl_close($ch);
+        $responseData = json_decode($responseData);
+        if ($responseData->result->code == "000.200.100"){
+            return  [
+                'status'=>true,
+                'id'=>$responseData->id
+            ];
+        }else{
+            return  [
+                'status'=>false,
+                'message'=>$responseData->result->description
+            ];
+        }
+    }
+    public static function CheckPayment($id){
+        $url = "https://test.oppwa.com/v1/checkouts/{$id}/payment";
+        $url .= "?entityId=8a8294174d0595bb014d05d82e5b01d2";
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+            'Authorization:Bearer OGE4Mjk0MTc0ZDA1OTViYjAxNGQwNWQ4MjllNzAxZDF8OVRuSlBjMm45aA=='));
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);// this should be set to true in production
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $responseData = curl_exec($ch);
+        if(curl_errno($ch)) {
+            return curl_error($ch);
+        }
+        curl_close($ch);
+        $responseData = json_decode($responseData);
+        if($responseData->result->code == "000.100.110"){
+            return true;
+        }else{
+            return false;
+        }
+//        if($responseData->result->code == "000.200.000"){
+//            return false;
+//        }
+    }
+    public static function AuthSplitHyperPay(){
+        $email = 'faisal-hmood@outlook.com';
+        $password = 'passion2020$';
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, "http://splits.sandbox.hyperpay.com/api/v1/login");
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+        curl_setopt($ch, CURLOPT_HEADER, FALSE);
+        curl_setopt($ch, CURLOPT_POST, TRUE);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, "{
+          \"email\": \"${email}\",
+          \"password\": \"${password}\"
+        }");
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+            "Content-Type: application/json",
+            "Accept: application/json"
+        ));
+        $response = curl_exec($ch);
+        curl_close($ch);
+        $result = json_decode($response);
+        if ($result->status) {
+            return $result->data->accessToken;
+        }else{
+            return false;
+        }
+    }
+
 }
