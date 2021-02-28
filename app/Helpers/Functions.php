@@ -277,7 +277,7 @@ class Functions
         $url = "https://test.oppwa.com/v1/checkouts";
         $data = "entityId=8a8294174b7ecb28014b9699220015ca" .
             "&amount=".$value .
-            "&currency=SAR" .
+            "&currency=USD" .
             "&paymentType=DB" .
             "&notificationUrl=http://www.example.com/notify";
 
