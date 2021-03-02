@@ -7,6 +7,7 @@ use App\Http\Requests\Api\ApiRequest;
 use App\Http\Resources\Api\Order\OrderResource;
 use App\Models\Order;
 use App\Helpers\Constant;
+use App\Models\Transaction;
 use Illuminate\Http\JsonResponse;
 
 /**
@@ -42,6 +43,17 @@ class UpdateRequest extends ApiRequest
             case Constant::ORDER_STATUSES['Payed']:{
                 if ($Object->getStatus() !=Constant::ORDER_STATUSES['Accept']) {
                     return $this->failJsonResponse([__('messages.wrong_sequence')]);
+                }
+                if (Functions::UserBalance($Object->getUserId()) >= $Object->getTotal()) {
+                    $Transaction = new Transaction();
+                    $Transaction->setUserId($Object->getUserId());
+                    $Transaction->setRefId($Object->getId());
+                    $Transaction->setType(Constant::TRANSACTION_TYPES['Holding']);
+                    $Transaction->setValue($Object->getTotal());
+                    $Transaction->setStatus(Constant::TRANSACTION_STATUS['Paid']);
+                    $Transaction->save();
+                }else{
+                    return $this->failJsonResponse([__('messages.dont_have_credit')]);
                 }
                 $Object->setStatus(Constant::ORDER_STATUSES['Payed']);
                 $Object->save();
@@ -95,6 +107,14 @@ class UpdateRequest extends ApiRequest
                 if ($Object->getStatus() !=Constant::ORDER_STATUSES['Delivered']) {
                     return $this->failJsonResponse([__('messages.wrong_sequence')]);
                 }
+                Transaction::where('ref_id',$Object->getId())->where('status',Constant::TRANSACTION_TYPES['Holding'])->where('user_id',$Object->getUserId())->update(['type'=>Constant::TRANSACTION_TYPES['Withdraw']]);
+                $Transaction = new Transaction();
+                $Transaction->setUserId($Object->getFreelancerId());
+                $Transaction->setRefId($Object->getId());
+                $Transaction->setType(Constant::TRANSACTION_TYPES['Deposit']);
+                $Transaction->setValue($Object->getTotal());
+                $Transaction->setStatus(Constant::TRANSACTION_STATUS['Paid']);
+                $Transaction->save();
                 $Object->setStatus(Constant::ORDER_STATUSES['Received']);
                 $Object->save();
                 Functions::ChangeOrderStatus($Object->getId(),Constant::ORDER_STATUSES['Received']);

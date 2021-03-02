@@ -11,6 +11,8 @@ use Illuminate\Http\JsonResponse;
 /**
  * @property mixed title
  * @property mixed message
+ * @property mixed email
+ * @property mixed name
  */
 class StoreRequest extends ApiRequest
 {
@@ -24,9 +26,13 @@ class StoreRequest extends ApiRequest
     }
     public function run(): JsonResponse
     {
-        $logged = auth()->user();
         $Ticket =new  Ticket();
-        $Ticket->setUserId($logged->getId());
+        if (auth('api')->check()) {
+            $Ticket->setUserId(auth('api')->user()->getId());
+        }else{
+            $Ticket->setName($this->name);
+            $Ticket->setEmail($this->email);
+        }
         $Ticket->setTitle($this->title);
         $Ticket->setMessage($this->message);
         if($this->hasFile('attachment')) {

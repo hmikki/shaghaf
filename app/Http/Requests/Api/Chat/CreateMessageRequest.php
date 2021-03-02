@@ -37,6 +37,9 @@ class CreateMessageRequest extends ApiRequest
         if ($this->type == Constant::CHAT_MESSAGE_TYPE['Audio']) {
             $rules['message'] = 'required|mimes:wav,mp3,amr,m4a';
         }
+        if ($this->type == Constant::CHAT_MESSAGE_TYPE['File']) {
+            $rules['message'] = 'required|mimes:pdf,doc,docx,xlsx,csv';
+        }
         return $rules;
     }
     public function run(): JsonResponse
@@ -52,6 +55,9 @@ class CreateMessageRequest extends ApiRequest
         }
         else if ($this->type == Constant::CHAT_MESSAGE_TYPE['Audio']) {
             $Object->setMessage(Functions::StoreImage('message','chat/audios'));
+        }
+        else if ($this->type == Constant::CHAT_MESSAGE_TYPE['File']) {
+            $Object->setMessage(Functions::StoreImage('message','chat/files'));
         }
         else{
             $Object->setMessage($this->message);
