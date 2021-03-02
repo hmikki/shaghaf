@@ -90,5 +90,5 @@ class Constant
         'Image' => 3,
         'File' => 4,
     ];
-    const CHAT_MESSAGE_TYPE_RULES = '1,2,3';
+    const CHAT_MESSAGE_TYPE_RULES = '1,2,3,4';
 }
