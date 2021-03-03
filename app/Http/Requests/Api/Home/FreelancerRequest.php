@@ -23,15 +23,17 @@ class FreelancerRequest extends ApiRequest
     public function rules(): array
     {
         return [
-            'category_id' => 'required|exists:categories,id',
+            'category_id' => 'exists:categories,id',
             'sub_category_id' => 'exists:categories,id'
         ];
     }
     public function run(): JsonResponse
     {
-        $user_id = FreelancerCategory::where('category_id', $this->category_id)->pluck('user_id');
         $Objects = new User();
-        $Objects = $Objects->whereIn('id', $user_id);
+        if ($this->filled('category_id')){
+            $user_id = FreelancerCategory::where('category_id', $this->category_id)->pluck('user_id');
+            $Objects = $Objects->whereIn('id', $user_id);
+        }
         if($this->filled('sub_category_id')){
             $user_id = FreelancerCategory::where('category_id', $this->category_id)->where('sub_category_id', $this->sub_category_id)->pluck('user_id');
             $Objects = $Objects->whereIn('id', $user_id);
@@ -39,14 +41,15 @@ class FreelancerRequest extends ApiRequest
         if($this->filled('q')){
             $Objects = $Objects->where('name','Like', '%'.$this->q.'%');
         }
-        if($this->filled('top_orders') && $this->top_orders){
-            $Objects = $Objects->orderBy('order_count', 'desc');
-        }
         if($this->filled('rate')){
             $Objects = $Objects->where('rate', $this->rate);
         }
         if($this->filled('city_id')){
             $Objects = $Objects->where('city_id', $this->city_id);
+        }
+        $Objects = $Objects->orderBy('rate', 'desc');
+        if($this->filled('top_orders') && $this->top_orders){
+            $Objects = $Objects->orderBy('order_count', 'desc');
         }
         $Objects = $Objects->paginate($this->filled('per_page')?$this->per_page:10);
         $Objects = FreelancerResource::collection($Objects);

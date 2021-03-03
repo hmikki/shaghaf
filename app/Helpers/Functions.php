@@ -30,6 +30,7 @@ class Functions
             'body'  => ($user->getAppLocale() == 'en')?$msg:$msg_ar,
             'title' => ($user->getAppLocale() == 'en')?$title:$title_ar,
             'sound' => true,
+            'badge' => Notification::where('user_id',$user->getId())->whereNull('read_at')->count(),
         );
         $extraNotificationData = ["ref_id" =>$ref_id,"type"=>$type];
         $fields = array
