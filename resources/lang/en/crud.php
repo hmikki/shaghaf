@@ -102,14 +102,18 @@ return [
         'value' => 'Value',
         'type' => 'Type',
         'Types' => [
-            '1'=>'Deposit',
-            '2'=>'Withdraw',
-            '3'=>'Hold',
+            ''.Constant::TRANSACTION_TYPES['Deposit']=>'Deposit',
+            ''.Constant::TRANSACTION_TYPES['Withdraw']=>'Withdraw',
+            ''.Constant::TRANSACTION_TYPES['Holding']=>'Hold',
         ],
         'payment_token' => 'Payment Token',
         'ref_id' => 'References Operation',
         'created_at' => 'Date',
         'status' => 'Status',
+        'Statuses'=>[
+            ''.Constant::TRANSACTION_STATUS['Pending']=>'Pending',
+            ''.Constant::TRANSACTION_STATUS['Paid']=>'Paid',
+        ]
     ],
     'Category'=>[
         'crud_names' => 'Categories',

@@ -103,14 +103,18 @@ return [
         'value' => 'القيمة',
         'type' => 'نوع الحركة',
         'Types' => [
-            '1'=>'إيداع',
-            '2'=>'سحب',
-            '3'=>'معلق',
+            ''.Constant::TRANSACTION_TYPES['Deposit']=>'إيداع',
+            ''.Constant::TRANSACTION_TYPES['Withdraw']=>'سحب',
+            ''.Constant::TRANSACTION_TYPES['Holding']=>'معلق',
         ],
         'payment_token' => 'كود الدفع',
         'ref_id' => 'العملية المرتبطة',
         'created_at' => 'التاريخ',
         'status' => 'الحالة',
+        'Statuses'=>[
+            ''.Constant::TRANSACTION_STATUS['Pending']=>'بالإنتظار',
+            ''.Constant::TRANSACTION_STATUS['Paid']=>'مدفوع',
+        ]
     ],
     'Category'=>[
         'crud_names' => 'التصنيفات',

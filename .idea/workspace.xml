@@ -5,9 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e54eb8ff-7ec0-4935-a7c9-70b286af6560" name="Default Changelist" comment="Merge branch 'main' of https://github.com/hmikki/shaghaf&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml">
-      <change afterPath="$PROJECT_DIR$/app/Http/Requests/Api/Home/ReviewRequest.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Resources/Api/Transaction/TransactionResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/Api/Transaction/TransactionResource.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/ar/crud.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/ar/crud.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/en/crud.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en/crud.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -181,7 +182,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Http/Requests/Api/Home" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Http/Resources/Api/Order" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -193,11 +194,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\localhost\shaghaf\app\Http\Resources\Api\Order" />
+      <recent name="D:\localhost\shaghaf\app\Http\Requests\Api\Home" />
       <recent name="D:\localhost\shaghaf\app" />
       <recent name="D:\localhost\shaghaf\app\Http\Requests\Api\Chat" />
       <recent name="D:\localhost\shaghaf\app\Http\Resources\Api\Home" />
-      <recent name="D:\localhost\shaghaf\database\migrations" />
-      <recent name="D:\localhost\shaghaf\app\Http\Controllers\Admin\AppData" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\shaghaf\app\Http\Requests\Api\Home" />
@@ -268,7 +269,7 @@
       <workItem from="1614780735112" duration="483000" />
       <workItem from="1614844270613" duration="982000" />
       <workItem from="1614851184766" duration="1374000" />
-      <workItem from="1614853015377" duration="4053000" />
+      <workItem from="1614853015377" duration="5120000" />
     </task>
     <task id="LOCAL-00001" summary="cities">
       <created>1613291293054</created>

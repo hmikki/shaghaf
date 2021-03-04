@@ -61,16 +61,6 @@ Route::group([
         Route::post('store','TicketController@store');
         Route::post('response','TicketController@response');
     });
-    Route::group([
-        'prefix' => 'products',
-    ], function() {
-        Route::get('/','ProductController@index');
-        Route::get('show','ProductController@show');
-        Route::post('store','ProductController@store');
-        Route::post('update','ProductController@update');
-        Route::post('destroy','ProductController@destroy');
-        Route::post('media/destroy','ProductController@destroy_media');
-    });
 
     Route::group([
         'prefix' => 'chats',
@@ -102,6 +92,20 @@ Route::group([
     });
 });
 
+Route::group([
+    'prefix' => 'products',
+], function() {
+    Route::get('/','ProductController@index');
+    Route::get('show','ProductController@show');
+    Route::group([
+        'middleware' => 'auth:api'
+    ], function() {
+        Route::post('store','ProductController@store');
+        Route::post('update','ProductController@update');
+        Route::post('destroy','ProductController@destroy');
+        Route::post('media/destroy','ProductController@destroy_media');
+    });
+});
 Route::group([
     'prefix' => 'home',
 ], function() {
