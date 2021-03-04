@@ -19,7 +19,7 @@ class ProductResource extends JsonResource
         $Objects['price'] = $this->getPrice();
         $Objects['type'] = $this->getType();
         $Objects['is_active'] = $this->isIsActive();
-        $Objects['first_image'] = new MediaResource($this->media()->first());
+        $Objects['first_image'] = ($this->media()->first())->getFile();
         $Objects['Media'] = MediaResource::collection($this->media);
         return $Objects;
     }
