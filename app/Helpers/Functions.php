@@ -196,9 +196,9 @@ class Functions
                 ]
             );
             static::SendSms('كود تفعيل الحساب هو : '.$code_mobile,$user->getMobile());
-            $user->notify(
-                new VerifyAccount($token,$code_email)
-            );
+//            $user->notify(
+//                new VerifyAccount($token,$code_email)
+//            );
         }
         return (new Functions)->successJsonResponse( [__('auth.verification_code_sent')]);
     }
@@ -214,9 +214,9 @@ class Functions
             ]
         );
         static::SendSms('كود استرجاع كلمة المرور هو : '.$code,$user->getMobile());
-        $user->notify(
-            new PasswordResetNotification($code)
-        );
+//        $user->notify(
+//            new PasswordResetNotification($code)
+//        );
     }
     public static function StoreImage($attribute_name,$destination_path): ?string
     {
