@@ -114,6 +114,7 @@ Route::group([
     Route::get('advertisements','HomeController@advertisements');
     Route::get('categories','HomeController@categories');
     Route::get('get_freelancers','HomeController@get_freelancers');
+    Route::get('get_freelancer','HomeController@get_freelancer');
     Route::get('get_reviews','HomeController@get_reviews');
 });
 
