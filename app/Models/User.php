@@ -341,9 +341,9 @@ class User extends Authenticatable
     }
 
     /**
-     * @param string|null $provider_type
+     * @param mixed $provider_type
      */
-    public function setProviderType(?string $provider_type): void
+    public function setProviderType($provider_type): void
     {
         $this->provider_type = $provider_type;
     }
@@ -357,9 +357,9 @@ class User extends Authenticatable
     }
 
     /**
-     * @param string|null $company_name
+     * @param mixed $company_name
      */
-    public function setCompanyName(?string $company_name): void
+    public function setCompanyName($company_name): void
     {
         $this->company_name = $company_name;
     }
@@ -373,9 +373,9 @@ class User extends Authenticatable
     }
 
     /**
-     * @param string|null $maroof_cert
+     * @param mixed $maroof_cert
      */
-    public function setMaroofCert(?string $maroof_cert): void
+    public function setMaroofCert($maroof_cert): void
     {
         $this->maroof_cert = Functions::StoreImageModel($maroof_cert,'users/maroof_cert');
     }
@@ -389,9 +389,9 @@ class User extends Authenticatable
     }
 
     /**
-     * @param string|null $commercial_cert
+     * @param mixed $commercial_cert
      */
-    public function setCommercialCert(?string $commercial_cert): void
+    public function setCommercialCert($commercial_cert): void
     {
         $this->commercial_cert = Functions::StoreImageModel($commercial_cert,'users/commercial_cert');
     }
