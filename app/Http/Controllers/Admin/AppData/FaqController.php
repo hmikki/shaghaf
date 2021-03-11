@@ -4,8 +4,6 @@ namespace App\Http\Controllers\Admin\AppData;
 
 use App\Http\Controllers\Admin\Controller;
 use App\Models\Faq;
-use App\Models\FaqCategory;
-use App\Models\Setting;
 use App\Traits\AhmedPanelTrait;
 
 class FaqController extends Controller
@@ -19,19 +17,6 @@ class FaqController extends Controller
         $this->setTable('faqs');
         $this->setLang('Faq');
         $this->setColumns([
-            'faq_category_id'=> [
-                'name'=>'faq_category_id',
-                'type'=>'custom_relation',
-                'relation'=>[
-                    'data'=> FaqCategory::all(),
-                    'custom'=>function($Object){
-                        return $Object? (app()->getLocale()=='en')?$Object->name:$Object->name_ar:' - ';
-                    },
-                    'entity'=>'faq_category'
-                ],
-                'is_searchable'=>true,
-                'order'=>true
-            ],
             'question'=> [
                 'name'=>'question',
                 'type'=>'text',
@@ -52,18 +37,6 @@ class FaqController extends Controller
             ],
         ]);
         $this->setFields([
-            'faq_category_id'=> [
-                'name'=>'faq_category_id',
-                'type'=>'custom_relation',
-                'relation'=>[
-                    'data'=> FaqCategory::all(),
-                    'custom'=>function($Object){
-                        return $Object? (app()->getLocale()=='en')?$Object->name:$Object->name_ar:' - ';
-                    },
-                    'entity'=>'faq_category'
-                ],
-                'is_required'=>true
-            ],
             'question'=> [
                 'name'=>'question',
                 'type'=>'text',
