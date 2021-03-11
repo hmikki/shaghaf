@@ -11,7 +11,7 @@ class FreelancerResource extends JsonResource
     public function toArray($request): array
     {
         $Object['id'] = $this->getId();
-        $Object['name'] = $this->getName();
+        $Object['name'] = ($this->getCompanyName())?$this->getCompanyName():$this->getName();
         $Object['mobile'] = $this->getMobile();
         $Object['country_id'] = $this->getCountryId();
         $Object['city_id'] = $this->getCityId();
