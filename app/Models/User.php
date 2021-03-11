@@ -29,6 +29,11 @@ use Illuminate\Support\Facades\Hash;
  * @property string|null device_type
  * @property string|null lat
  * @property string|null lng
+ * @property string|null provider_type
+ * @property string|null company_name
+ * @property string|null maroof_cert
+ * @property string|null commercial_cert
+ * @property string|null profile_completed
  * @property string|null rate
  * @property string|null email_verified_at
  * @property string|null mobile_verified_at
@@ -42,7 +47,7 @@ class User extends Authenticatable
 {
     use Notifiable,HasApiTokens;
 
-    protected $fillable = ['name','email','mobile','type','country_id','city_id','avatar','bio','gender','iban_number','identity_image','portfolio_id','device_token','device_type','rate','lat','lng','email_verified_at','mobile_verified_at','app_locale','order_count','is_available','is_active',];
+    protected $fillable = ['name','email','mobile','type','country_id','city_id','avatar','bio','gender','iban_number','identity_image','portfolio_id','device_token','device_type','rate','provider_type','company_name','maroof_cert','commercial_cert','profile_completed','lat','lng','email_verified_at','mobile_verified_at','app_locale','order_count','is_available','is_active',];
 
     protected $hidden = ['password'];
 
@@ -325,6 +330,86 @@ class User extends Authenticatable
     public function setRate($rate): void
     {
         $this->rate = $rate;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getProviderType(): ?string
+    {
+        return $this->provider_type;
+    }
+
+    /**
+     * @param string|null $provider_type
+     */
+    public function setProviderType(?string $provider_type): void
+    {
+        $this->provider_type = $provider_type;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getCompanyName(): ?string
+    {
+        return $this->company_name;
+    }
+
+    /**
+     * @param string|null $company_name
+     */
+    public function setCompanyName(?string $company_name): void
+    {
+        $this->company_name = $company_name;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getMaroofCert(): ?string
+    {
+        return ($this->maroof_cert)?asset($this->maroof_cert):null;
+    }
+
+    /**
+     * @param string|null $maroof_cert
+     */
+    public function setMaroofCert(?string $maroof_cert): void
+    {
+        $this->maroof_cert = Functions::StoreImageModel($maroof_cert,'users/maroof_cert');
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getCommercialCert(): ?string
+    {
+        return ($this->commercial_cert)?asset($this->commercial_cert):null;
+    }
+
+    /**
+     * @param string|null $commercial_cert
+     */
+    public function setCommercialCert(?string $commercial_cert): void
+    {
+        $this->commercial_cert = Functions::StoreImageModel($commercial_cert,'users/commercial_cert');
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getProfileCompleted(): ?string
+    {
+        return $this->profile_completed;
+    }
+
+    /**
+     * @param string|null $profile_completed
+     */
+    public function setProfileCompleted(?string $profile_completed): void
+    {
+        $this->profile_completed = $profile_completed;
     }
 
     /**

@@ -48,6 +48,11 @@ class Constant
         'Customer'=>1,
         'Freelancer'=>2
     ];
+    const PROVIDER_TYPE=[
+        'Individual'=>1,
+        'Company'=>2
+    ];
+    const PROVIDER_TYPE_RULES = '1,2';
     const USER_GENDER=[
         'Male'=>1,
         'Female'=>2

@@ -5,14 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e54eb8ff-7ec0-4935-a7c9-70b286af6560" name="Default Changelist" comment="Merge branch 'main' of https://github.com/hmikki/shaghaf&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml">
+      <change afterPath="$PROJECT_DIR$/database/migrations/2021_03_11_122925_add_extra_culomns_to_users_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/AppData/FaqCategoryController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/AppData/FaqController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/AppData/FaqController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Api/Home/FaqRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Api/Home/FaqRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Resources/Api/Home/FaqCategoryResource.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Faq.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Faq.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/FaqCategory.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_07_18_082436_create_faqs_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_07_18_082436_create_faqs_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Helpers/Constant.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Helpers/Constant.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Api/Auth/RegistrationRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Api/Auth/RegistrationRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Api/Auth/UserRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Api/Auth/UserRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Api/Home/InstallRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Api/Home/InstallRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -279,7 +278,7 @@
       <workItem from="1615142870151" duration="743000" />
       <workItem from="1615372475021" duration="194000" />
       <workItem from="1615372681745" duration="18000" />
-      <workItem from="1615449476722" duration="2477000" />
+      <workItem from="1615449476722" duration="5819000" />
     </task>
     <task id="LOCAL-00001" summary="cities">
       <created>1613291293054</created>

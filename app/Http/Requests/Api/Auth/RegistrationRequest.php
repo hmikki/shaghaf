@@ -22,6 +22,10 @@ use Illuminate\Http\JsonResponse;
  * @property mixed device_type
  * @property mixed country_id
  * @property mixed city_id
+ * @property mixed provider_type
+ * @property mixed company_name
+ * @property mixed maroof_cert
+ * @property mixed commercial_cert
  */
 class RegistrationRequest extends ApiRequest
 {
@@ -37,6 +41,7 @@ class RegistrationRequest extends ApiRequest
             'type'=>'required|in:'.Constant::USER_TYPE_RULES,
             'device_token' => 'string|required_with:device_type',
             'device_type' => 'string|required_with:device_token',
+            'company_name' => 'nullable|in:'.Constant::PROVIDER_TYPE_RULES,
             'app_locale' => 'sometimes|in:en,ar',
         ];
     }
@@ -52,6 +57,18 @@ class RegistrationRequest extends ApiRequest
         $user->setLat(@$this->lat);
         $user->setLng(@$this->lng);
         $user->setType($this->type);
+        if ($this->filled('provider_type')){
+            $user->setProviderType($this->provider_type);
+        }
+        if ($this->filled('company_name')){
+            $user->setCompanyName($this->company_name);
+        }
+        if ($this->filled('maroof_cert')){
+            $user->setMaroofCert($this->maroof_cert);
+        }
+        if ($this->filled('commercial_cert')){
+            $user->setCommercialCert($this->commercial_cert);
+        }
         $user->setAppLocale($this->filled('app_locale')?$this->app_locale:'en');
         if ($this->filled('device_token') && $this->filled('device_type')) {
             $user->setDeviceToken($this->device_token);

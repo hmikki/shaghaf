@@ -26,6 +26,10 @@ use Illuminate\Support\Facades\DB;
  * @property mixed app_locale
  * @property mixed device_token
  * @property mixed device_type
+ * @property mixed provider_type
+ * @property mixed company_name
+ * @property mixed maroof_cert
+ * @property mixed commercial_cert
  */
 class UserRequest extends ApiRequest
 {
@@ -81,6 +85,21 @@ class UserRequest extends ApiRequest
         }
         if ($this->filled('bio')){
             $logged->setBio($this->bio);
+        }
+        if ($this->filled('provider_type')){
+            $logged->setProviderType($this->provider_type);
+        }
+        if ($this->filled('company_name')){
+            $logged->setCompanyName($this->company_name);
+        }
+        if ($this->hasFile('maroof_cert')){
+            $logged->setMaroofCert($this->maroof_cert);
+        }
+        if ($this->hasFile('commercial_cert')){
+            $logged->setCommercialCert($this->commercial_cert);
+        }
+        if ($this->hasFile('identity_image') && ($this->hasFile('maroof_cert') || $this->hasFile('commercial_cert'))) {
+            $logged->setProfileCompleted(true);
         }
         if ($this->filled('gender')){
             $logged->setGender($this->gender);
