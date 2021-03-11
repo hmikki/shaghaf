@@ -36,6 +36,11 @@ class UserResource extends JsonResource
         $Object['lat'] = $this->getLat();
         $Object['lng'] = $this->getLng();
         $Object['type'] = $this->getType();
+        $Object['provider_type'] = $this->getProviderType();
+        $Object['company_name'] = $this->getCompanyName();
+        $Object['maroof_cert'] = $this->getMaroofCert();
+        $Object['commercial_cert'] = $this->getCommercialCert();
+        $Object['profile_completed'] = $this->getProfileCompleted();
         $Object['rate'] = $this->getRate();
         $Object['Portfolios'] = PortfolioResource::collection($this->portfolios);
         $Object['is_available'] = $this->getIsAvailable();
