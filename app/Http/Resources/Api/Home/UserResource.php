@@ -11,7 +11,7 @@ class UserResource extends JsonResource
     public function toArray($request): array
     {
         $Object['id'] = $this->getId();
-        $Object['name'] = $this->getName();
+        $Object['name'] = ($this->getCompanyName())?$this->getCompanyName():$this->getName();
         $Object['mobile'] = $this->getMobile();
         $Object['email'] = $this->getEmail();
         $Object['bio'] = $this->getBio();
