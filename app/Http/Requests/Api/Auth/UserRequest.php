@@ -98,9 +98,6 @@ class UserRequest extends ApiRequest
         if ($this->hasFile('commercial_cert')){
             $logged->setCommercialCert($this->commercial_cert);
         }
-        if ($this->hasFile('identity_image') && ($this->hasFile('maroof_cert') || $this->hasFile('commercial_cert'))) {
-            $logged->setProfileCompleted(true);
-        }
         if ($this->filled('gender')){
             $logged->setGender($this->gender);
         }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources\Api\User;
 
+use App\Helpers\Constant;
 use App\Http\Resources\Api\Home\CityResource;
 use App\Http\Resources\Api\Home\CountryResource;
 use App\Models\Notification;
@@ -40,7 +41,19 @@ class UserResource extends JsonResource
         $Object['company_name'] = $this->getCompanyName();
         $Object['maroof_cert'] = $this->getMaroofCert();
         $Object['commercial_cert'] = $this->getCommercialCert();
-        $Object['profile_completed'] = $this->getProfileCompleted();
+        if ($this->getProviderType() == Constant::PROVIDER_TYPE['Individual']) {
+            if ($this->getIdentityImage() != null && $this->getMaroofCert() !=null) {
+                $Object['profile_completed'] = true;
+            }else{
+                $Object['profile_completed'] = false;
+            }
+        }else{
+            if ($this->getIdentityImage() != null && $this->getCommercialCert() !=null) {
+                $Object['profile_completed'] = true;
+            }else{
+                $Object['profile_completed'] = false;
+            }
+        }
         $Object['rate'] = $this->getRate();
         $Object['Portfolios'] = PortfolioResource::collection($this->portfolios);
         $Object['is_available'] = $this->getIsAvailable();
