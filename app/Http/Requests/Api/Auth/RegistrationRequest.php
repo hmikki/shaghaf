@@ -41,7 +41,8 @@ class RegistrationRequest extends ApiRequest
             'type'=>'required|in:'.Constant::USER_TYPE_RULES,
             'device_token' => 'string|required_with:device_type',
             'device_type' => 'string|required_with:device_token',
-            'company_name' => 'required_if:type,'.Constant::USER_TYPE['Freelancer'].'|in:'.Constant::PROVIDER_TYPE_RULES,
+            'provider_type'=>'required_if:type,'.Constant::USER_TYPE['Freelancer'],
+            'company_name' => 'required_if:provider_type,'.Constant::PROVIDER_TYPE['Company'].'|in:'.Constant::PROVIDER_TYPE_RULES,
             'app_locale' => 'sometimes|in:en,ar',
         ];
     }
