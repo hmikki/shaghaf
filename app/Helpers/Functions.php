@@ -127,7 +127,7 @@ class Functions
         $text = urlencode($msg);
         $encoding = 'UTF8';
         // auth call
-        $url = "https://apps.gateway.sa/vendorsms/pushsms.aspx?user=${user}&password=${password}&msisdn=${to}&sid=${sender}&msg=${text}";
+        $url = "https://apps.gateway.sa/vendorsms/pushsms.aspx?user=${user}&password=${password}&msisdn=${to}&sid=${sender}&msg=${text}&fl=0";
         $ret  = json_decode(file_get_contents($url), true);
         $response = curl_exec($ch);
         curl_close($ch);

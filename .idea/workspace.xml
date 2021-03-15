@@ -6,8 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="e54eb8ff-7ec0-4935-a7c9-70b286af6560" name="Default Changelist" comment="Merge branch 'main' of https://github.com/hmikki/shaghaf&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Api/Auth/UserRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Api/Auth/UserRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Resources/Api/User/UserResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/Api/User/UserResource.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -276,7 +274,10 @@
       <workItem from="1615372681745" duration="18000" />
       <workItem from="1615449476722" duration="8766000" />
       <workItem from="1615486241723" duration="45000" />
-      <workItem from="1615627523757" duration="302000" />
+      <workItem from="1615627523757" duration="2182000" />
+      <workItem from="1615703974213" duration="85000" />
+      <workItem from="1615713805230" duration="76000" />
+      <workItem from="1615714111519" duration="65000" />
     </task>
     <task id="LOCAL-00001" summary="cities">
       <created>1613291293054</created>
