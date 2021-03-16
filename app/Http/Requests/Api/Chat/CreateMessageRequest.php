@@ -12,6 +12,8 @@ use App\Models\ChatRoomMessage;
 use App\Models\ChatRoomUser;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\DB;
+use Pusher\Pusher;
+use Pusher\PusherException;
 
 /**
  * @property mixed per_page
@@ -50,17 +52,27 @@ class CreateMessageRequest extends ApiRequest
         $Object->setChatRoomId($ChatRoom->getId());
         $Object->setUserId($logged->getId());
         $Object->setType($this->type);
+        $msg = '';
+        $msg_ar = '';
         if ($this->type == Constant::CHAT_MESSAGE_TYPE['Image']) {
             $Object->setMessage(Functions::StoreImage('message','chat/images'));
+            $msg = 'Image';
+            $msg_ar = 'صورة';
         }
         else if ($this->type == Constant::CHAT_MESSAGE_TYPE['Audio']) {
             $Object->setMessage(Functions::StoreImage('message','chat/audios'));
+            $msg = 'Audio';
+            $msg_ar = 'مقطع صوتي';
         }
         else if ($this->type == Constant::CHAT_MESSAGE_TYPE['File']) {
             $Object->setMessage(Functions::StoreImage('message','chat/files'));
+            $msg = 'File';
+            $msg_ar = 'ملف';
         }
         else{
             $Object->setMessage($this->message);
+            $msg=$this->message;
+            $msg_ar=$this->message;
         }
         $Object->save();
         $Object->refresh();
@@ -71,6 +83,14 @@ class CreateMessageRequest extends ApiRequest
         ChatRoomUser::where('user_id','!=',auth()->user()->getId())->where('chat_room_id',$this->chat_room_id)->update(array('unread_messages'=>DB::raw('unread_messages+1')));
         $Object = new ChatRoomMessageResource($Object);
         CreateMessageEvent::dispatch($Object);
+        $User = ChatRoomUser::where('chat_room_id',$ChatRoom->getId())->where('user_id','!=',$logged->getId())->first();
+        try {
+            $pusher = new Pusher(env('PUSHER_APP_KEY'), env('PUSHER_APP_SECRET'), env('PUSHER_APP_ID'), array('cluster' => env('PUSHER_APP_CLUSTER')));
+            if (!$pusher->get('/channels/online.'.$User->getUserId().'.room.'.$ChatRoom->getId())['result']['occupied']) {
+                Functions::SendNotification($User->user,'New Message',$msg,'رسالة جديدة',$msg_ar,$ChatRoom->getId(),Constant::NOTIFICATION_TYPE['Message'],false);
+            }
+        } catch (PusherException $e) {
+        }
         return $this->successJsonResponse([],$Object,'ChatRoomMessage');
     }
 }
