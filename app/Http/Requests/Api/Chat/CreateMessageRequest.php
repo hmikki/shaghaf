@@ -85,7 +85,7 @@ class CreateMessageRequest extends ApiRequest
         CreateMessageEvent::dispatch($Object);
         $User = ChatRoomUser::where('chat_room_id',$ChatRoom->getId())->where('user_id','!=',$logged->getId())->first();
         try {
-            $pusher = new Pusher(env('PUSHER_APP_KEY'), env('PUSHER_APP_SECRET'), env('PUSHER_APP_ID'), array('cluster' => env('PUSHER_APP_CLUSTER')));
+            $pusher = new Pusher('da99af9260d89f306342', 'b527dba1b027166d1f6d', '1161957', array('cluster' => 'ap1'));
             if (!$pusher->get('/channels/online.'.$User->getUserId().'.room.'.$ChatRoom->getId())['result']['occupied']) {
                 Functions::SendNotification($User->user,'New Message',$msg,'رسالة جديدة',$msg_ar,$ChatRoom->getId(),Constant::NOTIFICATION_TYPE['Message'],false);
             }
