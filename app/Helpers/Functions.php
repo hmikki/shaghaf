@@ -449,7 +449,7 @@ class Functions
         curl_setopt($ch, CURLOPT_HTTPHEADER, array(
             "Content-Type: application/json",
             "Accept: application/json",
-            "Authorization: Bearer ${$token}"
+            "Authorization: Bearer ${token}"
         ));
         $response = curl_exec($ch);
         curl_close($ch);
