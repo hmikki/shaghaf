@@ -4,6 +4,10 @@
 namespace App\Helpers;
 
 
+use App\Events\CreateMessageEvent;
+use App\Events\SendGlobalNotificationEvent;
+use App\Events\SendNotificationEvent;
+use App\Http\Resources\Api\General\NotificationResource;
 use App\Models\Notification;
 use App\Models\Order;
 use App\Models\OrderStatus;
@@ -45,6 +49,7 @@ class Functions
             'Content-Type: application/json'
         );
 
+
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL,$fcmUrl);
         curl_setopt($ch, CURLOPT_POST, true);
@@ -64,7 +69,17 @@ class Functions
             $notify->setMessageAr($msg_ar);
             $notify->setRefId(@$ref_id);
             $notify->save();
+            $notify->refresh();
         }
+        $pusher_data =array
+        (
+            'body'  => ($user->getAppLocale() == 'en')?$msg:$msg_ar,
+            'title' => ($user->getAppLocale() == 'en')?$title:$title_ar,
+            'badge' => Notification::where('user_id',$user->getId())->whereNull('read_at')->count(),
+            "ref_id" =>$ref_id,
+            "type" =>$type
+        );
+        SendNotificationEvent::dispatch($pusher_data,$user->id);
         return true;
     }
     public static function SendNotifications($users,$title,$msg,$ref_id = null,$type= 0,$store = true,$replace =[]): bool
@@ -117,6 +132,14 @@ class Functions
                 $notify->save();
             }
         }
+        $pusher_data =array
+        (
+            'body'  => $msg,
+            'title' => $title,
+            "ref_id" =>$ref_id,
+            "type" =>$type
+        );
+        SendGlobalNotificationEvent::dispatch($pusher_data);
         return true;
     }
     public static function SendSms($msg,$to){
