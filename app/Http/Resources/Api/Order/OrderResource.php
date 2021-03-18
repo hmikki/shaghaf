@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources\Api\Order;
 
+use App\Helpers\Functions;
 use App\Http\Resources\Api\Product\ProductResource;
 use Carbon\Carbon;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -22,6 +23,13 @@ class OrderResource extends JsonResource
         $Objects['quantity'] = $this->getQuantity();
         $Objects['price'] = $this->getPrice();
         $Objects['total'] = $this->getTotal();
+        $UserBalance = Functions::UserBalance($this->getUserId());
+        if ($UserBalance >= $this->getTotal()) {
+            $balance = 0;
+        }else{
+            $balance = $this->getTotal() - $UserBalance;
+        }
+        $Objects['balance'] = $balance;
         $Objects['order_date'] = Carbon::parse($this->created_at);
         $Objects['delivered_date'] = $this->getDeliveredDate();
         $Objects['delivered_time'] = $this->getDeliveredTime();
