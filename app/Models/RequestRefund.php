@@ -21,7 +21,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  */
 class RequestRefund extends Model
 {
-    protected $table = 'categories';
+    protected $table = 'requests_refunds';
     protected $fillable = ['user_id','transaction_id','token_id','name','iban','swift_code','address_1','address_2','address_3','amount','status',];
 
     public function user(): BelongsTo
