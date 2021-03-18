@@ -468,16 +468,23 @@ class Functions
         $response = curl_exec($ch);
         curl_close($ch);
         $result = json_decode($response);
-        $status = @$result->data[0]->PayoutStatus;
-        if ($status != 'Completed') {
-            return [
-                'status'=>true,
-                'token_id'=>$token_id
-            ];
+        if (isset($result->data)) {
+            $status = @$result->data[0]->PayoutStatus;
+            if ($status != 'Completed') {
+                return [
+                    'status'=>true,
+                    'token_id'=>$token_id
+                ];
+            }else{
+                return [
+                    'status'=>false
+                ];
+            }
         }else{
             return [
                 'status'=>false
             ];
         }
+
     }
 }
