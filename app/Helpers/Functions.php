@@ -468,7 +468,7 @@ class Functions
         $response = curl_exec($ch);
         curl_close($ch);
         $result = json_decode($response);
-        $status = $result->data[0]->PayoutStatus;
+        $status = @$result->data[0]->PayoutStatus;
         if ($status != 'Completed') {
             return [
                 'status'=>true,
