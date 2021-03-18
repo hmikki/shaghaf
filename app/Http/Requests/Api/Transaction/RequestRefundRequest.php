@@ -63,7 +63,7 @@ class RequestRefundRequest extends ApiRequest
             $Transaction->refresh();
             $RequestRefund->setTransactionId($Transaction->getId());
             $RequestRefund->save();
-            return $this->successJsonResponse([],new TransactionResource($Transaction),'');
+            return $this->successJsonResponse([],new TransactionResource($Transaction),'Transaction');
         }else{
             return $this->failJsonResponse([__('messages.wrong_data')]);
         }
