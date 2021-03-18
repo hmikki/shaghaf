@@ -162,7 +162,7 @@ class Functions
                 case Constant::VERIFICATION_TYPE['Email']:{
                     if($user->getEmailVerifiedAt() != null)
                         return (new Functions)->failJsonResponse([__('auth.verified_before')]);
-                    $code_email = rand( 10000 , 99999 );
+                    $code_email = rand( 1000 , 9999 );
                     $token = Str::random(40).time();
                     VerifyAccounts::updateOrCreate(
                         ['user_id' => $user->getId(),'type'=>Constant::VERIFICATION_TYPE['Email']],
@@ -181,7 +181,7 @@ class Functions
                 case Constant::VERIFICATION_TYPE['Mobile']:{
                     if($user->getMobileVerifiedAt() != null)
                         return (new Functions)->failJsonResponse([__('auth.mobile_verified_before')]);
-                    $code_mobile = rand( 10000 , 99999 );
+                    $code_mobile = rand( 1000 , 9999 );
                     $token = Str::random(40).time();
                     VerifyAccounts::updateOrCreate(
                         ['user_id' => $user->getId(),'type'=>Constant::VERIFICATION_TYPE['Mobile']],
@@ -197,8 +197,8 @@ class Functions
                 }
             }
         }else{
-            $code_email = rand( 10000 , 99999 );
-            $code_mobile = rand( 10000 , 99999 );
+            $code_email = rand( 1000 , 9999 );
+            $code_mobile = rand( 1000 , 9999 );
             $token = Str::random(40).time();
             VerifyAccounts::updateOrCreate(
                 ['user_id' => $user->getId(),'type'=>Constant::VERIFICATION_TYPE['Email']],
@@ -226,7 +226,7 @@ class Functions
         return (new Functions)->successJsonResponse( [__('auth.verification_code_sent')]);
     }
     public static function SendForget($user,$type = null){
-        $code = rand( 10000 , 99999 );
+        $code = rand( 1000 , 9999 );
         $token = Str::random(40).time();
         PasswordReset::updateOrCreate(
             ['user_id' => $user->getId()],
