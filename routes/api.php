@@ -52,6 +52,7 @@ Route::group([
         Route::get('my_balance', 'TransactionController@my_balance');
         Route::post('generate_checkout', 'TransactionController@generate_checkout');
         Route::get('check_payment', 'TransactionController@check_payment');
+        Route::post('request_refund', 'TransactionController@request_refund');
     });
     Route::group([
         'prefix' => 'tickets',

@@ -360,4 +360,101 @@ class Functions
         }
     }
 
+    public static function Payout($iban,$swift_code,$name,$amount,$address_1,$address_2,$address_3,$request_refund_id){
+        $email = 'faisal-hmood@outlook.com';
+        $password = 'passion2020$';
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, "http://splits.sandbox.hyperpay.com/api/v1/login");
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+        curl_setopt($ch, CURLOPT_HEADER, FALSE);
+        curl_setopt($ch, CURLOPT_POST, TRUE);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, "{
+          \"email\": \"${email}\",
+          \"password\": \"${password}\"
+        }");
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+            "Content-Type: application/json",
+            "Accept: application/json"
+        ));
+        $response = curl_exec($ch);
+        curl_close($ch);
+        $result = json_decode($response);
+        if (!$result->status) {
+            return [
+                'status'=>false
+            ];
+        }
+        $token= $result->data->accessToken;
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, "https://splits.sandbox.hyperpay.com/api/v1/orders");
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+        curl_setopt($ch, CURLOPT_HEADER, FALSE);
+        curl_setopt($ch, CURLOPT_POST, TRUE);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, "{
+          \"merchantTransactionId\": \"${request_refund_id}\",
+          \"transferOption\": \"0\",
+          \"batchDescription\": \"Transfer fund to beneficiary\",
+          \"configId\": \"1afeee12f1b06010cb986433a1d1a33d\",
+          \"beneficiary\": [
+            {
+              \"name\": \"${name}\",
+              \"accountId\": \"${iban}\",
+              \"debitCurrency\": \"SAR\",
+              \"transferAmount\": \"${amount}\",
+              \"transferCurrency\": \"SAR\",
+              \"payoutBeneficiaryAddress1\": \"${address_1}\",
+              \"payoutBeneficiaryAddress2\": \"${address_2}\",
+              \"payoutBeneficiaryAddress3\": \"${address_3}\"
+            }
+          ]
+        }");
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+            "Content-Type: application/json",
+            "Accept: application/json",
+            "Authorization: Bearer ${token}"
+        ));
+        $response = curl_exec($ch);
+        curl_close($ch);
+        $result = json_decode($response);
+        $token_id=$result->data->uniqueId;
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, "https://splits.sandbox.hyperpay.com/api/v1/orders/${iban}/${token_id}");
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+        curl_setopt($ch, CURLOPT_HEADER, FALSE);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+            "Content-Type: application/json",
+            "Accept: application/json",
+            "Authorization: Bearer ${$token}"
+        ));
+        $response = curl_exec($ch);
+        curl_close($ch);
+        $result = json_decode($response);
+        $batch_id= $result->data[0]->batch_id;
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, "https://splits.sandbox.hyperpay.com/api/v1/payouts/${batch_id}");
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+        curl_setopt($ch, CURLOPT_HEADER, FALSE);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+            "Content-Type: application/json",
+            "Accept: application/json",
+            "Authorization: Bearer ${token}"
+        ));
+        $response = curl_exec($ch);
+        curl_close($ch);
+        $result = json_decode($response);
+        $status = $result->data[0]->PayoutStatus;
+        if ($status != 'Completed') {
+            return [
+                'status'=>true,
+                'token_id'=>$token_id
+            ];
+        }else{
+            return [
+                'status'=>false
+            ];
+        }
+    }
 }

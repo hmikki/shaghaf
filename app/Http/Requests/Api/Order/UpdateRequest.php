@@ -110,7 +110,7 @@ class UpdateRequest extends ApiRequest
                 if ($Object->getStatus() !=Constant::ORDER_STATUSES['Delivered']) {
                     return $this->failJsonResponse([__('messages.wrong_sequence')]);
                 }
-                Transaction::where('ref_id',$Object->getId())->where('status',Constant::TRANSACTION_TYPES['Holding'])->where('user_id',$Object->getUserId())->update(['type'=>Constant::TRANSACTION_TYPES['Withdraw']]);
+                Transaction::where('ref_id',$Object->getId())->where('type',Constant::TRANSACTION_TYPES['Holding'])->where('user_id',$Object->getUserId())->update(['type'=>Constant::TRANSACTION_TYPES['Withdraw']]);
                 $Transaction = new Transaction();
                 $Transaction->setUserId($Object->getFreelancerId());
                 $Transaction->setRefId($Object->getId());
