@@ -7,6 +7,7 @@ use App\Http\Requests\Api\ApiRequest;
 use App\Http\Resources\Api\Order\OrderResource;
 use App\Models\Order;
 use App\Helpers\Constant;
+use App\Models\Setting;
 use App\Models\Transaction;
 use Illuminate\Http\JsonResponse;
 
@@ -115,7 +116,9 @@ class UpdateRequest extends ApiRequest
                 $Transaction->setUserId($Object->getFreelancerId());
                 $Transaction->setRefId($Object->getId());
                 $Transaction->setType(Constant::TRANSACTION_TYPES['Deposit']);
-                $Transaction->setValue($Object->getTotal());
+                $commission = (Setting::where('key','commission')->first())->getValue();
+                $commission = $Object->getTotal() * $commission /100;
+                $Transaction->setValue(($Object->getTotal()-$commission));
                 $Transaction->setStatus(Constant::TRANSACTION_STATUS['Paid']);
                 $Transaction->save();
                 $Object->setStatus(Constant::ORDER_STATUSES['Received']);
