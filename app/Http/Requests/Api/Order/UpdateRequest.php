@@ -44,7 +44,8 @@ class UpdateRequest extends ApiRequest
                 if ($Object->getStatus() !=Constant::ORDER_STATUSES['Accept']) {
                     return $this->failJsonResponse([__('messages.wrong_sequence')]);
                 }
-                if (Functions::UserBalance($Object->getUserId()) >= $Object->getTotal()) {
+                $Balance = Functions::UserBalance($Object->getUserId());
+                if ($Balance >= $Object->getTotal()) {
                     $Transaction = new Transaction();
                     $Transaction->setUserId($Object->getUserId());
                     $Transaction->setRefId($Object->getId());
@@ -53,7 +54,9 @@ class UpdateRequest extends ApiRequest
                     $Transaction->setStatus(Constant::TRANSACTION_STATUS['Paid']);
                     $Transaction->save();
                 }else{
-                    return $this->failJsonResponse([__('messages.dont_have_credit')]);
+                    return $this->failJsonResponse([__('messages.dont_have_credit')],[
+                        'request_amount'=>($Object->getTotal()-$Balance)
+                    ]);
                 }
                 $Object->setStatus(Constant::ORDER_STATUSES['Payed']);
                 $Object->save();
