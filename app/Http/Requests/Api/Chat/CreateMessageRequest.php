@@ -87,7 +87,7 @@ class CreateMessageRequest extends ApiRequest
         try {
             $pusher = new Pusher('da99af9260d89f306342', 'b527dba1b027166d1f6d', '1161957', array('cluster' => 'ap1'));
             if (!$pusher->get('/channels/online.'.$User->getUserId().'.room.'.$ChatRoom->getId())['result']['occupied']) {
-                Functions::SendNotification($User->user,'New Message',$msg,'رسالة جديدة',$msg_ar,$ChatRoom->getId(),Constant::NOTIFICATION_TYPE['Message'],false);
+                Functions::SendNotification($User->user,'New Message',$msg,'رسالة جديدة',$msg_ar,$logged->getId(),Constant::NOTIFICATION_TYPE['Message'],false);
             }
         } catch (PusherException $e) {
         }
