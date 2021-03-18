@@ -37,7 +37,7 @@ return [
     'wrong_sequence'=>'Wrong Sequence !',
     'you_cannot_add_products_from_several_provider_at_the_same_time'=>'You cannot add products from several provider at the same time !',
     'dont_have_permission'=>'Dont have permission !',
-    'dont_have_credit'=>'Dont have enough credit subscribe with one of the subscription packages to bid on this  !',
+    'dont_have_credit'=>'Dont have enough credit!',
     'credit_less_than_last_bid'=>'Credit Less Than Last Bid',
     'bid_less_than_required'=>'Your Bid Less Than Required !',
     'you_cannot_do_it_at_this_time'=>'You can not do this action at this time !',

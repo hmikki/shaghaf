@@ -5,9 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e54eb8ff-7ec0-4935-a7c9-70b286af6560" name="Default Changelist" comment="Merge branch 'main' of https://github.com/hmikki/shaghaf&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml">
-      <change afterPath="$PROJECT_DIR$/app/Events/SendGlobalNotificationEvent.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Events/SendNotificationEvent.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Helpers/Functions.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Helpers/Functions.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/ar/messages.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/ar/messages.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/en/messages.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en/messages.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -285,7 +285,7 @@
       <workItem from="1615962842575" duration="610000" />
       <workItem from="1615964983215" duration="16000" />
       <workItem from="1615968976078" duration="218000" />
-      <workItem from="1616051922482" duration="6969000" />
+      <workItem from="1616051922482" duration="7435000" />
     </task>
     <task id="LOCAL-00001" summary="cities">
       <created>1613291293054</created>
