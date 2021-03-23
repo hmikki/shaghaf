@@ -28,7 +28,7 @@ class OrderController extends Controller
                 'relation'=>[
                     'data'=> User::where('type',Constant::USER_TYPE['Customer'])->get(),
                     'custom'=>function($Object){
-                        return $Object->getName();
+                        return $Object?$Object->getName():'-';
                     },
                     'entity'=>'user'
                 ],
@@ -41,7 +41,7 @@ class OrderController extends Controller
                 'relation'=>[
                     'data'=> User::where('type',Constant::USER_TYPE['Freelancer'])->get(),
                     'custom'=>function($Object){
-                        return $Object->getName();
+                        return $Object?$Object->getName():'-';
                     },
                     'entity'=>'freelancer'
                 ],
@@ -54,7 +54,7 @@ class OrderController extends Controller
                 'relation'=>[
                     'data'=> Product::all(),
                     'custom'=>function($Object){
-                        return $Object->getName();
+                        return $Object?$Object->getName():'-';
                     },
                     'entity'=>'product'
                 ],
