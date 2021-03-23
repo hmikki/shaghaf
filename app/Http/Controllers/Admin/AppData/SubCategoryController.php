@@ -7,23 +7,36 @@ use App\Models\Category;
 use App\Models\Country;
 use App\Traits\AhmedPanelTrait;
 
-class CategoryController extends Controller
+class SubCategoryController extends Controller
 {
     use AhmedPanelTrait;
 
     public function setup()
     {
-        $this->setRedirect('app_data/categories');
+        $this->setRedirect('app_data/sub_categories');
         $this->setEntity(new Category());
         $this->setTable('categories');
         $this->setLang('Category');
         $this->setFilters([
             'parent_id'=>[
                 'name'=>'parent_id',
-                'type'=>'whereNull',
+                'type'=>'whereNotNull',
             ]
         ]);
         $this->setColumns([
+            'parent_id'=> [
+                'name'=>'parent_id',
+                'type'=>'custom_relation',
+                'relation'=>[
+                    'data'=> Category::all(),
+                    'custom'=>function($Object){
+                        return ($Object)?app()->getLocale() == 'ar'?$Object->getNameAr():$Object->getName():'-';
+                    },
+                    'entity'=>'parent'
+                ],
+                'is_searchable'=>true,
+                'order'=>true
+            ],
             'image'=> [
                 'name'=>'image',
                 'type'=>'image',
@@ -50,6 +63,18 @@ class CategoryController extends Controller
             ],
         ]);
         $this->setFields([
+            'parent_id'=> [
+                'name'=>'parent_id',
+                'type'=>'custom_relation',
+                'relation'=>[
+                    'data'=> Category::all(),
+                    'custom'=>function($Object){
+                        return app()->getLocale() == 'ar'?$Object->getNameAr():$Object->getName();
+                    },
+                    'entity'=>'parent'
+                ],
+                'is_required'=>true
+            ],
             'name'=> [
                 'name'=>'name',
                 'type'=>'text',

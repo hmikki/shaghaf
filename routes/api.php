@@ -55,15 +55,6 @@ Route::group([
         Route::post('request_refund', 'TransactionController@request_refund');
     });
     Route::group([
-        'prefix' => 'tickets',
-    ], function() {
-        Route::get('/','TicketController@index');
-        Route::get('show','TicketController@show');
-        Route::post('store','TicketController@store');
-        Route::post('response','TicketController@response');
-    });
-
-    Route::group([
         'prefix' => 'chats',
     ], function() {
         Route::get('rooms','ChatController@rooms');
@@ -117,5 +108,18 @@ Route::group([
     Route::get('get_freelancers','HomeController@get_freelancers');
     Route::get('get_freelancer','HomeController@get_freelancer');
     Route::get('get_reviews','HomeController@get_reviews');
+});
+
+Route::group([
+    'prefix' => 'tickets',
+], function() {
+    Route::post('store','TicketController@store');
+    Route::group([
+        'middleware' => 'auth:api'
+    ], function() {
+        Route::get('/','TicketController@index');
+        Route::get('show','TicketController@show');
+        Route::post('response','TicketController@response');
+    });
 });
 

@@ -28,8 +28,17 @@ class StoreRequest extends ApiRequest
     {
         $Ticket =new  Ticket();
         if (auth('api')->check()) {
-            $Ticket->setUserId(auth('api')->user()->getId());
+            $logged = auth('api')->user();
+            $Ticket->setUserId($logged->getId());
+            $Ticket->setName($logged->getName());
+            $Ticket->setEmail($logged->getEmail());
         }else{
+            if (!$this->filled('name')){
+                return $this->failJsonResponse([__('validation.required', ['attribute' => __('crud.Ticket.name')])]);
+            }
+            if (!$this->filled('email')){
+                return $this->failJsonResponse([__('validation.required', ['attribute' => __('crud.Ticket.email')])]);
+            }
             $Ticket->setName($this->name);
             $Ticket->setEmail($this->email);
         }

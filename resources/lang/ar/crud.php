@@ -14,7 +14,27 @@ return [
         'is_active' => 'الحالة',
         'avatar' => 'الصورة',
     ],
-    'User'=>[
+    'Provider'=>[
+        'crud_names' => 'مزودي الخدمة',
+        'crud_name' => 'مزود الخدمة',
+        'crud_the_name' => 'المزود',
+        'name' => 'الاسم',
+        'email' => 'البريد الالكتروني',
+        'mobile' => 'رقم الجوال',
+        'avatar' => 'الصورة',
+        'type' => 'نوع البروفايل',
+        'bio' => 'نبذة',
+        'balance' => 'الرصيد',
+        'favorite_car' => 'السيارة المفضلة',
+        'app_locale' => 'اللغة',
+        'is_active' => 'الحالة',
+        'created_at' => 'تاريخ الإنشاء',
+        'orders_count' => 'عدد الطلبات',
+        'Links'=>[
+            'active_mobile_email'=>'تفعيل الايميل والجوال'
+        ]
+    ],
+    'Customer'=>[
         'crud_names' => 'المستخدمين',
         'crud_name' => 'مستخدم',
         'crud_the_name' => 'المستخدم',
@@ -29,6 +49,7 @@ return [
         'app_locale' => 'اللغة',
         'is_active' => 'الحالة',
         'created_at' => 'تاريخ الإنشاء',
+        'orders_count' => 'عدد الطلبات',
         'Links'=>[
             'active_mobile_email'=>'تفعيل الايميل والجوال'
         ]
@@ -72,6 +93,8 @@ return [
         'user_id' => 'المستخدم',
         'title' => 'العنوان',
         'message' => 'الرسالة',
+        'name' => 'Name',
+        'email' => 'Email',
         'ticket_response' => 'الرد',
         'response_form' => 'الرد على التذكرة',
         'status' => 'الحالة',
@@ -156,6 +179,13 @@ return [
         'title_ar' => 'العنوان عربي',
         'is_active' => 'الحالة',
     ],
+    'Portfolio'=>[
+        'crud_names' => 'معرض الأعمال',
+        'crud_name' => 'عمل',
+        'crud_the_name' => 'العمل',
+        'media' => 'صورة العمل',
+        'description' => 'وصف العمل',
+    ],
     'Order'=>[
         'crud_names' => 'الطلبات',
         'crud_name' => 'طلب',
@@ -174,5 +204,17 @@ return [
             ''.Constant::ORDER_STATUSES['ReceivedByAdmin']=>'مغلق تم التسليم',
             ''.Constant::ORDER_STATUSES['NotReceivedByAdmin']=>'مغلق  لم يتم التسليم',
         ],
+        'user_id' => 'المستخدم',
+        'freelancer_id' => 'المزود',
+        'product_id' => 'المنتج/الخدمة',
+        'status' => 'الحالة',
+        'statuses_history' => 'تاريخ الحالات',
+        'total' => 'المبلغ',
+        'quantity' => 'الكمية',
+        'price' => 'السعر',
+        'created_at' => 'تاريخ الانشاء',
+        'delivered_date' => 'تاريخ التوصيل',
+        'delivered_time' => 'وقت التوصيل',
+
     ],
 ];

@@ -5,9 +5,46 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e54eb8ff-7ec0-4935-a7c9-70b286af6560" name="Default Changelist" comment="Merge branch 'main' of https://github.com/hmikki/shaghaf&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml">
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/AppContent/OrderController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/AppData/SubCategoryController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/UserManagement/ProviderController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/css/colors/yellow.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/logo.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/logo.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/Admin/AppContent/Order/show.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/Admin/UserManagement/Provider/show.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/vendor/pagination/bootstrap-4.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/vendor/pagination/default.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/vendor/pagination/semantic-ui.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/vendor/pagination/simple-bootstrap-4.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/vendor/pagination/simple-default.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/vendor/pagination/simple-tailwind.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/vendor/pagination/tailwind.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shaghaf.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shaghaf.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Api/Order/UpdateRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Api/Order/UpdateRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/AppData/AdvertisementController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/AppContent/AdvertisementController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/AppData/CategoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/AppData/CategoryController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/UserManagement/TicketController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/UserManagement/TicketController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/UserManagement/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/UserManagement/CustomerController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/AhmedPanel/SearchRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/AhmedPanel/SearchRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/AhmedPanel/StoreRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/AhmedPanel/StoreRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Api/Ticket/StoreRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Api/Ticket/StoreRequest.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/seeders/InstallSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/InstallSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/ar/admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/ar/admin.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/ar/crud.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/ar/crud.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/en/admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en/admin.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/en/crud.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en/crud.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Admin/UserManagement/Ticket/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Admin/UserManagement/Ticket/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Admin/UserManagement/User/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Admin/UserManagement/Customer/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/AhmedPanel/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/AhmedPanel/auth/login.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/AhmedPanel/crud/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/AhmedPanel/crud/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/AhmedPanel/crud/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/AhmedPanel/crud/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/AhmedPanel/crud/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/AhmedPanel/crud/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/AhmedPanel/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/AhmedPanel/home.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/AhmedPanel/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/AhmedPanel/layouts/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/AhmedPanel/layouts/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/AhmedPanel/layouts/sidebar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/admin.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -180,7 +217,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Events" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Manshour" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -188,22 +225,23 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\localhost\shaghaf\app\Events" />
-      <recent name="D:\localhost\shaghaf\app\Http\Requests\Api\Transaction" />
-      <recent name="D:\localhost\shaghaf\app\Models" />
-      <recent name="D:\localhost\shaghaf\app\Http\Requests\Api\Home" />
-      <recent name="D:\localhost\shaghaf\app\Http\Resources\Api\Order" />
+      <recent name="D:\localhost\shaghaf\resources\views\Admin\AppContent\Order" />
+      <recent name="D:\localhost\shaghaf\app\Http\Controllers\Admin\AppContent" />
+      <recent name="D:\localhost\shaghaf\resources\views\Admin\UserManagement" />
+      <recent name="D:\localhost\shaghaf\app\Http\Controllers\Admin\UserManagement" />
+      <recent name="D:\localhost\shaghaf\app\Http\Controllers\Admin\AppData" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\localhost\shaghaf\app\Http\Controllers\Admin\AppContent" />
       <recent name="C:\xampp\htdocs\shaghaf\app\Http\Requests\Api\Home" />
       <recent name="C:\xampp\htdocs\shaghaf\app\Http\Controllers\Api" />
       <recent name="C:\xampp\htdocs\shaghaf\app\Http\Requests\Api\Portfolio" />
       <recent name="C:\xampp\htdocs\shaghaf\app\Http\Requests\Api" />
-      <recent name="C:\xampp\htdocs\shaghaf\app\Http\Requests\Api\Auth" />
     </key>
   </component>
   <component name="RunManager" selected="JavaScript Debug.Functions.php">
@@ -285,7 +323,14 @@
       <workItem from="1615962842575" duration="610000" />
       <workItem from="1615964983215" duration="16000" />
       <workItem from="1615968976078" duration="218000" />
-      <workItem from="1616051922482" duration="11401000" />
+      <workItem from="1616051922482" duration="12032000" />
+      <workItem from="1616222333063" duration="17000" />
+      <workItem from="1616340204004" duration="4218000" />
+      <workItem from="1616419069324" duration="1204000" />
+      <workItem from="1616470367556" duration="1253000" />
+      <workItem from="1616481305778" duration="284000" />
+      <workItem from="1616495727381" duration="26000" />
+      <workItem from="1616512115150" duration="10764000" />
     </task>
     <task id="LOCAL-00001" summary="cities">
       <created>1613291293054</created>
@@ -390,6 +435,18 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />

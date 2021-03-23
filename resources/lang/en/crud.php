@@ -13,10 +13,10 @@ return [
         'is_active' => 'Status',
         'avatar' => 'Avatar',
     ],
-    'User'=>[
-        'crud_names' => 'Users',
-        'crud_name' => 'User',
-        'crud_the_name' => 'The User',
+    'Provider'=>[
+        'crud_names' => 'Providers',
+        'crud_name' => 'Provider',
+        'crud_the_name' => 'The Provider',
         'name' => 'Name',
         'email' => 'E-Mail',
         'mobile' => 'Mobile',
@@ -28,6 +28,27 @@ return [
         'app_locale' => 'App Locale',
         'is_active' => 'Status',
         'created_at' => 'Created At',
+        'orders_count' => 'Orders Count',
+        'Links'=>[
+            'active_mobile_email'=>'Active Mobile And Email'
+        ]
+    ],
+    'Customer'=>[
+        'crud_names' => 'Customers',
+        'crud_name' => 'Customer',
+        'crud_the_name' => 'The Customer',
+        'name' => 'Name',
+        'email' => 'E-Mail',
+        'mobile' => 'Mobile',
+        'avatar' => 'Avatar',
+        'type' => 'Type',
+        'bio' => 'Bio',
+        'balance' => 'Balance',
+        'favorite_car' => 'Favorite Car',
+        'app_locale' => 'App Locale',
+        'is_active' => 'Status',
+        'created_at' => 'Created At',
+        'orders_count' => 'Orders Count',
         'Links'=>[
             'active_mobile_email'=>'Active Mobile And Email'
         ]
@@ -70,6 +91,8 @@ return [
         'id' => '#',
         'user_id' => 'User',
         'title' => 'Title',
+        'name' => 'Name',
+        'email' => 'Email',
         'message' => 'Message',
         'ticket_response' => 'Response',
         'status' => 'Status',
@@ -154,6 +177,13 @@ return [
         'title_ar' => 'Title Ar',
         'is_active' => 'Status',
     ],
+    'Portfolio'=>[
+        'crud_names' => 'Portfolios',
+        'crud_name' => 'Portfolio',
+        'crud_the_name' => 'The Portfolio',
+        'media' => 'Media',
+        'description' => 'Description',
+    ],
     'Order'=>[
         'crud_names' => 'Orders',
         'crud_name' => 'Order',
@@ -172,5 +202,16 @@ return [
             ''.Constant::ORDER_STATUSES['ReceivedByAdmin']=>'Received Closed',
             ''.Constant::ORDER_STATUSES['NotReceivedByAdmin']=>'Not Received Closed',
         ],
+        'user_id' => 'Customer',
+        'freelancer_id' => 'Provider',
+        'product_id' => 'Product/Service',
+        'status' => 'Status',
+        'statuses_history' => 'Statuses History',
+        'total' => 'Amount',
+        'quantity' => 'Quantity',
+        'price' => 'Price',
+        'created_at' => 'Created Date',
+        'delivered_date' => 'Delivered Date',
+        'delivered_time' => 'Delivered Time',
     ],
 ];

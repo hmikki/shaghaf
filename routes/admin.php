@@ -128,19 +128,6 @@ Route::group([
             Route::get('/{id}/activation','FaqController@activation');
         });
         Route::group([
-            'prefix'=>'faq_categories'
-        ],function () {
-            Route::get('/','FaqCategoryController@index');
-            Route::get('/create','FaqCategoryController@create');
-            Route::post('/','FaqCategoryController@store');
-            Route::get('/{faq_category}','FaqCategoryController@show');
-            Route::get('/{faq_category}/edit','FaqCategoryController@edit');
-            Route::put('/{faq_category}','FaqCategoryController@update');
-            Route::delete('/{faq_category}','FaqCategoryController@destroy');
-            Route::get('/option/export','FaqCategoryController@export');
-            Route::get('/{id}/activation','FaqCategoryController@activation');
-        });
-        Route::group([
             'prefix'=>'categories'
         ],function () {
             Route::get('/','CategoryController@index');
@@ -151,6 +138,18 @@ Route::group([
             Route::put('/{category}','CategoryController@update');
             Route::delete('/{category}','CategoryController@destroy');
             Route::get('/option/export','CategoryController@export');
+        });
+        Route::group([
+            'prefix'=>'sub_categories'
+        ],function () {
+            Route::get('/','SubCategoryController@index');
+            Route::get('/create','SubCategoryController@create');
+            Route::post('/','SubCategoryController@store');
+            Route::get('/{sub_category}','SubCategoryController@show');
+            Route::get('/{sub_category}/edit','SubCategoryController@edit');
+            Route::put('/{sub_category}','SubCategoryController@update');
+            Route::delete('/{sub_category}','SubCategoryController@destroy');
+            Route::get('/option/export','SubCategoryController@export');
         });
         Route::group([
             'prefix'=>'countries'
@@ -176,6 +175,17 @@ Route::group([
             Route::delete('/{city}','CityController@destroy');
             Route::get('/option/export','CityController@export');
         });
+    });
+    /*
+    |--------------------------------------------------------------------------
+    | Admin > App
+    |--------------------------------------------------------------------------
+    | Here is where App Content routes
+    */
+    Route::group([
+        'prefix'=>'app_content',
+        'namespace'=>'AppContent',
+    ],function () {
         Route::group([
             'prefix'=>'advertisements'
         ],function () {
@@ -188,17 +198,13 @@ Route::group([
             Route::delete('/{advertisement}','AdvertisementController@destroy');
             Route::get('/option/export','AdvertisementController@export');
         });
-    });
-    /*
-    |--------------------------------------------------------------------------
-    | Admin > App
-    |--------------------------------------------------------------------------
-    | Here is where App Content routes
-    */
-    Route::group([
-        'prefix'=>'app_content',
-        'namespace'=>'AppContent',
-    ],function () {
+        Route::group([
+            'prefix'=>'orders'
+        ],function () {
+            Route::get('/','OrderController@index');
+            Route::get('/{order}','OrderController@show');
+            Route::get('/option/export','OrderController@export');
+        });
     });
     /*
     |--------------------------------------------------------------------------
@@ -212,14 +218,24 @@ Route::group([
         'namespace'=>'UserManagement',
     ],function () {
         Route::group([
-            'prefix'=>'users'
+            'prefix'=>'customers'
         ],function () {
-            Route::get('/','UserController@index');
-            Route::get('/{user}','UserController@show');
-            Route::patch('/update/password',  'UserController@updatePassword');
-            Route::get('/option/export','UserController@export');
-            Route::get('/{id}/activation','UserController@activation');
-            Route::get('/{user}/active_mobile_email','UserController@active_mobile_email');
+            Route::get('/','CustomerController@index');
+            Route::get('/{customer}','CustomerController@show');
+            Route::patch('/update/password',  'CustomerController@updatePassword');
+            Route::get('/option/export','CustomerController@export');
+            Route::get('/{id}/activation','CustomerController@activation');
+            Route::get('/{customer}/active_mobile_email','CustomerController@active_mobile_email');
+        });
+        Route::group([
+            'prefix'=>'providers'
+        ],function () {
+            Route::get('/','ProviderController@index');
+            Route::get('/{provider}','ProviderController@show');
+            Route::patch('/update/password',  'ProviderController@updatePassword');
+            Route::get('/option/export','ProviderController@export');
+            Route::get('/{id}/activation','ProviderController@activation');
+            Route::get('/{provider}/active_mobile_email','ProviderController@active_mobile_email');
         });
         Route::group([
             'prefix'=>'tickets'

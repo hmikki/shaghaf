@@ -37,12 +37,15 @@ class InstallSeeder extends Seeder
             'Permissions',
             'Settings',
             'Faq',
-            'Users',
-            'Tickets',
             'Categories',
+            'SubCategories',
             'Countries',
             'Cities',
             'Advertisements',
+            'Orders',
+            'Customers',
+            'Providers',
+            'Tickets',
         ];
         $Settings = [
             'privacy'=>[
