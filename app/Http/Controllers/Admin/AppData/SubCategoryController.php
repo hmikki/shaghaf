@@ -28,7 +28,7 @@ class SubCategoryController extends Controller
                 'name'=>'parent_id',
                 'type'=>'custom_relation',
                 'relation'=>[
-                    'data'=> Category::all(),
+                    'data'=> Category::whereNull('parent_id')->get(),
                     'custom'=>function($Object){
                         return ($Object)?app()->getLocale() == 'ar'?$Object->getNameAr():$Object->getName():'-';
                     },
