@@ -10,6 +10,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property integer id
  * @property string name
  * @property string name_ar
+ * @property string description
+ * @property string description_ar
  * @property string image
  * @property mixed has_product
  * @property mixed has_service
@@ -19,7 +21,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Category extends Model
 {
     protected $table = 'categories';
-    protected $fillable = ['name','name_ar','image','parent_id','has_product','has_service','is_active'];
+    protected $fillable = ['name','name_ar','description','description_ar','image','parent_id','has_product','has_service','is_active'];
 
     public function parent(): BelongsTo
     {
@@ -79,6 +81,38 @@ class Category extends Model
     public function setNameAr(string $name_ar): void
     {
         $this->name_ar = $name_ar;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDescription(): string
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param string $description
+     */
+    public function setDescription(string $description): void
+    {
+        $this->description = $description;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDescriptionAr(): string
+    {
+        return $this->description_ar;
+    }
+
+    /**
+     * @param string $description_ar
+     */
+    public function setDescriptionAr(string $description_ar): void
+    {
+        $this->description_ar = $description_ar;
     }
 
     /**

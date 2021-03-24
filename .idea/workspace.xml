@@ -6,6 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="e54eb8ff-7ec0-4935-a7c9-70b286af6560" name="Default Changelist" comment="Merge branch 'main' of https://github.com/hmikki/shaghaf&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/AppData/CategoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/AppData/CategoryController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Resources/Api/Home/CategoryListResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/Api/Home/CategoryListResource.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Resources/Api/Home/CategoryResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/Api/Home/CategoryResource.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Category.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Category.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_09_27_131029_create_categories_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_09_27_131029_create_categories_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/ar/crud.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/ar/crud.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/en/crud.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en/crud.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -292,6 +299,7 @@
       <workItem from="1616481305778" duration="284000" />
       <workItem from="1616495727381" duration="26000" />
       <workItem from="1616512115150" duration="11739000" />
+      <workItem from="1616571531337" duration="1153000" />
     </task>
     <task id="LOCAL-00001" summary="cities">
       <created>1613291293054</created>

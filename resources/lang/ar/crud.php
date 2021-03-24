@@ -146,6 +146,8 @@ return [
         'parent_id' => 'التصنيف الرئيسي',
         'name' => 'الاسم',
         'name_ar' => 'الاسم عربي',
+        'description' => 'الوصف',
+        'description_ar' => 'الوصف عربي',
         'image' => 'الصورة',
         'has_product' => 'يسمح بمنتج',
         'has_service' => 'يسمح بخدمة',

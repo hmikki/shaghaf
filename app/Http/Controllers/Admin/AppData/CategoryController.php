@@ -60,6 +60,16 @@ class CategoryController extends Controller
                 'type'=>'text',
                 'is_required'=>true
             ],
+            'description'=> [
+                'name'=>'description',
+                'type'=>'text',
+                'is_required'=>true
+            ],
+            'description_ar'=> [
+                'name'=>'description_ar',
+                'type'=>'text',
+                'is_required'=>true
+            ],
             'image'=> [
                 'name'=>'image',
                 'type'=>'image',

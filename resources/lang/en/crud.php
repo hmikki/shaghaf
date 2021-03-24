@@ -145,6 +145,8 @@ return [
         'parent_id' => 'Parent Category',
         'name' => 'Name',
         'name_ar' => 'Name Ar',
+        'description' => 'Description',
+        'description_ar' => 'Description Ar',
         'image' => 'Image',
         'has_product' => 'Has Product',
         'has_service' => 'Has Service',
