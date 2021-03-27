@@ -348,14 +348,17 @@ class Functions
         }
         curl_close($ch);
         $responseData = json_decode($responseData);
-        if($responseData->result->code == "000.100.110"){
-            return true;
+        if ($responseData->result->code == "000.100.110"){
+            return  [
+                'status'=>true,
+                'response'=>$responseData
+            ];
         }else{
-            return false;
+            return  [
+                'status'=>false,
+                'response'=>$responseData
+            ];
         }
-//        if($responseData->result->code == "000.200.000"){
-//            return false;
-//        }
     }
     public static function AuthSplitHyperPay(){
         $email = 'faisal-hmood@outlook.com';
